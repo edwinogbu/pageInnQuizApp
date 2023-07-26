@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, ImageBackground
 import { Icon, Header } from 'react-native-elements';
 import { AuthContext } from './AuthContext';
 import { Ionicons } from '@expo/vector-icons';
-import { firestore } from './../firebase';
-import { getFirestore, collection, addDoc, doc, getDoc, setDoc } from 'firebase/firestore';
+// import { firestore } from './../firebase';
+// import { getFirestore, collection, addDoc, doc, getDoc, setDoc } from 'firebase/firestore';
 
 
 const ResultScreen = ({navigation, route }) => {

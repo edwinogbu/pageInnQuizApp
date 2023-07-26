@@ -28,12 +28,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "owner": "blessedcoder40",
-    "extra": {
-      "eas": {
-        "projectId": "816cd753-dfea-444c-a946-14b885ba2333"
-      }
     }
   }
 }
