@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 16,
     marginLeft: 10,
-    fontWeight: '900',
+    fontWeight: 'bold',
     padding: 10,
   },
   cancelButton: {
@@ -595,7 +595,7 @@ export default ProfileScreen;
 //     color: '#FFF',
 //     fontSize: 16,
 //     marginLeft: 10,
-//     fontWeight: '900',
+//     fontWeight: 'bold',
 //     padding: 10,
 //   },
  

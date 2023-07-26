@@ -113,17 +113,16 @@ const styles = StyleSheet.create({
   headingText: {
     color: '#003e94',
     flexDirection: 'row',
-    fontWeight:'900',
+    fontWeight: 'bold',
     borderColor: '#00FF00',
     borderWidth: 2,
-    fontWeight:'900',
     margin:15,
     padding:10,
   },
   heading: {
     color: '#003e94',
     flexDirection: 'row',
-    fontWeight:'900',
+    fontWeight: 'bold',
     fontSize:28,
   },
   label: {

@@ -402,13 +402,13 @@ return (
 <SafeAreaView style={styles.container}>
   <Header
     centerComponent={
-      <TouchableOpacity style={{ fontWeight: 'bold', fontSize: 22 }}>
+      <TouchableOpacity >
         <MaterialIcons name="screen-lock-rotation" size={24} color="#fff" style={{ color: '#fff', fontSize: 25, fontWeight: 'bold', marginLeft: 20 }} />
         <Text style={{ color: '#fff', fontSize: 15, fontWeight: 'bold', marginLeft: 20 }}>Register</Text>
       </TouchableOpacity>
     }
     leftComponent={
-      <TouchableOpacity style={{ fontWeight: 'bold', fontSize: 22 }}>
+      <TouchableOpacity >
         <MaterialIcons name="screen-lock-landscape" size={24} color="#fff" style={{ color: '#fff', fontSize: 25, fontWeight: 'bold', marginLeft: 20 }} />
         <Text style={{ color: '#fff', fontSize: 15, fontWeight: 'bold', marginLeft: 20 }}>Login Below</Text>
       </TouchableOpacity>

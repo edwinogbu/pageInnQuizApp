@@ -31,7 +31,7 @@ const CertificateScreen = ({ navigation, route }) => {
         rightComponent={
           <TouchableOpacity onPress={Leaderboard} style={styles.backButton}>
             <Ionicons name="school" size={24} color="#fff" />
-            <Text style={{ color: '#fff', marginLeft: 10, fontWeight:'900' }}>Leader Board</Text>
+            <Text style={{ color: '#fff', marginLeft: 10, fontWeight:'bold' }}>Leader Board</Text>
             <Ionicons name="ios-arrow-forward" size={24} color="#fff" />
           </TouchableOpacity>
         }
