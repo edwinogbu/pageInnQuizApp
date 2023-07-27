@@ -30,14 +30,14 @@ function BottomTabNavigator() {
 
           if (route.name === 'Home') {
             iconName = 'home';
-            return <Ionicons name={iconName} size={40} color={focused ? '#ff9900' : '#00A8F0'} />;
+            return <Ionicons name={iconName} size={40} color={focused ? '#000080' : '#00A8F0'} />;
           } else if (route.name === 'Leaderboard') {
             iconName = 'school';
-            return <MaterialCommunityIcons name={iconName} size={40} color={focused ? '#ff9900' : '#00A8F0'} />;
+            return <MaterialCommunityIcons name={iconName} size={40} color={focused ? '#000080' : '#00A8F0'} />;
           
           }else if (route.name === 'Profile') {
             iconName = 'account';
-            return <MaterialCommunityIcons name={iconName} size={40} color={focused ? '#ff9900' : '#00A8F0'} />;
+            return <MaterialCommunityIcons name={iconName} size={40} color={focused ? '#000080' : '#00A8F0'} />;
           
           }
         },

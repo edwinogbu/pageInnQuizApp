@@ -86,7 +86,7 @@ const DrawerContent = (props) => {
                 borderColor: colors.white,
               }}
               size={75}
-              source={require('../../assets/images/user-male-placeholder.png')}
+              source={require('./../../assets/images/PAGE.png')}
             />
             <View style={{ marginLeft: 10, }}>
               <Text style={{
