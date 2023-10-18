@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { View, TouchableOpacity, Switch, StyleSheet } from 'react-native';
 import { Avatar, Text } from 'react-native-elements';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import { Icon } from 'react-native-vector-icons/MaterialCommunityIcons';
+// import { Icon } from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons, MaterialCommunityIcons, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import { colors } from './Colors';
 import { auth,  } from './../../firebase'; // Import your Firebase Firestore instance
@@ -83,7 +83,7 @@ const DrawerContent = (props) => {
               rounded
               avatarStyle={{
                 ...styles.avatar,
-                borderColor: colors.white,
+                borderColor: colors.buttons,
               }}
               size={75}
               source={require('./../../assets/images/PAGE.png')}
@@ -131,9 +131,9 @@ const DrawerContent = (props) => {
                       name="school"
                       size={35}
                       color={isDarkMode || colors.dark ?colors.primary: colors.cardbackground}
-                      // onPress={() => {
-                      //   props.navigation.navigate('LeaderboardScreen');
-                      // }}
+                      onPress={() => {
+                        props.navigation.navigate('LeaderboardScreen');
+                      }}
                     />
                 </Text>
                 <Text
@@ -145,6 +145,7 @@ const DrawerContent = (props) => {
                 </Text>
               </View>
             </View>
+     
             <View style={{ flexDirection: 'row', marginLeft: 0 }}>
               <View
                 style={{
@@ -168,9 +169,9 @@ const DrawerContent = (props) => {
                       name="handshake"
                       size={35}
                       color={isDarkMode || colors.dark ?colors.primary: colors.cardbackground}
-                      // onPress={() => {
-                      //   props.navigation.navigate('ProfileScreen');
-                      // }}
+                      onPress={() => {
+                        props.navigation.navigate('ProfileScreen');
+                      }}
                     />
                   </View>
                 </Text>
@@ -181,6 +182,20 @@ const DrawerContent = (props) => {
                     }}>Profile</Text>
               </View>
               </View>
+
+                     {/* {isAdmin ? ( */}
+            <TouchableOpacity
+              style={styles.menuIconContainer}
+              onPress={() => props.navigation.navigate('UserListScreen')}
+            >
+              <MaterialCommunityIcons
+                name="account"
+                size={35}
+                color={isDarkMode ? colors.primary : colors.primary}
+              />
+              <Text style={styles.menuText}>User List</Text>
+            </TouchableOpacity>
+          {/* ) : null} */}
               </View>
 
       <View

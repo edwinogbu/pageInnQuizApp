@@ -15,6 +15,8 @@ import UserProfileScreen from './../UserProfileScreen';
 import CertificateScreen from './../CertificateScreen';
 import HomeScreen from './../HomeScreen';
 import ProfileScreen from './../ProfileScreen';
+import UserListScreen from '../UserListScreen';
+import StartExamScreen from '../StartExamScreen';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -186,6 +188,19 @@ function DrawerNavigator(){
         ),
       }}
     />
+      <Drawer.Screen
+      name="StartExamScreen"
+      component={StartExamScreen}
+      options={{
+        drawerIcon: ({ color, size }) => (
+          <Ionicons
+            name="Start Exam"
+            size={size}
+            color={color}
+          />
+        ),
+      }}
+    />
     </Drawer.Navigator>
   );
 };
@@ -211,7 +226,43 @@ export default function AppStack() {
             }}
        />
       
-       
+      <Stack.Screen 
+               name="ProfileScreen" 
+               component={ProfileScreen} 
+               options={({ navigation }) => ({
+                  title: 'Profile',
+                  headerTitleStyle: styles.headerTitle,
+                  headerLeft: () => (
+                    
+                     <FontAwesome5 name="arrow-back" size={28} onPress={() => navigation.goBack()} />
+
+                  ),
+                  headerRight: () => (
+                     
+                    <FontAwesome5 name="arrow-back" size={28} onPress={() => navigation.goBack()} />
+
+                  ),
+               })} 
+         />
+
+          <Stack.Screen 
+               name="UserListScreen" 
+               component={UserListScreen} 
+               options={({ navigation }) => ({
+                  title: 'User List',
+                  headerTitleStyle: styles.headerTitle,
+                  headerLeft: () => (
+                    
+                    <FontAwesome5 name="arrow-back" size={28} onPress={() => navigation.goBack()} />
+
+                  ),
+                  headerRight: () => (
+                     
+                    <FontAwesome5 name="arrow-back" size={28} onPress={() => navigation.goBack()} />
+
+                  ),
+               })} 
+         />
 
 <Stack.Screen 
   name="QuizScreen" 
