@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Page Innovations Quiz App",
-    "slug": "PageInnovationsQuizApp",
+    "name": "Page Inn Quiz App",
+    "slug": "PageInnQuizApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,14 +15,14 @@
     "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.blessedcoder40.PageInnovationQuizApp"
+      "bundleIdentifier": "com.blessedcoder40.PageInnQuizApp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.blessedcoder40.quizapp",
+      "package": "com.blessedcoder40.PageInnQuizApp",
       "versionCode": 1
     },
     "web": {
