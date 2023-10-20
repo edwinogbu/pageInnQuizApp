@@ -160,7 +160,7 @@ const ResultScreen = ({ navigation, route }) => {
       <ImageBackground source={require('./../assets/images/page-academy4.png')} style={styles.backgroundImage}>
         <Header
           centerComponent={{
-            text: 'Home',
+            text: 'Quiz Result',
             style: { color: '#fff', fontSize: 18 },
             icon: (
               <TouchableOpacity onPress={handleReturnHome} style={styles.centerComponent}>

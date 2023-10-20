@@ -27,6 +27,8 @@ import {
   getDoc,
 } from 'firebase/firestore';
 import { firestore } from './../firebase/index';
+import { FontAwesome5 } from '@expo/vector-icons';
+
 
 const HomeScreen = ({ navigation, route }) => {
   const { state, setQuestions, setTotalQuestions, setCourseName, setUsername } = useContext(AuthContext);
@@ -142,7 +144,13 @@ const HomeScreen = ({ navigation, route }) => {
       </View>
 
       <View style={styles.courseSection}>
-        <Text style={styles.subtitle}>Choose a course:</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+        <FontAwesome5 name="angle-double-left" size={14}  style={{ color:'#00A8F0'}}/>
+        <Text style={styles.subtitle}>Scroll... Choose a course:</Text>
+        <FontAwesome5 name="angle-double-right" size={14} style={{color:'#00A8F0'}} />
+        <FontAwesome5 name="angle-double-right" size={14} style={{color:'#00A8F0'}} />
+      </View>
+
         <FlatList
           data={questions}
           horizontal
@@ -200,7 +208,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    margin: 10,
+    margin: 5,
   },
   titleText: {
     fontSize: 32,
@@ -215,8 +223,10 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 18,
+    fontWeight:'bold',
     color: '#00A8F0',
     marginBottom: 10,
+    margin:20,
   },
   slider: {
     width: '100%',
@@ -231,13 +241,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingHorizontal: 18,
     borderRadius: 20,
     marginHorizontal: 8,
   },
   courseButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontWeight:'bold',
+    fontSize: 18,
     textAlign: 'center',
   },
   homeImage: {
