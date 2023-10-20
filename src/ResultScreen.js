@@ -36,11 +36,6 @@ const ResultScreen = ({navigation, route }) => {
   
   const [refreshed, setRefreshed] = useState(false);
 
-  // const handleDone = () => {
-  //   navigation.navigate('HomeScreen');
-  //   setRefreshed(false);
-  // };
-
   const handleDone = () => {
     navigation.reset({
       index: 0,

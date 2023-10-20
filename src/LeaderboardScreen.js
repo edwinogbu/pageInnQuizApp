@@ -15,6 +15,14 @@ const LeaderboardScreen = () => {
   const [searchResultNotFound, setSearchResultNotFound] = useState(false);
 
   useEffect(() => {
+        // Initialize with some initial data before loading actual data
+        const initialData = Array(PAGE_SIZE).fill({
+          username: 'Loading...',
+          percentageScore: 0,
+          courseName: 'Loading...',
+          userId: 'Loading...',
+        });
+        setQuizResults(initialData);
     retrieveQuizResults();
   }, []);
 

@@ -1,6 +1,6 @@
 import { Text, Pressable, Dimensions } from "react-native";
 import getStyles from "./CustomButton.style";
-import palette from "./../styles/colours";
+import palette from "../styles/colours";
 
 
 const CustomButton = ({

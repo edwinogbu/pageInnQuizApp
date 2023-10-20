@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Page Quiz App",
-    "slug": "pageQuizApp",
+    "name": "Page Innovations Quiz App",
+    "slug": "PageInnovationsQuizApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,7 +15,7 @@
     "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.blessedcoder40.quizapp"
+      "bundleIdentifier": "com.blessedcoder40.PageInnovationQuizApp"
     },
     "android": {
       "adaptiveIcon": {

@@ -1,621 +1,222 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { auth, firestore } from './../firebase';
-import { AuthContext } from './AuthContext';
-
-const useUserIdFromFirestore = () => {
-  const { state: { user } } = useContext(AuthContext);
-  if (user) {
-    return user.uid;
-  } else {
-    throw new Error('User is not logged in');
-  }
-};
-
-const ProfileField = ({ label, value, editing, onChangeText }) => {
-  return (
-    <>
-      <Text style={styles.label}>{label}:</Text>
-      {editing ? (
-        <TextInput
-          style={styles.input}
-          value={value}
-          onChangeText={text => onChangeText(text)}
-        />
-      ) : (
-        <Text style={styles.text}>{value}</Text>
-      )}
-    </>
-  );
-};
-
-const EditButton = ({ onPress }) => (
-  <TouchableOpacity style={styles.editButton} onPress={onPress}>
-    <Icon name="edit" size={20} color="#FFF" />
-    <Text style={styles.editButtonText}>Edit</Text>
-  </TouchableOpacity>
-);
-
-const SaveCancelButton = ({ onSave, onCancel }) => (
-  <View style={styles.buttonContainer}>
-    <TouchableOpacity style={styles.cancelButton} onPress={onCancel}>
-      <View style={styles.buttonContent}>
-        <Icon name="close" size={20} color="#FFF" />
-        <Text style={styles.editButtonText}>Close</Text>
-      </View>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.saveButton} onPress={onSave}>
-      <View style={styles.buttonContent}>
-        <Icon name="check" size={20} color="#FFF" />
-        <Text style={styles.buttonText}>Update</Text>
-      </View>
-    </TouchableOpacity>
-  </View>
-);
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
+import { getAuth, updateDoc, doc, getDoc, setDoc } from 'firebase/firestore';
+import { auth, firestore } from './../firebase'; // Replace with your own Firebase initialization code
 
 const ProfileScreen = () => {
-  const { state, saveUserDetail } = useContext(AuthContext);
-  const userId = useUserIdFromFirestore(); // Use the custom hook to get the user ID
-
-  const [userDetails, setUserDetails] = useState({
-    name: state.user?.displayName || '',
-    email: state.user?.email || '',
-    phone: state.user?.phoneNumber || '',
-  });
-  const [editing, setEditing] = useState(false);
-  const [originalUserDetails, setOriginalUserDetails] = useState({});
-  const [greeting, setGreeting] = useState('');
+  const [activeTab, setActiveTab] = useState('view');
+  const [profileData, setProfileData] = useState(null);
+  const [editedProfileData, setEditedProfileData] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    fetchUserDetails();
-    setGreeting(getGreeting());
+    fetchProfileData();
   }, []);
 
-  const fetchUserDetails = async () => {
+  const fetchProfileData = async () => {
+    setIsLoading(true);
     try {
-      if (!userId) {
-        console.log('No authenticated user found.');
-        return;
-      }
-
-      const userDocRef = doc(firestore, 'users', userId);
-      const userDoc = await getDoc(userDocRef);
-
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        setUserDetails(userData);
-        setOriginalUserDetails(userData);
+      const user = auth.currentUser;
+      const docRef = doc(firestore, 'users', user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setProfileData(docSnap.data());
+        setEditedProfileData(docSnap.data()); // Set editedProfileData to initialize with the existing profile data
       } else {
-        // No need to do anything here as we are already setting the userDetails state from state.user
+        await createProfileData(user.uid);
       }
     } catch (error) {
-      console.log('Error fetching user details:', error.message);
+      console.error('Error fetching profile data:', error);
     }
-  };
-  
-  const handleEdit = () => {
-    setEditing(true);
+    setIsLoading(false);
   };
 
-  const handleUpdate = async () => {
+  const createProfileData = async (userId) => {
     try {
-      // We already have the user ID from the custom hook, so no need to use getUserIdFromFirestore() here.
-      await saveUserDetail(userId, userDetails); // Save the updated user details to Firestore
-      setEditing(false);
-      setOriginalUserDetails(userDetails);
-      console.log('User details updated successfully.');
+      const userData = {
+        name: '',
+        email: '',
+        phone: '',
+      };
+      const docRef = doc(firestore, 'users', userId);
+      await setDoc(docRef, userData);
+      setProfileData(userData);
+      setEditedProfileData(userData); // Set editedProfileData to initialize with the created profile data
     } catch (error) {
-      console.log('Error updating user details:', error.message);
+      console.error('Error creating profile data:', error);
     }
   };
 
-  const handleCancel = () => {
-    setEditing(false);
-    setUserDetails(originalUserDetails);
-  };
-
-  const handleInputChange = (key, value) => {
-    setUserDetails(prevState => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
-
-  const getGreeting = () => {
-    const currentHour = new Date().getHours();
-    if (currentHour >= 5 && currentHour < 12) {
-      return 'Good Morning';
-    } else if (currentHour >= 12 && currentHour < 18) {
-      return 'Good Afternoon';
-    } else {
-      return 'Good Evening';
+  const updateProfileData = async () => {
+    setIsLoading(true);
+    try {
+      const user = auth.currentUser;
+      const docRef = doc(firestore, 'users', user.uid);
+      await updateDoc(docRef, editedProfileData);
+      setProfileData(editedProfileData);
+      setEditedProfileData({});
+    } catch (error) {
+      console.error('Error updating profile data:', error);
+      setErrorMessage('Failed to update profile data.');
     }
+    setIsLoading(false);
+    setIsEditing(false);
   };
+
+  const handleTabPress = async (tabName) => {
+    if (activeTab === 'edit' && tabName === 'view') {
+      await updateProfileData();
+    }
+    setActiveTab(tabName);
+  };
+
+  const renderViewTab = () => (
+    <View style={styles.cardContainer}>
+      <Text style={styles.label}>Name:</Text>
+      <Text style={styles.value}>{profileData?.name}</Text>
+      <Text style={styles.label}>Email:</Text>
+      <Text style={styles.value}>{profileData?.email}</Text>
+      <Text style={styles.label}>Phone:</Text>
+      <Text style={styles.value}>{profileData?.phone}</Text>
+    </View>
+  );
+
+  const renderEditTab = () => (
+    <View style={styles.cardContainer}>
+      <Text style={styles.label}>Name:</Text>
+      <TextInput
+        style={styles.input}
+        value={editedProfileData.name}
+        onChangeText={(text) => setEditedProfileData((prevData) => ({ ...prevData, name: text }))}
+      />
+      <Text style={styles.label}>Email:</Text>
+      <TextInput
+        style={styles.input}
+        value={editedProfileData.email}
+        onChangeText={(text) => setEditedProfileData((prevData) => ({ ...prevData, email: text }))}
+      />
+      <Text style={styles.label}>Phone:</Text>
+      <TextInput
+        style={styles.input}
+        value={editedProfileData.phone}
+        onChangeText={(text) => setEditedProfileData((prevData) => ({ ...prevData, phone: text }))}
+      />
+      <TouchableOpacity style={styles.saveButton} onPress={() => handleTabPress('view')}>
+        <Text style={styles.saveButtonText}>Save Changes</Text>
+      </TouchableOpacity>
+    </View>
+  );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <View style={styles.card}>
-          <Text style={styles.greeting}>{greeting}</Text>
-
-          <ProfileField
-            label="Name"
-            value={userDetails.name}
-            editing={editing}
-            onChangeText={text => handleInputChange('name', text)}
-          />
-
-          <ProfileField
-            label="Email"
-            value={userDetails.email}
-            editing={editing}
-            onChangeText={text => handleInputChange('email', text)}
-          />
-
-          <ProfileField
-            label="Phone"
-            value={userDetails.phone}
-            editing={editing}
-            onChangeText={text => handleInputChange('phone', text)}
-          />
-
-          {editing ? (
-            <SaveCancelButton onSave={handleUpdate} onCancel={handleCancel} />
-          ) : (
-            <EditButton onPress={handleEdit} />
-          )}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <View style={styles.tabsContainer}>
+        <TouchableOpacity
+          style={[styles.tabButton, activeTab === 'view' && styles.activeTabButton]}
+          onPress={() => handleTabPress('view')}
+        >
+          <Text style={[styles.tabButtonText, activeTab === 'view' && styles.activeTabButtonText]}>View Profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.tabButton, activeTab === 'edit' && styles.activeTabButton]}
+          onPress={() => handleTabPress('edit')}
+        >
+          <Text style={[styles.tabButtonText, activeTab === 'edit' && styles.activeTabButtonText]}>Edit Profile</Text>
+        </TouchableOpacity>
+      </View>
+      {isLoading ? (
+        <ActivityIndicator style={styles.loadingIndicator} size="large" color="#000" />
+      ) : (
+        <>
+          {activeTab === 'view' ? renderViewTab() : renderEditTab()}
+          {errorMessage !== '' && <Text style={styles.errorText}>{errorMessage}</Text>}
+        </>
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    padding: 20,
+    backgroundColor: '#2B60DA',
   },
-  contentContainer: {
-    flexGrow: 1,
-    alignItems: 'center',
-    paddingTop: 40,
-    paddingBottom: 20,
-  },
-  card: {
-    width: '80%',
-    padding: 16,
-    borderRadius: 16,
-    backgroundColor: '#FFFFFF',
-    shadowColor: '#000000',
+  cardContainer: {
+    backgroundColor: '#FFF',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    padding: 20,
+    borderRadius: 10,
   },
-  greeting: {
-    fontSize: 18,
+  tabsContainer: {
+    flexDirection: 'row',
+    marginBottom: 20,
+    backgroundColor: '#ccc',
+    borderRadius: 10,
+  },
+  tabButton: {
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
+  activeTabButton: {
+    backgroundColor: '#4CAF50',
+  },
+  tabButtonText: {
+    color: '#000',
     fontWeight: 'bold',
-    marginBottom: 16,
-    textAlign: 'center',
+  },
+  activeTabButtonText: {
+    color: '#fff',
   },
   label: {
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  text: {
     fontSize: 16,
-    marginBottom: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  value: {
+    fontSize: 16,
+    marginBottom: 10,
   },
   input: {
-    fontSize: 16,
-    marginBottom: 16,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderWidth: 1,
-    borderColor: '#CCCCCC',
-    borderRadius: 4,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 14,
-    marginLeft: 5,
-  },
-  buttonContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    backgroundColor: '#CCC',
+    color: '#000000',
+    borderRadius: 50,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    fontWeight: 'bold',
+    fontSize: 20,
   },
   saveButton: {
-    backgroundColor: '#4CD964',
-    padding: 10,
+    backgroundColor: '#4CAF50',
+    paddingVertical: 10,
     borderRadius: 5,
     alignItems: 'center',
-    flex: 1,
-    marginLeft: 10,
   },
-  editButton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FF6347',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderWidth: 2,
-    borderColor: '#FFF',
-    borderRadius: 20,
-    marginTop: 20,
-  },
-  editButtonText: {
-    color: '#FFF',
-    fontSize: 16,
-    marginLeft: 10,
+  saveButtonText: {
+    color: '#fff',
     fontWeight: 'bold',
-    padding: 10,
   },
-  cancelButton: {
-    backgroundColor: '#FF3B30',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
+  loadingIndicator: {
     flex: 1,
-    marginRight: 10,
+    justifyContent: 'center',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 16,
+    marginTop: 10,
+    textAlign: 'center',
   },
 });
 
 export default ProfileScreen;
-
-
-
-// import React, { useState, useEffect, useContext } from 'react';
-// import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, SafeAreaView, ScrollView } from 'react-native';
-// import Icon from 'react-native-vector-icons/FontAwesome';
-// import { doc, getDoc, setDoc } from 'firebase/firestore';
-// import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-// import * as ImagePicker from 'expo-image-picker';
-// import { auth, firestore } from './../firebase';
-// import { AuthContext } from './AuthContext';
-
-
-// const getUserIdFromFirestore = async () => {
-//   const user = auth.currentUser;
-//   if (user) {
-//     return user.uid;
-//   } else {
-//     throw new Error('User is not logged in');
-//   }
-// };
-
-// const ProfileField = ({ label, value, editing, onChangeText }) => {
-//   return (
-//     <>
-//       <Text style={styles.label}>{label}:</Text>
-//       {editing ? (
-//         <TextInput
-//           style={styles.input}
-//           value={value}
-//           onChangeText={text => onChangeText(text)}
-//         />
-//       ) : (
-//         <Text style={styles.text}>{value}</Text>
-//       )}
-//     </>
-//   );
-// };
-
-// const EditButton = ({ onPress }) => (
-//   <TouchableOpacity style={styles.editButton} onPress={onPress}>
-//     <Icon name="edit" size={20} color="#FFF" />
-//     <Text style={styles.editButtonText}>Edit</Text>
-//   </TouchableOpacity>
-// );
-
-// const SaveCancelButton = ({ onSave, onCancel }) => (
-//   <View style={styles.buttonContainer}>
-//     <TouchableOpacity style={styles.cancelButton} onPress={onCancel}>
-//       <View style={styles.buttonContent}>
-//         <Icon name="close" size={20} color="#FFF" />
-//         <Text style={styles.editButtonText}>Close</Text>
-//       </View>
-//     </TouchableOpacity>
-//     <TouchableOpacity style={styles.saveButton} onPress={onSave}>
-//       <View style={styles.buttonContent}>
-//         <Icon name="check" size={20} color="#FFF" />
-//         <Text style={styles.buttonText}>Update</Text>
-//       </View>
-//     </TouchableOpacity>
-//   </View>
-// );
-
-// const ProfileScreen = () => {
-//   const {
-//     state: {
-//       user: { displayName = '', name = '', email = '', phoneNumber = '', phone = '', image = null },
-//     },
-//   } = useContext(AuthContext);
-
-//   const [userDetails, setUserDetails] = useState({
-//     name: displayName || name || '',
-//     email: email || '',
-//     phone: phoneNumber || phone || '',
-//     image: image || null,
-//   });
-//   const [editing, setEditing] = useState(false);
-//   const [originalUserDetails, setOriginalUserDetails] = useState({});
-//   const [greeting, setGreeting] = useState('');
-
-//   useEffect(() => {
-//     fetchUserDetails();
-//     setGreeting(getGreeting());
-//   }, []);
-
-//   const fetchUserDetails = async () => {
-//     try {
-//       const userId = await getUserIdFromFirestore();
-//       const userDocRef = doc(firestore, 'users', userId);
-//       const userDoc = await getDoc(userDocRef);
-//       if (userDoc.exists()) {
-//         const userData = userDoc.data();
-//         setUserDetails(userData);
-//         setOriginalUserDetails(userData);
-//       } else {
-//         const currentUser = auth.currentUser;
-//         if (currentUser) {
-//           const { uid, email, displayName, phoneNumber, photoURL } = currentUser;
-//           const updatedUserDetails = {
-//             ...userDetails,
-//             userId: uid,
-//             email: userDetails.email || email || '',
-//             name: userDetails.name || displayName || '',
-//             phone: userDetails.phone || phoneNumber || '',
-//             image: userDetails.image || photoURL || null,
-//           };
-//           setUserDetails(updatedUserDetails);
-//           setOriginalUserDetails(updatedUserDetails);
-//         }
-//       }
-//     } catch (error) {
-//       console.log('Error fetching user details:', error.message);
-//     }
-//   };
-
-//   const handleEdit = () => {
-//     setEditing(true);
-//   };
-
-//   const handleUpdate = async () => {
-//     try {
-//       const userId = await getUserIdFromFirestore();
-//       const userDocRef = doc(firestore, 'users', userId);
-//       const updatedUserDetails = { ...userDetails, userId };
-//       await setDoc(userDocRef, updatedUserDetails, { merge: true });
-//       setEditing(false);
-//       setOriginalUserDetails(updatedUserDetails);
-//       console.log('User details updated successfully.');
-//     } catch (error) {
-//       console.log('Error updating user details:', error.message);
-//     }
-//   };
-
-//   const handleCancel = () => {
-//     setEditing(false);
-//     setUserDetails(originalUserDetails);
-//   };
-
-//   const handleInputChange = (key, value) => {
-//     setUserDetails(prevState => ({
-//       ...prevState,
-//       [key]: value,
-//     }));
-//   };
-
-//   const getGreeting = () => {
-//     const currentHour = new Date().getHours();
-//     if (currentHour >= 5 && currentHour < 12) {
-//       return 'Good Morning';
-//     } else if (currentHour >= 12 && currentHour < 18) {
-//       return 'Good Afternoon';
-//     } else {
-//       return 'Good Evening';
-//     }
-//   };
-
-//   const handleImageUpload = async () => {
-//     try {
-//       const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-//       if (permissionResult.granted === false) {
-//         console.log('Permission to access media library denied');
-//         return;
-//       }
-
-//       const pickerResult = await ImagePicker.launchImageLibraryAsync({
-//         allowsEditing: true,
-//         aspect: [1, 1],
-//         quality: 0.5,
-//       });
-
-//       if (!pickerResult.cancelled) {
-//         const storage = getStorage();
-//         const imageRef = ref(storage, `users/${userDetails.userId}/profileImage`);
-//         await uploadBytes(imageRef, pickerResult.uri);
-//         const imageUrl = await getDownloadURL(imageRef);
-//         setUserDetails(prevState => ({
-//           ...prevState,
-//           image: imageUrl,
-//         }));
-//       }
-//     } catch (error) {
-//       console.log('Error uploading image:', error.message);
-//     }
-//   };
-
-//   return (
-//     <SafeAreaView style={styles.container}>
-//     <ScrollView contentContainerStyle={styles.contentContainer}>
-    
-//       <View style={styles.card}>
-//         <Text style={styles.greeting}>{greeting}</Text>
-
-//         <TouchableOpacity onPress={handleImageUpload}>
-//           {userDetails.image ? (
-//             <Image source={{ uri: userDetails.image }} style={styles.image} />
-//           ) : (
-//             <Icon name="user" size={80} color="#CCCCCC" />
-//           )}
-//         </TouchableOpacity>
-
-//         <ProfileField
-//           label="Name"
-//           value={userDetails.name}
-//           editing={editing}
-//           onChangeText={text => handleInputChange('name', text)}
-//         />
-
-//         <ProfileField
-//           label="Email"
-//           value={userDetails.email}
-//           editing={editing}
-//           onChangeText={text => handleInputChange('email', text)}
-//         />
-
-//         <ProfileField
-//           label="Phone"
-//           value={userDetails.phone}
-//           editing={editing}
-//           onChangeText={text => handleInputChange('phone', text)}
-//         />
-
-//         {editing ? (
-//           <SaveCancelButton onSave={handleUpdate} onCancel={handleCancel} />
-//         ) : (
-//           <EditButton onPress={handleEdit} />
-//         )}
-//       </View>
-
-//       </ScrollView>
-//     </SafeAreaView>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#F5F5F5',
-//   },
-//   contentContainer: {
-//     flexGrow: 1,
-//     alignItems: 'center',
-//     paddingTop: 40,
-//     paddingBottom: 20,
-//   },
-
-//   cancelButton: {
-//     backgroundColor: '#FF3B30',
-//     padding: 10,
-//     borderRadius: 5,
-//     alignItems: 'center',
-//     flex: 1,
-//     marginRight: 10,
-//   },
-//   saveButton: {
-//     backgroundColor: '#4CD964',
-//     padding: 10,
-//     borderRadius: 5,
-//     alignItems: 'center',
-//     flex: 1,
-//     marginLeft: 10,
-//   },
-
-
-
-//   card: {
-//     width: '80%',
-//     padding: 16,
-//     borderRadius: 16,
-//     backgroundColor: '#FFFFFF',
-//     shadowColor: '#000000',
-//     shadowOffset: {
-//       width: 0,
-//       height: 2,
-//     },
-//     shadowOpacity: 0.2,
-//     shadowRadius: 4,
-//     elevation: 3,
-//   },
-//   greeting: {
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     marginBottom: 16,
-//     textAlign: 'center',
-//   },
-//   label: {
-//     fontWeight: 'bold',
-//     marginBottom: 8,
-//   },
-//   text: {
-//     fontSize: 16,
-//     marginBottom: 16,
-//   },
-//   input: {
-//     fontSize: 16,
-//     marginBottom: 16,
-//     paddingVertical: 8,
-//     paddingHorizontal: 12,
-//     borderWidth: 1,
-//     borderColor: '#CCCCCC',
-//     borderRadius: 4,
-//   },
-//   image: {
-//     width: 120,
-//     height: 120,
-//     borderRadius: 60,
-//     alignSelf: 'center',
-//     marginBottom: 16,
-//   },
-//   editButton: {
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#FF6347',
-//     paddingVertical: 15,
-//     paddingHorizontal: 20,
-//     borderWidth: 2,
-//     borderColor: '#FFF',
-//     borderRadius: 20,
-//     marginTop: 20,
-//   },
-//   editButtonText: {
-//     color: '#FFF',
-//     fontSize: 16,
-//     marginLeft: 10,
-//     fontWeight: 'bold',
-//     padding: 10,
-//   },
- 
-//   buttonContainer: {
-//     flexDirection: 'row',
-//     justifyContent: 'flex-end',
-//   },
-//   buttonText: {
-//     color: '#FFF',
-//     fontSize: 14,
-//     marginLeft: 5,
-//   },
-//   buttonContent: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//   },
-  
-
-
-
-// });
-
-// export default ProfileScreen;

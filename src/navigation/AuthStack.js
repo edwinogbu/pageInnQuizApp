@@ -14,19 +14,6 @@ export default function AuthStack() {
   return (
    
       <Stack.Navigator>
-        {/* <Stack.Screen name="SplashScreen" component={SplashScreen}
-           options = {{ 
-                    headerShown:false, 
-                    // ...TransitionPresets.RevealFromBottomAndroid 
-            }}
-         /> */}
-        {/* <Stack.Screen name="StarterScreen" component={StarterScreen}
-           options = {{ 
-                    // headerShown:false, 
-                    // ...TransitionPresets.RevealFromBottomAndroid 
-            }}
-         />
-         */}
      
       <Stack.Screen
         component={StarterScreen}

@@ -41,86 +41,86 @@ export const AuthProvider = ({ children }) => {
 
   const signIn = async (email, password) => {
     dispatch({ type: 'SET_LOADING', payload: true });
-    setError(null); // Clear previous errors
+    setError(null);
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       dispatch({ type: 'SIGN_IN', payload: user });
       saveValueToSecureStore('user', user);
+      setUser({
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        phoneNumber: user.phoneNumber,
+        
+      });
     } catch (error) {
       console.log('Sign in error:', error);
-      setError('Sign in failed. Please check your credentials and try again.'); // Set error message
+      setError('Sign in failed. Please check your credentials and try again.');
     }
   };
-
-
-
-  // const signUp = async (name, email, phone, password, profilePicture) => {
-  //   dispatch({ type: 'SET_LOADING', payload: true });
-  //   setError(null); // Clear previous errors
-  //   try {
-  //     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  //     const user = userCredential.user;
-      
-  //     // Update user profile with additional fields
-  //     await updateProfile(user, { displayName: name, phoneNumber: phone, userId:user.uid, });
-      
-  //     // Save user details to Firestore
-  //     await saveUserDetail(user.uid, { name, email, phone, userId:user.uid, });
-      
-  //     // Upload profile picture to Cloud Storage
-  //     const profilePictureUrl = await uploadProfilePicture(user.uid, profilePicture);
-      
-  //     // Update user profile with profile picture URL
-  //     await updateProfile(user, { photoURL: profilePictureUrl });
-      
-  //     dispatch({ type: 'SIGN_IN', payload: user }); // Use 'SIGN_UP' action type
-  //     saveValueToSecureStore('user', user);
-  //   } catch (error) {
-  //     console.log('Sign up error:', error);
-  //     setError('Sign up failed. Please try again.'); // Set error message
-  //   }
-  // };
-
 
   const signUp = async (name, email, phone, password, profilePicture) => {
     dispatch({ type: 'SET_LOADING', payload: true });
-    setError(null); // Clear previous errors
+    setError(null);
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-  
-      // Update user profile with additional fields, including 'userType'
-      await updateProfile(user, {
-        displayName: name,
-        phoneNumber: phone,
+
+      await updateProfile(user, { displayName: name, phoneNumber: phone, email });
+
+      const userId = user.uid;
+      const userDetails = {
         userId: user.uid,
-        userType: 'user', // Add userType: 'user' here
-      });
-  
-      // Save user details to Firestore
-      await saveUserDetail(user.uid, {
+        userType:'user',
         name,
         email,
         phone,
-        userId: user.uid,
-        userType: 'user', // Add userType: 'user' here as well
-      });
-  
-      // Upload profile picture to Cloud Storage
+      };
+
+      await saveUserDetail(userId, userDetails);
+
       const profilePictureUrl = await uploadProfilePicture(user.uid, profilePicture);
-  
-      // Update user profile with profile picture URL
+
       await updateProfile(user, { photoURL: profilePictureUrl });
-  
-      dispatch({ type: 'SIGN_IN', payload: user }); // Use 'SIGN_UP' action type
+
+      dispatch({ type: 'SIGN_IN', payload: user });
       saveValueToSecureStore('user', user);
+      setUser({
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName || name,
+        phoneNumber: user.phoneNumber,
+        
+      });
     } catch (error) {
       console.log('Sign up error:', error);
-      setError('Sign up failed. Please try again.'); // Set error message
+      setError('Sign up failed. Please try again.');
     }
   };
-  
+
+  const saveUserDetail = async (uid, userDetails) => {
+    try {
+      const userRef = doc(firestore, 'users', uid);
+      await setDoc(userRef, userDetails);
+    } catch (error) {
+      console.error('Error saving user details to Firestore:', error);
+    }
+  };
+
+  const uploadProfilePicture = async (userId, file) => {
+    const profilePictureRef = storage.ref(`profilePictures/${userId}`);
+    try {
+      await uploadBytes(profilePictureRef, file);
+      const profilePictureUrl = await getDownloadURL(profilePictureRef);
+      return profilePictureUrl;
+    } catch (error) {
+      console.log('Error uploading profile picture:', error);
+      setError('Failed to upload profile picture. Please try again.');
+      return null;
+    }
+  };
+
   const handleSignOut = async () => {
     dispatch({ type: 'SET_LOADING', payload: true });
     setError(null); // Clear previous errors
@@ -164,31 +164,6 @@ export const AuthProvider = ({ children }) => {
 
   const setCourseName = (courseName) => {
     dispatch({ type: 'SET_COURSE_NAME', payload: courseName });
-  };
-
-  const saveUserDetail = async (userId, userDetails) => {
-    const userDocRef = doc(firestore, 'users', userId);
-    setError(null); // Clear previous errors
-    try {
-      await setDoc(userDocRef, { userDetails }, { merge: true });
-      console.log('User details saved successfully.');
-    } catch (error) {
-      console.log('Error saving user details:', error);
-      setError('Failed to save user details. Please try again.'); // Set error message
-    }
-  };
-
-  const uploadProfilePicture = async (userId, file) => {
-    const profilePictureRef = ref(storage, `profilePictures/${userId}`);
-    try {
-      await uploadBytes(profilePictureRef, file);
-      const profilePictureUrl = await getDownloadURL(profilePictureRef);
-      return profilePictureUrl;
-    } catch (error) {
-      console.log('Error uploading profile picture:', error);
-      setError('Failed to upload profile picture. Please try again.'); // Set error message
-      return null;
-    }
   };
 
   const saveValueToSecureStore = async (key, value) => {
@@ -248,22 +223,6 @@ export const AuthProvider = ({ children }) => {
   };
   
   
-  // const saveQuizDetailsToFirestore = async (userId, totalQuestions, correctAnswers, wrongAnswers, percentageScore) => {
-  //   try {
-  //     const quizCollection = firestore.collection('quizzes');
-  //     const docRef = await quizCollection.add({
-  //       userId: userId,
-  //       totalQuestions: totalQuestions,
-  //       correctAnswers: correctAnswers,
-  //       wrongAnswers: wrongAnswers,
-  //       percentageScore: percentageScore,
-  //       timestamp: new Date(), // Use JavaScript's Date object for timestamp
-  //     });
-  //     console.log('Quiz details saved to Firestore with ID:', docRef.id);
-  //   } catch (error) {
-  //     console.error('Error saving quiz details to Firestore:', error);
-  //   }
-  // };
   const updateLeaderboardData = (data) => {
     dispatch({ type: 'UPDATE_LEADERBOARD_DATA', payload: data });
   };

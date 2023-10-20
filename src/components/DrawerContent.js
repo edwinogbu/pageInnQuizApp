@@ -3,15 +3,11 @@ import React, { useContext, useState, useEffect } from 'react';
 import { View, TouchableOpacity, Switch, StyleSheet } from 'react-native';
 import { Avatar, Text } from 'react-native-elements';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-// import { Icon } from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons, MaterialCommunityIcons, AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import { colors } from './Colors';
-import { auth,  } from './../../firebase'; // Import your Firebase Firestore instance
-// import { collection, doc, getDoc } from 'firebase/firestore';
+import { auth, firestore } from './../../firebase'; 
 import { getFirestore, collection, doc, getDoc } from 'firebase/firestore';
 import { AuthContext } from './../AuthContext';
-import LeaderboardScreen from './../LeaderboardScreen';
-import SettingScreen from './../SettingScreen';
 
 
 const DrawerContent = (props) => {
@@ -20,29 +16,36 @@ const DrawerContent = (props) => {
   const userId = user.uid;
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [setUser] = useState(null); // State to store the user details
-
+  const [userData, setUserData] = useState({});
+  const [checkUser, setCheckUser] = useState([]);
+  const [isUser, setIsUser] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   useEffect(() => {
-    // Fetch the user details from Firestore
-    const fetchUserDetails = async () => {
+    const fetchCheckUser = async () => {
       try {
-        // Make a query to fetch the user document based on the user's UID
-        const userDocRef = doc(auth, 'users', user.uid);
+        const user = auth.currentUser;
+        const userDocRef = doc(firestore, 'users', user.uid);
         const userDocSnap = await getDoc(userDocRef);
 
         if (userDocSnap.exists()) {
-          const userData = userDocSnap.data(); // Extract the user data from the document
+          const userData = userDocSnap.data();
+          setUserData(userData);
+          // Assuming 'userType' is a field in the user document
+          const userType = userData.userType;
 
-          // Update the user state with the fetched user details
-          setUser(userData);
+          setCheckUser([userData]);
+          setIsUser(userType === 'user');
+          setIsAdmin(userType === 'admin');
         }
       } catch (error) {
-        console.error('Error fetching user details:', error);
+        setUser('');
+        setUserData('');
+        console.error('Error fetching checkUser:', error);
       }
     };
-    
 
     if (user) {
-      fetchUserDetails(); // Call the function to fetch user details when the user state is set
+      fetchCheckUser();
     }
   }, [user]);
 
@@ -55,9 +58,6 @@ const DrawerContent = (props) => {
     signOut();
   };
 
-  const share = () => {
-    // Implement your share logic here
-  };
  
   return (
     <View
@@ -91,16 +91,17 @@ const DrawerContent = (props) => {
             <View style={{ marginLeft: 10, }}>
               <Text style={{
                   color: isDarkMode ||  colors.dark ? colors.primary: colors.cardbackground,
-                  fontSize: 14,
+                  fontSize: 18,
                   fontWeight: 'bold',
                 }}>
-                Mr {user && user.name || user.displayName} 
+                {user && user.name || user.displayName} 
                 
               </Text>
+               
               <Text
                 style={{...styles.text,
                   color: isDarkMode ||  colors.dark ? colors.primary: colors.cardbackground,
-                  fontSize: 9,
+                  fontSize: 14,
                 }}>
                 {user && user.email}
               </Text>
@@ -182,20 +183,45 @@ const DrawerContent = (props) => {
                     }}>Profile</Text>
               </View>
               </View>
+                {isAdmin ? (
+            <View style={{ flexDirection: 'row', marginLeft: 0 }}>
+              <View
+                style={{
+                  marginLeft: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Text
+                  style={{
+                    color: colors.cardbackground,
+                    fontSize: 18,
+                    fontWeight: 'bold',
+                  }}>
+                  <View
+                    style={{
+                      alignContent: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <FontAwesome5
+                      type="material-community"
+                      name="stamp"
+                      size={35}
+                      color={isDarkMode || colors.dark ?colors.primary: colors.cardbackground}
+                      onPress={() => {
+                        props.navigation.navigate('UserListScreen');
+                      }}
+                    />
+                  </View>
+                </Text>
+                <Text
+                  style={{
+                    color: isDarkMode ||  colors.dark ? colors.primary: colors.cardbackground,
+                    fontSize: 18,
+                    }}>User List</Text>
+              </View>
+              </View>
 
-                     {/* {isAdmin ? ( */}
-            <TouchableOpacity
-              style={styles.menuIconContainer}
-              onPress={() => props.navigation.navigate('UserListScreen')}
-            >
-              <MaterialCommunityIcons
-                name="account"
-                size={35}
-                color={isDarkMode ? colors.primary : colors.primary}
-              />
-              <Text style={styles.menuText}>User List</Text>
-            </TouchableOpacity>
-          {/* ) : null} */}
+           ) : null} 
               </View>
 
       <View
@@ -211,25 +237,6 @@ const DrawerContent = (props) => {
 
     <DrawerItemList {...props} />
      
-
-      {/* <DrawerItem
-        icon={({ color, size }) => (
-          <Ionicons name="school" color={color} size={size} />
-        )}
-        label="Leaderboard"
-        onPress={  props.navigation.navigate('LeaderboardScreen')}
-        labelStyle={{ color: isDarkMode ? colors.white : colors.black }}
-      />
-
-      <DrawerItem
-        icon={({ color, size }) => (
-          <Ionicons name="settings" color={color} size={size} />
-        )}
-        label="Settings"
-        onPress={SettingScreen}
-        labelStyle={{ color: isDarkMode ? colors.white : colors.black }}
-      /> */}
-
       <DrawerItem
         icon={({ color, size }) => (
           <MaterialCommunityIcons name="theme-light-dark" color={color} size={size} />

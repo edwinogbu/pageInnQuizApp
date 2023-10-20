@@ -182,6 +182,127 @@ const questions = [
       options: ['line-height', 'text-spacing', 'font-line', 'line-control'],
       correctAnswer: 'line-height',
     },
+    {
+      id: 31,
+      question: 'What does the CSS property "clear" do?',
+      options: ['It makes text bold', 'It clears floats', 'It changes the font size', 'It controls the text color'],
+      correctAnswer: 'It clears floats',
+  },
+  {
+      id: 32,
+      question: 'Which CSS property is used to add a shadow to an element\'s border?',
+      options: ['box-shadow', 'border-shadow', 'shadow-border', 'element-shadow'],
+      correctAnswer: 'box-shadow',
+  },
+  {
+      id: 33,
+      question: 'How do you change the font weight of an element to bold in CSS?',
+      options: ['font-bold: true;', 'font-weight: bold;', 'font-style: bold;', 'bold: true;'],
+      correctAnswer: 'font-weight: bold;',
+  },
+  {
+      id: 34,
+      question: 'What is the CSS property used to control the order of elements in a grid container?',
+      options: ['grid-order', 'grid-position', 'grid-row', 'grid-template-areas'],
+      correctAnswer: 'grid-order',
+  },
+  {
+      id: 35,
+      question: 'How do you create a CSS rule that applies to an element with the class name "highlighted"?',
+      options: ['.highlighted', '#highlighted', ':highlighted', '*highlighted'],
+      correctAnswer: '.highlighted',
+  },
+  {
+      id: 36,
+      question: 'What is the purpose of the CSS property "text-transform"?',
+      options: ['It changes the text color', 'It makes text uppercase', 'It sets the text font', 'It controls text alignment'],
+      correctAnswer: 'It makes text uppercase',
+  },
+  {
+      id: 37,
+      question: 'What does the CSS property "position: relative;" do?',
+      options: ['It changes the text color', 'It specifies the element\'s position relative to its normal position', 'It makes the element italic', 'It defines the layout of an element'],
+      correctAnswer: 'It specifies the element\'s position relative to its normal position',
+  },
+  {
+      id: 38,
+      question: 'Which CSS property is used to add a transition effect to an element?',
+      options: ['transition-effect', 'transition', 'element-transition', 'animate'],
+      correctAnswer: 'transition',
+  },
+  {
+      id: 39,
+      question: 'What is the CSS pseudo-element used to select the first line of a paragraph?',
+      options: ['::first-line', ':first-letter', ':paragraph-line', '::first'],
+      correctAnswer: '::first-line',
+  },
+  {
+      id: 40,
+      question: 'Which CSS property is used to set the height of an element?',
+      options: ['height', 'element-height', 'set-height', 'size-height'],
+      correctAnswer: 'height',
+  },
+  {
+            id: 41,
+            question: 'Which CSS property is used to create rounded corners on an element?',
+            options: ['border-radius', 'element-corner', 'round-corner', 'border-style'],
+            correctAnswer: 'border-radius',
+        },
+        {
+            id: 42,
+            question: 'What does the CSS property "visibility: hidden;" do?',
+            options: ['It makes the element invisible but takes up space', 'It displays the element', 'It changes the element\'s font size', 'It increases the element\'s width'],
+            correctAnswer: 'It makes the element invisible but takes up space',
+        },
+        {
+            id: 43,
+            question: 'How do you select all even-numbered table rows in CSS?',
+            options: ['tr:nth-child(even)', 'tr:nth-child(odd)', 'tr:even', 'tr:nth-of-type(even)'],
+            correctAnswer: 'tr:nth-child(even)',
+        },
+        {
+            id: 44,
+            question: 'What is the purpose of the CSS property "transform"?',
+            options: ['It controls the element\'s position', 'It defines the layout of an element', 'It specifies the transform of an element', 'It sets the element\'s background color'],
+            correctAnswer: 'It specifies the transform of an element',
+        },
+        {
+            id: 45,
+            question: 'What is the CSS property for changing the size of an element based on its content?',
+            options: ['auto-size', 'fit-content', 'content-size', 'resize'],
+            correctAnswer: 'fit-content',
+        },
+        {
+            id: 46,
+            question: 'What is the purpose of the CSS property "text-overflow"?',
+            options: ['It sets the text font', 'It changes the text color', 'It specifies the horizontal alignment of text', 'It controls text overflow in an element'],
+            correctAnswer: 'It controls text overflow in an element',
+        },
+        {
+            id: 47,
+            question: 'How do you make an element take up the full height of its parent container in CSS?',
+            options: ['height: 100%;', 'full-height: auto;', 'height: max;', 'element-height: 100%;'],
+            correctAnswer: 'height: 100%;',
+        },
+        {
+            id: 48,
+            question: 'What is the CSS property for changing the order of flex items within a flex container?',
+            options: ['order', 'flex-order', 'item-order', 'order-flex'],
+            correctAnswer: 'order',
+        },
+        {
+            id: 49,
+            question: 'How do you create a CSS rule that applies to all links?',
+            options: ['a { ... }', 'links { ... }', 'a:all { ... }', 'link { ... }'],
+            correctAnswer: 'a { ... }',
+        },
+        {
+            id: 50,
+            question: 'What is the purpose of the CSS property "mix-blend-mode"?',
+            options: ['It changes the element\'s background color', 'It specifies the blending mode for an element', 'It defines the element\'s position in the layout', 'It sets the element\'s font size'],
+            correctAnswer: 'It specifies the blending mode for an element',
+        },
+  
   ],
 },
 {
@@ -367,6 +488,126 @@ const questions = [
       options: ['Defines a block of text', 'Indicates bold text', 'Italizes text', 'Underlines text'],
       correctAnswer: 'Indicates bold text',
     },
+    {
+      id: 31,
+      question: 'Which HTML element is used for creating an embedded audio or video player?',
+      options: ['<media>', '<video>', '<audio>', '<player>'],
+      correctAnswer: '<audio>',
+  },
+  {
+      id: 32,
+      question: `What is the HTML tag used for defining the document's character encoding?`,
+      options: ['<charset>', '<encoding>', '<meta>', '<character-encoding>'],
+      correctAnswer: '<meta>',
+  },
+  {
+      id: 33,
+      question: 'Which HTML element is used for creating a description list?',
+      options: ['<description>', '<desc-list>', '<dl>', '<list>'],
+      correctAnswer: '<dl>',
+  },
+  {
+      id: 34,
+      question: 'What is the HTML element for defining the main content area of a document?',
+      options: ['<content>', '<main>', '<body>', '<page-content>'],
+      correctAnswer: '<main>',
+  },
+  {
+      id: 35,
+      question: 'What is the HTML attribute used to specify the language of a web page?',
+      options: ['language', 'lang', 'locale', 'html-lang'],
+      correctAnswer: 'lang',
+  },
+  {
+      id: 36,
+      question: 'What does the HTML element <figcaption> represent?',
+      options: ['A code caption', 'A code figure', 'A code image', 'A code list'],
+      correctAnswer: 'A code caption',
+  },
+  {
+      id: 37,
+      question: 'What is the HTML tag for creating a subscript text?',
+      options: ['<sub>', '<sup>', '<subtext>', '<lower>'],
+      correctAnswer: '<sub>',
+  },
+  {
+      id: 38,
+      question: 'What is the HTML tag for creating superscript text?',
+      options: ['<super>', '<sub>', '<sup>', '<upper>'],
+      correctAnswer: '<sup>',
+  },
+  {
+      id: 39,
+      question: 'What is the HTML attribute for setting the width of a table cell?',
+      options: ['cell-width', 'width', 'cell-size', 'table-cell-width'],
+      correctAnswer: 'width',
+  },
+  {
+      id: 40,
+      question: 'Which HTML tag is used for creating a button in a form?',
+      options: ['<button>', '<form-button>', '<input-button>', '<submit>'],
+      correctAnswer: '<button>',
+  },
+  {
+      id: 41,
+      question: 'What does the HTML <pre> element do?',
+      options: ['Specifies the preformatted text', 'Indents text', 'Changes font size', 'Creates a paragraph'],
+      correctAnswer: 'Specifies the preformatted text',
+  },
+  {
+      id: 42,
+      question: 'What is the purpose of the HTML <footer> element?',
+      options: ['It sets the background color of the page', 'It defines the main content area', 'It specifies the document title', 'It represents the footer of a section or page'],
+      correctAnswer: 'It represents the footer of a section or page',
+  },
+  {
+      id: 43,
+      question: 'Which HTML tag is used to create a horizontal rule (line) on a webpage?',
+      options: ['<line>', '<hr>', '<rule>', '<horizontal-rule>'],
+      correctAnswer: '<hr>',
+  },
+  {
+      id: 44,
+      question: 'What does the HTML <iframe> element do?',
+      options: ['Defines a new frame', 'Embeds another webpage within the current page', 'Creates a text frame', 'Adds an image'],
+      correctAnswer: 'Embeds another webpage within the current page',
+  },
+  {
+      id: 45,
+      question: 'What is the HTML tag used for creating a block of code?',
+      options: ['<code>', '<block>', '<program>', '<html-code>'],
+      correctAnswer: '<code>',
+  },
+  {
+      id: 46,
+      question: 'Which HTML element is used to create a block of text with a quote?',
+      options: ['<quote>', '<citation>', '<blockquote>', '<quotation>'],
+      correctAnswer: '<blockquote>',
+  },
+  {
+      id: 47,
+      question: 'What is the HTML tag used for defining a navigation menu?',
+      options: ['<menu>', '<nav>', '<navigation>', '<navbar>'],
+      correctAnswer: '<nav>',
+  },
+  {
+      id: 48,
+      question: 'What is the HTML tag for defining a header for a section or article?',
+      options: ['<header>', '<heading>', '<h1>', '<section-header>'],
+      correctAnswer: '<header>',
+  },
+  {
+      id: 49,
+      question: 'What is the purpose of the HTML <b> element?',
+      options: ['Defines a block of text', 'Indicates bold text', 'Italizes text', 'Underlines text'],
+      correctAnswer: 'Indicates bold text',
+  },
+  {
+      id: 50,
+      question: 'What is the HTML element used for creating an unordered list?',
+      options: ['<ul>', '<ol>', '<li>', '<list>'],
+      correctAnswer: '<ul>',
+  },
   ],
 },
   {
@@ -1823,249 +2064,349 @@ const questions = [
     ],
   },
   {
-    courseName: 'UI/UX',
+    courseName: "UI & UX",
     questions: [
-      // Question 1
       {
         id: 1,
-        question: 'What does UX stand for?',
-        options: ['User Experience', 'User Interface', 'User Engagement', 'User Experiment'],
-        correctAnswer: 'User Experience',
+        question: 'What is a Sankey diagram used for in UX?',
+        options: [
+          'Visualizing pathways that users take on a website',
+         'Prioritizing features to address in the next design iteration', 
+         'Understanding the demographics of a target user population', 
+         'Organizing related facts or ideas into distinct clusters',
+        ],
+        correctAnswer: 'Understanding User Pathways in Analytics',
       },
-      // Question 2
-      {
-        id: 2,
-        question: 'What is the purpose of wireframing in the UI/UX design process?',
-        options: ['To create a visual representation of the user interface', 'To test the usability of a website or application', 'To define the information architecture', 'To finalize the visual design'],
-        correctAnswer: 'To create a visual representation of the user interface',
-      },
-      // Add more questions...
-
-      // Question 3
-      {
-        id: 3,
-        question: 'What is the primary goal of user research in the UI/UX design process?',
-        options: ['To understand user needs and behaviors', 'To create visually appealing designs', 'To optimize website performance', 'To define the brand identity'],
-        correctAnswer: 'To understand user needs and behaviors',
-      },
-      // Question 4
-      {
-        id: 4,
-        question: 'What is the purpose of information architecture in UI/UX design?',
-        options: ['To organize and structure content', 'To choose color schemes and typography', 'To create interactive prototypes', 'To conduct usability testing'],
-        correctAnswer: 'To organize and structure content',
-      },
-      // Add more questions...
-
-      // Question 5
-      {
-        id: 5,
-        question: 'Which color scheme includes shades of a single color?',
-        options: ['Monochromatic', 'Analogous', 'Complementary', 'Triadic'],
-        correctAnswer: 'Monochromatic',
-      },
-      // Question 6
-      {
-        id: 6,
-        question: 'What is the purpose of usability testing in UI/UX design?',
-        options: ['To evaluate the ease of use of a website or application', 'To create visual designs', 'To conduct user interviews', 'To define user personas'],
-        correctAnswer: 'To evaluate the ease of use of a website or application',
-      },
-      // Add more questions...
-
-      // Question 7
-      {
-        id: 7,
-        question: 'What is the role of personas in UI/UX design?',
-        options: ['To represent fictional users with specific characteristics', 'To design logos and visual identities', 'To define user flows and interactions', 'To choose appropriate typography'],
-        correctAnswer: 'To represent fictional users with specific characteristics',
-      },
-      // Question 8
-      {
-        id: 8,
-        question: 'What is the purpose of prototyping in UI/UX design?',
-        options: ['To create interactive representations of a design', 'To optimize website performance', 'To choose color schemes and typography', 'To conduct user research'],
-        correctAnswer: 'To create interactive representations of a design',
-      },
-      // Add more questions...
-
-      // Question 9
-      {
-        id: 9,
-        question: 'What is the golden ratio in design?',
-        options: ['A mathematical ratio that is visually pleasing', 'A technique for choosing color palettes', 'A principle of typography', 'A framework for user testing'],
-        correctAnswer: 'A mathematical ratio that is visually pleasing',
-      },
-      // Question 10
-      {
-        id: 10,
-        question: 'What is the purpose of A/B testing in UI/UX design?',
-        options: ['To compare two versions of a design to determine the most effective one', 'To conduct user interviews', 'To define user flows and interactions', 'To optimize website performance'],
-        correctAnswer: 'To compare two versions of a design to determine the most effective one',
-      },
-      // Add more questions...
-
-      // Question 11
-      {
-        id: 11,
-        question: 'What is the role of color psychology in UI/UX design?',
-        options: ['To evoke specific emotions and responses from users', 'To organize and structure content', 'To conduct usability testing', 'To choose appropriate typography'],
-        correctAnswer: 'To evoke specific emotions and responses from users',
-      },
-      // Question 12
-      {
-        id: 12,
-        question: 'What is the purpose of responsive design in UI/UX?',
-        options: ['To ensure a consistent user experience across different devices', 'To create visually appealing designs', 'To define user personas', 'To conduct user research'],
-        correctAnswer: 'To ensure a consistent user experience across different devices',
-      },
-      // Add more questions...
-
-      // Question 13
-      {
-        id: 13,
-        question: 'What is the purpose of microinteractions in UI/UX design?',
-        options: ['To provide feedback and enhance user experience', 'To optimize website performance', 'To design logos and visual identities', 'To choose appropriate typography'],
-        correctAnswer: 'To provide feedback and enhance user experience',
-      },
-      // Question 14
-      {
-        id: 14,
-        question: 'What is the goal of visual hierarchy in UI/UX design?',
-        options: ['To guide users through the content and prioritize information', 'To create interactive prototypes', 'To conduct user interviews', 'To define user flows and interactions'],
-        correctAnswer: 'To guide users through the content and prioritize information',
-      },
-      // Add more questions...
-
-      // Question 15
-      {
-        id: 15,
-        question: 'What is the purpose of user flow in UI/UX design?',
-        options: ['To define the path users take through a website or application', 'To choose color schemes and typography', 'To conduct usability testing', 'To define the brand identity'],
-        correctAnswer: 'To define the path users take through a website or application',
-      },
-      // Question 16
-      {
-        id: 16,
-        question: 'What is the role of typography in UI/UX design?',
-        options: ['To enhance readability and communicate information', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
-        correctAnswer: 'To enhance readability and communicate information',
-      },
-      // Add more questions...
-
-      // Question 17
-      {
-        id: 17,
-        question: 'What is the purpose of accessibility in UI/UX design?',
-        options: ['To ensure inclusive and usable experiences for all users', 'To organize and structure content', 'To conduct user interviews', 'To choose appropriate typography'],
-        correctAnswer: 'To ensure inclusive and usable experiences for all users',
-      },
-      // Question 18
-      {
-        id: 18,
-        question: 'What is the role of motion design in UI/UX?',
-        options: ['To create engaging and interactive experiences', 'To create visually appealing designs', 'To define user personas', 'To conduct user research'],
-        correctAnswer: 'To create engaging and interactive experiences',
-      },
-      // Add more questions...
-
-      // Question 19
-      {
-        id: 19,
-        question: 'What is the purpose of usability heuristics in UI/UX design?',
-        options: ['To evaluate and identify usability issues in a design', 'To optimize website performance', 'To design logos and visual identities', 'To define user flows and interactions'],
-        correctAnswer: 'To evaluate and identify usability issues in a design',
-      },
-      // Question 20
-      {
-        id: 20,
-        question: 'What is the goal of emotional design in UI/UX?',
-        options: ['To create designs that evoke specific emotions in users', 'To conduct usability testing', 'To choose color schemes and typography', 'To define the brand identity'],
-        correctAnswer: 'To create designs that evoke specific emotions in users',
-      },
-      // Add more questions...
-
-      // Question 21
-      {
-        id: 21,
-        question: 'What is the purpose of card sorting in UI/UX design?',
-        options: ['To organize and categorize information', 'To create interactive prototypes', 'To conduct user interviews', 'To define user flows and interactions'],
-        correctAnswer: 'To organize and categorize information',
-      },
-      // Question 22
-      {
-        id: 22,
-        question: 'What is the role of interaction design in UI/UX?',
-        options: ['To define how users interact with a website or application', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
-        correctAnswer: 'To define how users interact with a website or application',
-      },
-      // Add more questions...
-
-      // Question 23
-      {
-        id: 23,
-        question: 'What is the purpose of grid systems in UI/UX design?',
-        options: ['To create visual harmony and alignment', 'To conduct usability testing', 'To choose appropriate typography', 'To define the brand identity'],
-        correctAnswer: 'To create visual harmony and alignment',
-      },
-      // Question 24
-      {
-        id: 24,
-        question: 'What is the goal of user testing in UI/UX design?',
-        options: ['To gather feedback and evaluate the usability of a design', 'To create visually appealing designs', 'To define user personas', 'To conduct user research'],
-        correctAnswer: 'To gather feedback and evaluate the usability of a design',
-      },
-      // Add more questions...
-
-      // Question 25
-      {
-        id: 25,
-        question: 'What is the purpose of mood boards in UI/UX design?',
-        options: ['To establish a visual direction and evoke desired emotions', 'To optimize website performance', 'To design logos and visual identities', 'To define user flows and interactions'],
-        correctAnswer: 'To establish a visual direction and evoke desired emotions',
-      },
-      // Question 26
-      {
-        id: 26,
-        question: 'What is the role of navigation design in UI/UX?',
-        options: ['To create effective and intuitive navigation systems', 'To create interactive prototypes', 'To conduct user interviews', 'To define user personas'],
-        correctAnswer: 'To create effective and intuitive navigation systems',
-      },
-      // Add more questions...
-
-      // Question 27
-      {
-        id: 27,
-        question: 'What is the purpose of color contrast in UI/UX design?',
-        options: ['To ensure readability and accessibility', 'To choose color schemes and typography', 'To conduct usability testing', 'To define the brand identity'],
-        correctAnswer: 'To ensure readability and accessibility',
-      },
-      // Question 28
-      {
-        id: 28,
-        question: 'What is the goal of user feedback in UI/UX design?',
-        options: ['To gather insights and improve the design', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
-        correctAnswer: 'To gather insights and improve the design',
-      },
-      // Add more questions...
-
-      // Question 29
-      {
-        id: 29,
-        question: 'What is the purpose of storytelling in UI/UX design?',
-        options: ['To engage users and create meaningful experiences', 'To organize and structure content', 'To conduct user interviews', 'To choose appropriate typography'],
-        correctAnswer: 'To engage users and create meaningful experiences',
-      },
-      // Question 30
-      {
-        id: 30,
-        question: 'What is the role of animation in UI/UX design?',
-        options: ['To add visual interest and improve user experience', 'To optimize website performance', 'To define user personas', 'To conduct user research'],
-        correctAnswer: 'To add visual interest and improve user experience',
-      },
-      // Add more questions...
-
-      // Question 31
+       {
+         id: 2,
+         question:'Which of the following describes Fitts’s law?',
+         options: [
+           'The movement time to a target depends on the distance to the target and on the size of the target.',
+            'The time to select an item in a list of items depends on the number of items in that list.',
+           'The time to move a cursor on a path (such as a slider) depends on the length of the path and on the width of the path.',
+           'The time to perform a task depends on the number of practice trials that the user has had with that task.'
+    
+         ],
+    
+         correctAnswer: 'The movement time to a target depends on the distance to the target and on the size of the target.',
+       },
+       {
+         id: 3,
+         question:'An antipersona is a representation of:',
+         options: [
+           'An ideal user of a product.',
+            'A typical or target user of a product.',
+           'A user that could misuse a product in ways that could impact target audiences and the business path.',
+           'A user that could use a product in new, innovative ways that were unplanned by the business.',
+    
+         ],
+    
+         correctAnswer: 'A user that could misuse a product in ways that could impact target audiences and the business.',
+       },
+       {
+         id: 4,
+         question:'What is the funnel technique in UX research?',
+         options: [
+           'Distributing a survey to a large number of participants and then invited a selected few for individual interviews.',
+           'Starting with broad questions before getting to more specific ones in user interviews and moderated user tests.',
+           'Visualizing the number of users who drop off at each step in a process.',
+           'Visualizing the process that the user goes through to accomplish a goal.',
+            
+         ],
+    
+         correctAnswer: 'Starting with broad questions before getting to more specific ones in user interviews and moderated user tests.',
+       } ,
+       {
+         id: 5,
+         question:'A cognitive walkthrough is a:',
+         options: [
+           'A user-research method in which a participant uses a prototype to walk through the different steps of a task.',
+           'A usability-evaluation method in which a usability expert assigns one or more quantitative ratings to each step of a design.',
+           'A usability-inspection method in which a usability specialist evaluates each step of an interaction using established usability principles.',
+           'A usability-inspection method in which a team of evaluators goes through the different steps of the task, taking a user’s perspective.',
+         ],
+    
+         correctAnswer: 'A usability-inspection method in which a team of evaluators goes through the different steps of the task, taking a user’s perspective.',
+       } ,
+       {
+         id: 6,
+         question:'Lo-Fi Wireframe means?',
+         options: [
+           'A. Lower Final Fidelity Wireframe',
+           'B. Lonely Fidelity Wireframe',
+           'C. Low Fidelity Wireframe',
+           'D. All of the above',
+          ],
+    
+           correctAnswer: 'Low Fidelity Wireframe.',
+       }, 
+       {
+         id: 7,
+         question:'Iconify is a plugin in Figma?',
+         options: [
+           'A. True',
+           'B. False',
+    
+          ],
+    
+           correctAnswer: 'True.',
+       }, 
+       {
+         id: 8,
+         question:'The first process in UI/UX Design is?',
+         options: [
+           'A. Research',
+           'B. Design',
+           'C. Sketch',
+           'D. Testing',
+          ],
+    
+           correctAnswer: 'Research.',
+       },  
+       {
+         id: 9,
+         question:'Case Study in UI/UX refers to the study of?',
+         options: [
+           'A. Case',
+           'B. Design Process',
+           'C. User problems',
+           'D. The entire project',
+          ],
+    
+           correctAnswer:'The entire project.',
+       } , 
+       {
+         id: 10,
+         question:'A very small button placement on a mobile view website is ideal?',
+         options: [
+           'A. Yes',
+           'B. No',
+          ],
+    
+           correctAnswer:'No.',
+       },  
+       {
+         id: 11,
+         question:'Which one of these are all ui/ux design tools',
+         options: [
+           'A. Adobe XD, Figma and Photoshop',
+           'B. Adobe XD, Illustrator and Figma',
+           'C. Adobe XD, Figma and Sketch',
+           'D. Figma, Corel Draw and Behance',
+          ],
+    
+           correctAnswer:'Adobe XD, Figma and Sketch.',
+       },  
+       {
+         id: 12,
+         question:'Does Figma accomodate teams in a project?',
+         options: [
+           'A. Yes',
+           'B. No',
+          ],
+    
+           correctAnswer:'Yes.',
+       } , 
+       {
+         id: 13,
+         question:'Your first digital design is?',
+         options: [
+           'A. Lo-fi Wireframe',
+           'B. Hi-fi Wireframe',
+           'C. Mockup',
+           'D. Protoype',
+          ],
+    
+           correctAnswer:' Hi-fi Wireframe.',
+       },  
+       {
+         id: 14,
+         question:'Mockups are the actual designs',
+         options: [
+           'A. True',
+           'B. False',
+          ],
+    
+           correctAnswer:'True.',
+       } , 
+       {
+         id: 15,
+         question:'Prototyping does not allow clicking or scrolling',
+         options: [
+           'A. True',
+           'B. False',
+          ],
+    
+           correctAnswer:'False.',
+       } , 
+       {
+         id: 16,
+         question:'In UI/UX harsh colours are the most preferred.',
+         options: [
+           'A. Yes',
+           'B. No',
+          ],
+    
+           correctAnswer:'No.',
+       }  ,    
+       {
+         id: 17,
+         question:' Ideation is the brainstorming stage of a ui/ux design.',
+         options: [
+           'A. True',
+           'B. False',
+          ],
+    
+           correctAnswer:'True.',
+       },      
+       {
+         id: 18,
+         question:' What does the 8 rule state?.',
+         options: [
+           'A. Each time an 8 appears delete it',
+           'B. Your font sizes must retain the 8 spacing',
+           'C. Each text shouls not exceed a font size 8',
+           'D. All of the above',
+          ],
+    
+           correctAnswer:'Your font sizes must retain the 8 spacing.',
+       },      
+       {
+         id: 19,
+         question:"Your ruler doesn't tell you the actual spacings or white spaces needed.",
+         options: [
+            'A. True',
+            'B. False',
+          ],
+    
+           correctAnswer:'False.',
+       } ,     
+       {
+         id: 20,
+         question:'Can someone become just a ui designer?',
+         options: [
+            'A. Yes',
+           'B. No',
+          ],
+    
+           correctAnswer:'Yes.',
+       } ,     
+       {
+         id: 21,
+         question:'The UI Designer designs while the UX Designer sketches.',
+         options: [
+            'A. True',
+            'B. False',
+          ],
+    
+           correctAnswer:'False.',
+       } ,     
+       {
+         id: 22,
+         question:`A school has issues with paperwork due to the fact that we're in a 21st century, and they need a mobile app but they consulted you for the ui/ux designs. 
+        What would be your first question as a Professional UI/UX Designer?`,
+         options: [
+            'A. How much are you going to pay',
+            'B. What is the duration of the work',
+            'C. Tell me more about the project and its challenges',
+            'D. How did you get my contact',
+          ],
+    
+           correctAnswer:'Tell me more about the project and its challenges.',
+       } ,     
+       {
+         id: 23,
+         question:'Prototyping is a crucial part of the UX design process.It allows designers to create a preliminary model of a product that can be tested and refined before the final product is developed.',
+         options: [
+            'A. True',
+            'B. False',
+          ],
+    
+           correctAnswer:'True.',
+       } ,     
+      
+       {
+         id: 24,
+         question:'User interacts with visual representation of data objects.',
+         options: [
+            'A. True',
+            'B. False',
+          ],
+    
+           correctAnswer:'True.',
+       } ,   
+       {
+         id: 25,
+         question:'What does UX stand for in the context of design?',
+         options: [
+           'A. User Experience',
+           'B. User Exploration',
+           'C. User Experiment',
+           'D. User Expression',
+          ],
+    
+           correctAnswer:'User Experience.',
+       },
+       {
+         id: 26,
+         question:'What does UX design focus on?',
+         options: [
+           'A. Creating visually appealing interfaces',
+           'B. Designing for the brand’s identity',
+           'C. Understanding and enhancing the overall user experience',
+           'D. Writing code for software applications',
+          ],
+    
+           correctAnswer:'Understanding and enhancing the overall user experience.',
+       },      
+       {
+         id: 27,
+         question:'What is the primary goal of UX design?',
+         options: [
+           'A. Increasing revenues',
+           'B. Creating visually stunning designs',
+           'C. Enhancing the user interface',
+           'D. Meeting the needs and expectations of users',  
+          ],
+    
+           correctAnswer:'Meeting the needs and expectations of users.',
+       },      
+       {
+         id: 28,
+         question:'What is the importance of conducting user research in UX design?',
+         options: [
+           'A. To showcase the product’s features',
+           'B. To understand the needs and behaviors of users',
+           'C. To gather data for marketing purposes',
+           'D. To determine the cost of the product development',   
+          ],
+    
+           correctAnswer:'To understand the needs and behaviors of users.',
+       },     
+       {
+         id: 29,
+         question:'What is the purpose of creating user personas in UX design?',
+         options: [
+           'A. To test the usability of the product',
+           'B. To represent the target audience and their characteristics',
+           'C. To decide on the color scheme of the product',
+           'D. To conduct A/B testing',
+          ],
+    
+           correctAnswer:'To understand the needs and behaviors of users.',
+       },      
+       {
+         id: 30,
+         question:'What is the term for the process of organizing and structuring content to make it easily accessible to users?',
+         options: [
+           'A. Information architecture',
+           'B.  User interface design',
+           'C. Interaction design',
+           'D. Interaction design',
+          ],
+    
+           correctAnswer:'Information architecture.',
+       },   
       {
         id: 31,
         question: 'What is the purpose of user personas in UI/UX design?',
@@ -2079,89 +2420,68 @@ const questions = [
         options: ['To create a unified and cohesive experience', 'To create interactive prototypes', 'To conduct user interviews', 'To define the brand identity'],
         correctAnswer: 'To create a unified and cohesive experience',
       },
-      // Add more questions...
 
-      // Question 33
       {
         id: 33,
         question: 'What is the goal of error prevention in UI/UX design?',
         options: ['To minimize user mistakes and improve usability', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
         correctAnswer: 'To minimize user mistakes and improve usability',
       },
-      // Question 34
       {
         id: 34,
         question: 'What is the purpose of hierarchy in UI/UX design?',
         options: ['To prioritize content and guide user attention', 'To choose color schemes and typography', 'To conduct usability testing', 'To define the brand identity'],
         correctAnswer: 'To prioritize content and guide user attention',
       },
-      // Add more questions...
-
-      // Question 35
       {
         id: 35,
         question: 'What is the role of affordance in UI/UX design?',
         options: ['To communicate how an element should be used or interacted with', 'To organize and structure content', 'To conduct user interviews', 'To choose appropriate typography'],
         correctAnswer: 'To communicate how an element should be used or interacted with',
       },
-      // Question 36
       {
         id: 36,
         question: 'What is the purpose of visual storytelling in UI/UX design?',
         options: ['To convey information and engage users through visuals', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
         correctAnswer: 'To convey information and engage users through visuals',
       },
-      // Add more questions...
 
-      // Question 37
       {
         id: 37,
         question: 'What is the purpose of usability heuristics in UI/UX design?',
         options: ['To evaluate and identify usability issues in a design', 'To create visually appealing designs', 'To conduct user interviews', 'To define user flows and interactions'],
         correctAnswer: 'To evaluate and identify usability issues in a design',
       },
-      // Question 38
       {
         id: 38,
         question: 'What is the goal of visual weight in UI/UX design?',
         options: ['To create visual hierarchy and balance', 'To create interactive prototypes', 'To conduct usability testing', 'To define the brand identity'],
         correctAnswer: 'To create visual hierarchy and balance',
       },
-      // Add more questions...
-
-      // Question 39
       {
         id: 39,
         question: 'What is the purpose of user flows in UI/UX design?',
         options: ['To define the path users take through a website or application', 'To optimize website performance', 'To choose appropriate typography', 'To conduct user research'],
         correctAnswer: 'To define the path users take through a website or application',
       },
-      // Question 40
       {
         id: 40,
         question: 'What is the role of feedback in UI/UX design?',
         options: ['To provide users with information and confirm actions', 'To design logos and visual identities', 'To define user personas', 'To conduct user research'],
         correctAnswer: 'To provide users with information and confirm actions',
       },
-      // Add more questions...
-
-      // Question 41
       {
         id: 41,
         question: 'What is the purpose of style guides in UI/UX design?',
         options: ['To ensure consistency and maintain a unified visual language', 'To conduct usability testing', 'To optimize website performance', 'To define the brand identity'],
         correctAnswer: 'To ensure consistency and maintain a unified visual language',
       },
-      // Question 42
       {
         id: 42,
         question: 'What is the goal of user-centered design in UI/UX?',
         options: ['To create designs that meet user needs and preferences', 'To create visually appealing designs', 'To conduct user interviews', 'To define user flows and interactions'],
         correctAnswer: 'To create designs that meet user needs and preferences',
       },
-      // Add more questions...
-
-      // Question 43
       {
         id: 43,
         question: 'What is the purpose of affordance in UI/UX design?',
@@ -2175,48 +2495,36 @@ const questions = [
         options: ['To understand and connect with users on an emotional level', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
         correctAnswer: 'To understand and connect with users on an emotional level',
       },
-      // Add more questions...
-
-      // Question 45
       {
         id: 45,
         question: 'What is the purpose of visual hierarchy in UI/UX design?',
         options: ['To guide users through the content and prioritize information', 'To create interactive prototypes', 'To conduct user interviews', 'To define user flows and interactions'],
         correctAnswer: 'To guide users through the content and prioritize information',
       },
-      // Question 46
       {
         id: 46,
         question: 'What is the goal of user testing in UI/UX design?',
         options: ['To gather feedback and evaluate the usability of a design', 'To create visually appealing designs', 'To define user personas', 'To conduct user research'],
         correctAnswer: 'To gather feedback and evaluate the usability of a design',
       },
-      // Add more questions...
-
-      // Question 47
       {
         id: 47,
         question: 'What is the purpose of storytelling in UI/UX design?',
         options: ['To engage users and create meaningful experiences', 'To organize and structure content', 'To conduct user interviews', 'To choose appropriate typography'],
         correctAnswer: 'To engage users and create meaningful experiences',
       },
-      // Question 48
       {
         id: 48,
         question: 'What is the role of prototyping in UI/UX design?',
         options: ['To create interactive and testable representations of a design', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
         correctAnswer: 'To create interactive and testable representations of a design',
       },
-      // Add more questions...
-
-      // Question 49
       {
         id: 49,
         question: 'What is the purpose of user research in UI/UX design?',
         options: ['To understand user needs, behaviors, and preferences', 'To choose color schemes and typography', 'To conduct usability testing', 'To define the brand identity'],
         correctAnswer: 'To understand user needs, behaviors, and preferences',
       },
-      // Question 50
       {
         id: 50,
         question: 'What is the goal of user feedback in UI/UX design?',
@@ -2635,244 +2943,414 @@ const questions = [
     courseName: 'GRAPHICS',
     questions:[
            // Question 1
-  {
-    id: 1,
-    question: 'What is the RGB color model used for?',
-    options: ['Displaying colors on electronic displays', 'Creating black and white images', 'Defining page layouts', 'Creating 3D graphics'],
-    correctAnswer: 'Displaying colors on electronic displays',
-  },
-  // Question 2
-  {
-    id: 2,
-    question: 'Which file format is commonly used for lossless compression of images?',
-    options: ['PNG', 'JPEG', 'GIF', 'SVG'],
-    correctAnswer: 'PNG',
-  },
-  // Add more questions...
-
-  // Question 3
-  {
-    id: 3,
-    question: 'What does DPI stand for?',
-    options: ['Dots Per Inch', 'Digital Photo Interface', 'Display Pixel Information', 'Document Printing Instructions'],
-    correctAnswer: 'Dots Per Inch',
-  },
-  // Question 4
-  {
-    id: 4,
-    question: 'Which tool is commonly used for creating vector graphics?',
-    options: ['Adobe Illustrator', 'Adobe Photoshop', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Illustrator',
-  },
-  // Add more questions...
-
-  // Question 5
-  {
-    id: 5,
-    question: 'What is the purpose of layers in graphic design software?',
-    options: ['To organize and separate elements', 'To adjust brightness and contrast', 'To apply filters and effects', 'To draw shapes and lines'],
-    correctAnswer: 'To organize and separate elements',
-  },
-  // Question 6
-  {
-    id: 6,
-    question: 'Which color mode is used for printing purposes?',
-    options: ['CMYK', 'RGB', 'HSV', 'Pantone'],
-    correctAnswer: 'CMYK',
-  },
-  // Add more questions...
-
-  // Question 7
-  {
-    id: 7,
-    question: 'What is the purpose of the pen tool in graphic design software?',
-    options: ['To create smooth and precise curves', 'To apply text formatting', 'To crop and resize images', 'To select and move objects'],
-    correctAnswer: 'To create smooth and precise curves',
-  },
-  // Question 8
-  {
-    id: 8,
-    question: 'Which file format supports animation?',
-    options: ['GIF', 'JPEG', 'PNG', 'TIFF'],
-    correctAnswer: 'GIF',
-  },
-  // Add more questions...
-
-  // Question 9
-  {
-    id: 9,
-    question: 'What is the purpose of typography in graphic design?',
-    options: ['To communicate information through text', 'To adjust color and saturation', 'To apply filters and effects', 'To draw shapes and lines'],
-    correctAnswer: 'To communicate information through text',
-  },
-  // Question 10
-  {
-    id: 10,
-    question: 'Which tool is commonly used for photo editing?',
-    options: ['Adobe Photoshop', 'Adobe Illustrator', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Photoshop',
-  },
-  // Add more questions...
-
-  // Question 11
-  {
-    id: 11,
-    question: 'What is the purpose of grids in graphic design?',
-    options: ['To create structure and alignment', 'To adjust brightness and contrast', 'To apply text formatting', 'To select and move objects'],
-    correctAnswer: 'To create structure and alignment',
-  },
-  // Question 12
-  {
-    id: 12,
-    question: 'Which color mode is used for web design?',
-    options: ['RGB', 'CMYK', 'HSV', 'Pantone'],
-    correctAnswer: 'RGB',
-  },
-  // Add more questions...
-
-  // Question 13
-  {
-    id: 13,
-    question: 'What is the purpose of the eraser tool in graphic design software?',
-    options: ['To remove parts of an image or design', 'To crop and resize images', 'To adjust color and saturation', 'To draw shapes and lines'],
-    correctAnswer: 'To remove parts of an image or design',
-  },
-  // Question 14
-  {
-    id: 14,
-    question: 'Which file format supports transparency?',
-    options: ['PNG', 'JPEG', 'GIF', 'TIFF'],
-    correctAnswer: 'PNG',
-  },
-  // Add more questions...
-
-  // Question 15
-  {
-    id: 15,
-    question: 'What is the purpose of color theory in graphic design?',
-    options: ['To create visually appealing designs', 'To adjust brightness and contrast', 'To apply filters and effects', 'To draw shapes and lines'],
-    correctAnswer: 'To create visually appealing designs',
-  },
-  // Question 16
-  {
-    id: 16,
-    question: 'Which tool is commonly used for creating digital illustrations?',
-    options: ['Adobe Illustrator', 'Adobe Photoshop', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Illustrator',
-  },
-  // Add more questions...
-
-  // Question 17
-  {
-    id: 17,
-    question: 'What is the purpose of gradients in graphic design?',
-    options: ['To create smooth transitions between colors', 'To apply text formatting', 'To crop and resize images', 'To select and move objects'],
-    correctAnswer: 'To create smooth transitions between colors',
-  },
-  // Question 18
-  {
-    id: 18,
-    question: 'Which file format supports lossy compression of images?',
-    options: ['JPEG', 'PNG', 'GIF', 'SVG'],
-    correctAnswer: 'JPEG',
-  },
-  // Add more questions...
-
-  // Question 19
-  {
-    id: 19,
-    question: 'What is the purpose of alignment in graphic design?',
-    options: ['To create visual order and balance', 'To adjust color and saturation', 'To apply filters and effects', 'To draw shapes and lines'],
-    correctAnswer: 'To create visual order and balance',
-  },
-  // Question 20
-  {
-    id: 20,
-    question: 'Which tool is commonly used for creating logos?',
-    options: ['Adobe Illustrator', 'Adobe Photoshop', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Illustrator',
-  },
-  // Add more questions...
-
-  // Question 21
-  {
-    id: 21,
-    question: 'What is the purpose of white space in graphic design?',
-    options: ['To create visual breathing room and focus', 'To crop and resize images', 'To adjust brightness and contrast', 'To select and move objects'],
-    correctAnswer: 'To create visual breathing room and focus',
-  },
-  // Question 22
-  {
-    id: 22,
-    question: 'Which color mode is used for print design?',
-    options: ['CMYK', 'RGB', 'HSV', 'Pantone'],
-    correctAnswer: 'CMYK',
-  },
-  // Add more questions...
-
-  // Question 23
-  {
-    id: 23,
-    question: 'What is the purpose of the brush tool in graphic design software?',
-    options: ['To paint or draw strokes', 'To apply text formatting', 'To adjust color and saturation', 'To draw shapes and lines'],
-    correctAnswer: 'To paint or draw strokes',
-  },
-  // Question 24
-  {
-    id: 24,
-    question: 'Which file format is commonly used for animated graphics?',
-    options: ['GIF', 'JPEG', 'PNG', 'TIFF'],
-    correctAnswer: 'GIF',
-  },
-  // Add more questions...
-
-  // Question 25
-  {
-    id: 25,
-    question: 'What is the purpose of visual hierarchy in graphic design?',
-    options: ['To guide the viewer\'s attention and communicate importance', 'To adjust brightness and contrast', 'To apply filters and effects', 'To draw shapes and lines'],
-    correctAnswer: 'To guide the viewer\'s attention and communicate importance',
-  },
-  // Question 26
-  {
-    id: 26,
-    question: 'Which tool is commonly used for image manipulation?',
-    options: ['Adobe Photoshop', 'Adobe Illustrator', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Photoshop',
-  },
-  // Add more questions...
-
-  // Question 27
-  {
-    id: 27,
-    question: 'What is the purpose of texture in graphic design?',
-    options: ['To add depth and visual interest', 'To adjust color and saturation', 'To crop and resize images', 'To select and move objects'],
-    correctAnswer: 'To add depth and visual interest',
-  },
-  // Question 28
-  {
-    id: 28,
-    question: 'Which file format supports transparent backgrounds?',
-    options: ['PNG', 'JPEG', 'GIF', 'TIFF'],
-    correctAnswer: 'PNG',
-  },
-  // Add more questions...
-
-  // Question 29
-  {
-    id: 29,
-    question: 'What is the purpose of composition in graphic design?',
-    options: ['To arrange and organize visual elements', 'To adjust brightness and contrast', 'To apply text formatting', 'To draw shapes and lines'],
-    correctAnswer: 'To arrange and organize visual elements',
-  },
-  // Question 30
-  {
-    id: 30,
-    question: 'Which tool is commonly used for creating digital paintings?',
-    options: ['Adobe Photoshop', 'Adobe Illustrator', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Photoshop',
-  },
-  // Add more questions...
+           {
+            id: 1,
+            question: 'To fill in a layer as a background, which of the following tools would be useful?',
+            options: [
+              'Lasso',
+              'Gradient',
+              'Marquee',
+              'None of These',
+            ],
+        
+            correctAnswer: 'Marquee.',
+          },
+        
+              
+           {
+             id: 2,
+             question:'The _______ tool allows you to select a rectangular or circular area of a layer to change or delete.',
+             options: [
+          'Crop',
+                'Marquee',
+                'Clone Stamp',
+             ],
+        
+             correctAnswer: 'Crop.',
+           },
+        
+        
+           
+           {
+             id: 3,
+             question:'To cut down the size of the entire graphic design, including all layers, you should select the ______ tool.',
+             options: [
+          'Crop',
+                'Marquee',
+                'Clone Stamp',	
+             ],
+        
+             correctAnswer: 'Crop.',
+           },
+           
+        
+           
+           {
+             id: 4,
+             question:'By changing the % of __________ you can blend multiple layers with one another.',
+             options: [
+                 'Opacity',
+                 'Navigation',
+                 'Layers',
+                 'History',
+             ],
+        
+             correctAnswer: 'Opacity.',
+           }, 
+        
+          
+        
+           {
+             id: 5,
+             question:'The typical size for a graphic design for electronic media is measured in __________.',
+             options: [
+               'Points',
+               'Pixels',
+               'Pica',
+               'Inches',
+             ],
+        
+             correctAnswer: 'Pixels.',
+           },
+          
+          
+           
+           {
+             id: 6,
+             question:'To undo the last change made to your graphic design, the ___________ keys may be used.',
+             options: [
+              'Ctrl+Z',
+              'Ctrl+Y',
+              'Ctrl+Shift+Alt+Z',
+              'Ctrl+Shift+X',
+              ],
+        
+               correctAnswer: 'Ctrl+Z.',
+           },
+            
+           
+           {
+             id: 7,
+             question:'Pixels represent tiny ________ of color, which are typically unseen by the naked eye.',
+             options: [
+               'Blocks',
+               'Cubes',
+               'Boxes',
+               'Dots',
+              ],
+        
+               correctAnswer: 'Dots.',
+           },
+             
+           {
+             id: 8,
+             question:'When using the SAVE AS: feature, the ________ file type saves my graphic design with all layers visible for changes upon opening the next time.',
+             options: [
+               '.psd',
+               '.jpg',
+               '.png',
+              ],
+        
+               correctAnswer: 'PSD.',
+           }, 
+        
+           
+           {
+             id: 9,
+             question:'What is the keyboard shortcut to the Free Transform tool?',
+             options: [
+               'T',
+               'Alt+Ctrl+T',
+               'Shift+T',
+               'Ctrl+T',
+              ],
+        
+               correctAnswer:'Ctrl+T',
+           }, 
+        
+           
+           {
+             id: 10,
+             question:'The “Inverse” command is located in what menu?',
+             options: [
+               'Select',
+               'Edit',
+               'Filter',
+               'Layer',
+              ],
+        
+               correctAnswer:'Select.',
+           },  
+         
+           
+           
+           {
+             id: 11,
+             question:'What menu is the “Mode” command in, which will allow you to change to the RGB Color?',
+             options: [
+               'Select',
+               'Layer',
+               'Filter',
+               'Image',
+              ],
+        
+               correctAnswer:'Image',
+           },  
+        
+           
+           {
+             id: 12,
+             question:'If you make an error with the Color Replacement Tool, what tool could you use to correct the problem and revert back to the original in that area?',
+             options: [
+               'Marquee Tool',
+               'History Correction Tool',
+               'Eraser Tool',
+               'History Brush Tool',
+              ],
+        
+               correctAnswer:'History Correction Tool.',
+           },  
+           
+           {
+             id: 13,
+             question:'Color is an element of design.',
+             options: [
+               'A. True',
+               'B. False',
+              ],
+        
+               correctAnswer:' True.',
+           }, 
+            
+            
+           {
+             id: 14,
+             question:'To change the work area in Photoshop, the user should go to image size and change the numbers. State true or false.',
+             options: [
+               'A. True',
+               'B. False',
+              ],
+        
+               correctAnswer:'False.',
+           },  
+         
+          
+           {
+             id: 15,
+             question:'You can create a new document in Photoshop with the shortcut Ctrl+N',
+             options: [
+               'A. True',
+               'B. False',
+              ],
+        
+               correctAnswer:'True.',
+           },  
+          
+        
+           {
+             id: 16,
+             question:'To blend an image into a background masking is required.',
+             options: [
+               'A. True',
+               'B. False',
+              ],
+        
+               correctAnswer:'True.',
+           },      
+          
+           {
+             id: 17,
+             question:'What is the correct social banner size?',
+             options: [
+               'A. 200x340',
+               'B. 1700x1812',
+               'C. 1500x340',
+               'D. 2345X1000',
+              ],
+        
+               correctAnswer:'1700x1812',
+           },      
+        
+           
+           {
+             id: 18,
+             question:' What elements must be considered when creating a design.',
+             options: [
+               'A. Typography, Imagery, paint and stamp',
+               'B. Imagery, Typography, mouse and keyboard',
+               'C. Typography, Imagery, Colour and Shapes',
+              ],
+        
+               correctAnswer:'Typography, Imagery, Colour and Shapes',
+           },     
+           
+           {
+             id: 19,
+             question:'What is the T-tool used for?',
+             options: [
+                'A. For drawing elipse',
+                'B. For writing texts',
+                'C. For creating a new document',
+                'D. For saving a document',
+              ],
+        
+               correctAnswer:'For writing texts.',
+           },      
+              
+           
+           {
+             id: 20,
+             question:'Where is can you unlock the character panel?',
+             options: [
+               'A. Windows',
+               'B. File',
+               'C. Layer',
+               'D. Image',
+              ],
+        
+               correctAnswer:'Windows.',
+           },      
+           
+           {
+             id: 21,
+             question:'What is the best image mode for social media flyers?',
+             options: [
+               'A. RGB',
+               'B. CMYK',
+               'C. LAB',
+               'D. All of the above',
+        
+              ],
+        
+               correctAnswer:'RGB',
+           },      
+           
+          
+            // Question 22
+           {
+             id: 22,
+             question:'An image will be blurry if the document dimension is large',
+             options: [
+                  'A. True',
+                  'B. False',
+              ],
+        
+               correctAnswer:'False.',
+           },      
+        
+        
+           {
+             id: 23,
+             question:'What platforms can you get high resolution licensed images?',
+             options: [
+                'A. Freepik.com and Shutterstock',
+                'B. Freepik.com and convertio.co',
+                'C. Behance.net and Convertio.co',
+                'D. All of the above'
+              ],
+        
+               correctAnswer:'Freepik.com and Shutterstock.',
+           },      
+           
+        
+           {
+             id: 24,
+             question:'Nike is branding in graphic design terms.',
+             options: [
+                'A. True',
+                'B. False',
+              ],
+        
+               correctAnswer:'False',
+           },      
+           
+        
+           {
+             id: 25,
+             question:'Graphic design is an art process that combines two elements to convey ideas. Of the following choices, which reflect the two elements?',
+             options: [
+               'A. Words and phrases',
+               'B. Words and pictures',
+               'C. Photography and drawing',
+               'D. Pictures and symbols',   
+              ],
+        
+               correctAnswer:'Words and pictures.',
+           },  
+            
+        
+           {
+             id: 26,
+             question:'Points, lines, curves and shapes are used to create what type of illustrations?',
+             options: [
+               'A. Line art',
+               'B. Raster graphics',
+               'C. Digital illustrations',
+               'D. Vector graphics',   
+              ],
+        
+               correctAnswer:'Vector graphics.',
+           },      
+        
+        
+           {
+             id: 27,
+             question:'In regard to digital images and the photographic prints produced from them, the term _____ refers to the sharpness and clarity of the image.',
+             options: [
+               'A. Pixel',
+               'B. Megapixel',
+               'C. Bitmap',
+               'D. Resolution',   
+              ],
+        
+               correctAnswer:'Resolution.',
+           },      
+        
+          
+           
+           {
+             id: 28,
+             question:'Digital photography uses several file formats to store image information. Of the following, which compresses the image slightly, allowing for more storage space?',
+             options: [
+               'A. JPEG',
+               'B. ATM',
+               'C. TIFF',
+               'D. PSD', 
+              ],
+        
+               correctAnswer:'JPEG',
+           },      
+        
+          
+          
+        
+           {
+             id: 29,
+             question:'In graphic design, an icon is commonly defined as?',
+             options: [
+               'A. Basic graphic shapes',
+               'B. The abstract representation of a concept or idea',
+               'C. The visual representation of specific objects',
+               'D.  Detailed artistic reproductions of an object',
+              ],
+        
+               correctAnswer:'The visual representation of specific objects.',
+           },     
+        
+        
+           
+           {
+             id: 30,
+             question:'What, in addition to the repetition of design elements, determines the rhythm of a composition in graphic design?',
+             options: [
+               'A. Intervals',
+               'B. Colors',
+               'C. Shapes',
+               'D. Lines',
+              ],
+        
+               correctAnswer:'Intervals.',
+           },              
 
   // Question 31
   {
