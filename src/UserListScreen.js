@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, SafeAreaVie
 import { collection, doc, updateDoc, onSnapshot } from 'firebase/firestore';
 import { firestore } from './../firebase/index';
 import { Ionicons, MaterialCommunityIcons, AntDesign, FontAwesome5 } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const UserListScreen = () => {
   const [users, setUsers] = useState([]);
@@ -10,6 +11,9 @@ const UserListScreen = () => {
   const [editedUserType, setEditedUserType] = useState('');
 
   useEffect(() => {
+    // Load state from AsyncStorage when the component mounts
+    loadStateFromAsyncStorage();
+
     const unsubscribe = onSnapshot(collection(firestore, 'users'), (snapshot) => {
       const userArr = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -21,6 +25,31 @@ const UserListScreen = () => {
     return unsubscribe;
   }, []);
 
+  const loadStateFromAsyncStorage = async () => {
+    try {
+      const storedState = await AsyncStorage.getItem('userListScreenState');
+      if (storedState) {
+        const parsedState = JSON.parse(storedState);
+        setSelectedUser(parsedState.selectedUser);
+        setEditedUserType(parsedState.editedUserType);
+      }
+    } catch (error) {
+      console.error('Error loading state from AsyncStorage:', error);
+    }
+  };
+
+  const saveStateToAsyncStorage = async () => {
+    try {
+      const stateToSave = JSON.stringify({
+        selectedUser,
+        editedUserType,
+      });
+      await AsyncStorage.setItem('userListScreenState', stateToSave);
+    } catch (error) {
+      console.error('Error saving state to AsyncStorage:', error);
+    }
+  };
+
   const updateUserType = async (userId, newUserType) => {
     const userDocRef = doc(firestore, 'users', userId);
     await updateDoc(userDocRef, { userType: newUserType });
@@ -29,11 +58,13 @@ const UserListScreen = () => {
   const openModal = (user) => {
     setSelectedUser(user);
     setEditedUserType(user.userType);
+    saveStateToAsyncStorage(); // Save the state when the modal is opened
   };
 
   const closeModal = () => {
     setSelectedUser(null);
     setEditedUserType('');
+    saveStateToAsyncStorage(); // Save the state when the modal is closed
   };
 
   const saveChanges = async () => {
@@ -182,8 +213,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
     color: '#fff',
-    fontWeight:'bold',
-    margin:20,
+    fontWeight: 'bold',
+    margin: 20,
   },
   modalInput: {
     borderWidth: 2,

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView,ScrollView, TextInput, TouchableOpacity, ActivityIndicator, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { firestore } from './../firebase';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const PAGE_SIZE = 10; // Number of quiz results per page
 
@@ -13,16 +14,10 @@ const LeaderboardScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [searchResultNotFound, setSearchResultNotFound] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-        // Initialize with some initial data before loading actual data
-        const initialData = Array(PAGE_SIZE).fill({
-          username: 'Loading...',
-          percentageScore: 0,
-          courseName: 'Loading...',
-          userId: 'Loading...',
-        });
-        setQuizResults(initialData);
+    loadStateFromAsyncStorage();
     retrieveQuizResults();
   }, []);
 
@@ -30,15 +25,45 @@ const LeaderboardScreen = () => {
     handleSearch();
   }, [searchQuery]);
 
+  const loadStateFromAsyncStorage = async () => {
+    try {
+      const storedState = await AsyncStorage.getItem('leaderboardScreenState');
+      if (storedState) {
+        const parsedState = JSON.parse(storedState);
+        setSearchQuery(parsedState.searchQuery);
+        setCurrentPage(parsedState.currentPage);
+        setTotalPages(parsedState.totalPages);
+      }
+    } catch (error) {
+      console.error('Error loading state from AsyncStorage:', error);
+    }
+  };
+
+  const saveStateToAsyncStorage = async () => {
+    try {
+      const stateToSave = JSON.stringify({
+        searchQuery,
+        currentPage,
+        totalPages,
+      });
+      await AsyncStorage.setItem('leaderboardScreenState', stateToSave);
+    } catch (error) {
+      console.error('Error saving state to AsyncStorage:', error);
+    }
+  };
+
   const retrieveQuizResults = async () => {
+    setIsLoading(true);
     try {
       const querySnapshot = await getDocs(collection(firestore, 'quizResults'));
       const results = querySnapshot.docs.map((doc) => doc.data());
       setQuizResults(results);
       calculateTotalPages(results);
+      saveStateToAsyncStorage();
     } catch (error) {
       console.error('Error retrieving quiz results:', error);
     }
+    setIsLoading(false);
   };
 
   const calculateTotalPages = (results) => {
@@ -64,13 +89,11 @@ const LeaderboardScreen = () => {
     retrieveQuizResults();
     setSearchQuery('');
   };
-
-
   const renderLeaderboard = () => {
     const startIndex = (currentPage - 1) * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
     const leaderboardData = quizResults.slice(startIndex, endIndex);
-  
+
     const tableHead = ['Name', 'Score', 'Course'];
     const tableData = leaderboardData.map((result) => ({
       name: result.username,
@@ -78,32 +101,34 @@ const LeaderboardScreen = () => {
       course: result.courseName,
       userId: result.userId,
     }));
-  
+
     return (
-      <View style={styles.tableContainer}>
-        <View style={[styles.tableRow, styles.tableHeader]}>
-          {tableHead.map((header, index) => (
-            <Text key={index} style={styles.tableHeaderText}>
-              {header}
-            </Text>
+      <ScrollView style={styles.leaderboardContainer}>
+        <View style={styles.tableContainer}>
+          <View style={[styles.tableRow, styles.tableHeader]}>
+            {tableHead.map((header, index) => (
+              <Text key={index} style={styles.tableHeaderText}>
+                {header}
+              </Text>
+            ))}
+          </View>
+          {tableData.map((rowData, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => navigation.navigate('UserProfileScreen', { userId: rowData.userId })}
+            >
+              <View style={[styles.tableRow, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>
+                <Text style={styles.tableRowText}>{rowData.name}</Text>
+                <Text style={styles.tableRowText}>{rowData.score}</Text>
+                <Text style={styles.tableRowText}>{rowData.course}</Text>
+              </View>
+            </TouchableOpacity>
           ))}
         </View>
-        {tableData.map((rowData, index) => (
-          <TouchableOpacity
-            key={index}
-            onPress={() => navigation.navigate('UserProfileScreen', { userId: rowData.userId })}
-          >
-            <View style={[styles.tableRow, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>
-              <Text style={styles.tableRowText}>{rowData.name}</Text>
-              <Text style={styles.tableRowText}>{rowData.score}</Text>
-              <Text style={styles.tableRowText}>{rowData.course}</Text>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </View>
+      </ScrollView>
     );
   };
-  
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.card}>
@@ -115,7 +140,7 @@ const LeaderboardScreen = () => {
         <View style={styles.searchContainer}>
           <TextInput
             style={styles.searchInput}
-            placeholder="Type Name To Search "
+            placeholder="Type Name To Search"
             value={searchQuery}
             onChangeText={setSearchQuery}
           />
@@ -126,32 +151,37 @@ const LeaderboardScreen = () => {
         {searchResultNotFound && (
           <Text style={styles.suggestionText}>No results found. Try a different search term.</Text>
         )}
-        {!searchResultNotFound && renderLeaderboard()}
-        <View style={styles.paginationContainer}>
-          {[...Array(totalPages).keys()].map((page) => (
-            <TouchableOpacity
-              key={page}
-              style={[styles.paginationButton, currentPage === page + 1 && styles.paginationButtonActive]}
-              onPress={() => handlePageChange(page + 1)}
-            >
-              <Text style={styles.paginationButtonText}>{page + 1}</Text>
+        {isLoading ? (
+          <ActivityIndicator style={styles.loadingIndicator} size="large" color="#007AFF" />
+        ) : (
+          <>
+            {!searchResultNotFound && renderLeaderboard()}
+            <View style={styles.paginationContainer}>
+              {[...Array(totalPages).keys()].map((page) => (
+                <TouchableOpacity
+                  key={page}
+                  style={[styles.paginationButton, currentPage === page + 1 && styles.paginationButtonActive]}
+                  onPress={() => handlePageChange(page + 1)}
+                >
+                  <Text style={styles.paginationButtonText}>{page + 1}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            <TouchableOpacity style={styles.refreshButton} onPress={handleRefresh}>
+              <Text style={styles.refreshButtonText}>Refresh</Text>
             </TouchableOpacity>
-          ))}
-        </View>
-        <TouchableOpacity style={styles.refreshButton} onPress={handleRefresh}>
-          <Text style={styles.refreshButtonText}>Refresh</Text>
-        </TouchableOpacity>
+          </>
+        )}
       </View>
     </SafeAreaView>
   );
 };
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: '#F5F5F5',
+    alignItems: 'center',
   },
   card: {
     width: '90%',
@@ -183,7 +213,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     height: 40,
-    borderWidth:1,
+    borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 8,
     paddingHorizontal: 8,
@@ -204,7 +234,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 16,
   },
-
   evenRow: {
     backgroundColor: '#F5F5F5',
   },
@@ -251,7 +280,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#007AFF',
     borderRadius: 8,
-    overflow: 'hidden',
   },
   tableRow: {
     flexDirection: 'row',
@@ -267,10 +295,16 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
-
   tableRowText: {
     flex: 1,
     textAlign: 'center',
+  },
+  loadingIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  leaderboardContainer: {
+    maxHeight: 400, 
   },
 });
 

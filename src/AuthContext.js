@@ -1,10 +1,10 @@
 import React, { createContext, useReducer, useState, useEffect } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
-import { doc,  setDoc, addDoc, collection,  where } from 'firebase/firestore';
-
+import { doc, setDoc, addDoc, collection, where } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { auth, firestore, storage } from './../firebase';
 import * as SecureStore from 'expo-secure-store';
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
 
 import authReducer from './authReducer';
 
@@ -20,7 +20,6 @@ const initialState = {
   userScore: 0,
   courseName: '',
   leaderboardData: [], // Add leaderboardData to the initial state
-
 };
 
 export const AuthContext = createContext();
@@ -52,7 +51,6 @@ export const AuthProvider = ({ children }) => {
         email: user.email,
         displayName: user.displayName,
         phoneNumber: user.phoneNumber,
-        
       });
     } catch (error) {
       console.log('Sign in error:', error);
@@ -72,7 +70,7 @@ export const AuthProvider = ({ children }) => {
       const userId = user.uid;
       const userDetails = {
         userId: user.uid,
-        userType:'user',
+        userType: 'user',
         name,
         email,
         phone,
@@ -91,7 +89,6 @@ export const AuthProvider = ({ children }) => {
         email: user.email,
         displayName: user.displayName || name,
         phoneNumber: user.phoneNumber,
-        
       });
     } catch (error) {
       console.log('Sign up error:', error);
@@ -170,6 +167,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const valueString = JSON.stringify(value);
       await SecureStore.setItemAsync(key, valueString);
+      await AsyncStorage.setItem(key, valueString); // Also save to AsyncStorage
     } catch (error) {
       console.log(`Error saving ${key} to SecureStore:`, error);
     }
@@ -178,19 +176,17 @@ export const AuthProvider = ({ children }) => {
   const deleteValueFromSecureStore = async (key) => {
     try {
       await SecureStore.deleteItemAsync(key);
+      await AsyncStorage.removeItem(key); // Also remove from AsyncStorage
     } catch (error) {
       console.log(`Error deleting ${key} from SecureStore:`, error);
     }
   };
 
-
   const loadUserState = async () => {
     try {
       const userString = await SecureStore.getItemAsync('user');
-      console.log('Retrieved userString:', userString); // Log the userString value
       if (userString) {
         const user = JSON.parse(userString);
-        console.log('Parsed user:', user); // Log the parsed user object
         dispatch({ type: 'SET_USER', payload: user });
       }
       dispatch({ type: 'SET_LOADING', payload: false });
@@ -199,7 +195,6 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: 'SET_LOADING', payload: false });
     }
   };
-
 
   const saveQuizDetailsToFirestore = async (userId, totalQuestions, correctAnswers, wrongAnswers, percentageScore) => {
     try {
@@ -221,11 +216,11 @@ export const AuthProvider = ({ children }) => {
       console.error('Error saving quiz details to Firestore:', error);
     }
   };
-  
-  
+
   const updateLeaderboardData = (data) => {
     dispatch({ type: 'UPDATE_LEADERBOARD_DATA', payload: data });
   };
+
   return (
     <AuthContext.Provider
       value={{
@@ -244,7 +239,7 @@ export const AuthProvider = ({ children }) => {
         setCourseName,
         saveUserDetail,
         uploadProfilePicture,
-        updateLeaderboardData, // Add the updateLeaderboardData function to the context
+        updateLeaderboardData,
         saveQuizDetailsToFirestore,
         error,
       }}
@@ -253,4 +248,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-

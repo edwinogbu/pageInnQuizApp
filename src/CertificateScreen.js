@@ -25,112 +25,134 @@ const CertificateScreen = ({ navigation, route }) => {
     try {
       // Create an HTML template for the PDF content with improved styling
       const html = `
+      <!DOCTYPE html>
       <html>
-        <head>
-          <style>
-            body {
-              font-family: 'Arial, Helvetica, sans-serif';
-              background-color: #f0f0f0;
-              text-align: center;
-            }
-            .certificate {
-              max-width: 600px;
-              margin: 0 auto;
-              padding: 20px;
-              background-color: #fff;
-              box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-              border-radius: 10px;
-            }
-            .header {
-              background-color: #00A8F3;
-              color: #fff;
-              font-weight: bold;
-              font-size: 24px;
-              padding: 10px 0;
-              border-radius: 10px 10px 0 0;
-            }
-            .certificate-title {
-              font-size: 28px;
-              font-weight: bold;
-              margin-top: 20px;
-            }
-            .content {
-              padding: 20px;
-            }
-            .info {
-              font-size: 20px;
-              margin-top: 10px;
-            }
-            .name {
-              font-size: 32px;
-              font-weight: bold;
-              text-decoration: underline;
-              margin: 10px 0;
-            }
-            .result-container {
-              background-color: #f0f0f0;
-              padding: 10px 0;
-              border-radius: 5px;
-              margin-top: 20px;
-            }
-            .result {
-              font-size: 24px;
-            }
-            .signature {
-              margin-top: 20px;
-              display: flex;
-              justify-content: space-between;
-            }
-            .signatory {
-              font-size: 20px;
-              font-weight: bold;
-            }
-            .logo {
-              max-width: 150px;
-              margin: 20px auto;
-              display: block;
-            }
-          </style>
-        </head>
-        <body>
-          <div class="certificate">
-            <div class="header">
-              Certificate of Completion
+      <head>
+        <style>
+          @page {
+            size: 210mm 297mm; /* Set the page size to A4 (adjust if needed) */
+            margin: 0;
+          }
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+          }
+          .certificate {
+            width: 210mm; /* Set the width to match the page size */
+            height: 297mm; /* Set the height to match the page size */
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 0;
+            overflow: hidden; /* Hide content that exceeds page boundaries */
+          }
+          .header {
+            background-color: #00A8F3;
+            color: #fff;
+            font-weight: bold;
+            font-size: 24px;
+            padding: 10px 0;
+          }
+          .certificate-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 20px;
+          }
+          .content {
+            padding: 20px;
+          }
+          .info {
+            font-size: 20px;
+            margin-top: 10px;
+          }
+          .name {
+            font-size: 32px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 10px 0;
+          }
+          .result-container {
+            background-color: #f0f0f0;
+            padding: 10px 0;
+            border-radius: 5px;
+            margin-top: 20px;
+          }
+          .result {
+            font-size: 24px;
+          }
+          .signature {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+          }
+          .signatory {
+            font-size: 20px;
+            font-weight: bold;
+          }
+          .certificate-placeholder {
+            width: 150px;
+            height: 150px;
+            border: 2px solid #00A8F3;
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto;
+          }
+          .address-container {
+            margin-top: 20px;
+          }
+          .address-text {
+            font-size: 18px;
+            font-weight: bold;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="certificate">
+          <div class="header">
+            Certificate of Completion
+          </div>
+          <div class="certificate-placeholder"></div>
+          <div class="certificate-title">
+            Certificate of Achievement
+          </div>
+          <div class="content">
+            <div class="info">
+              This is to certify that
             </div>
-            <img src="./quizapp/assets/assets/images/PAGE.png" alt="Company Logo" class="logo" />
-            <div class="certificate-title">
-              Certificate of Achievement
+            <div class="name">
+              ${username}
             </div>
-            <div class="content">
-              <div class="info">
-                This is to certify that
+            <div class="info">
+              has successfully completed the
+            </div>
+            <div class="info">
+              Quiz on ${courseName}
+            </div>
+            <div class="result-container">
+              <div class="result">
+                With Percentage Score: ${percentageScore.toFixed(2)}%
               </div>
-              <div class="name">
-                ${username}
+            </div>
+            <div class="signature">
+              <div class="signatory">
+                Student's Signature
               </div>
-              <div class="info">
-                has successfully completed the
+              <div class "signatory">
+                CEO's Signature
               </div>
-              <div class="info">
-                Quiz on ${courseName}
-              </div>
-              <div class="result-container">
-                <div class="result">
-                  With Percentage Score: ${percentageScore.toFixed(2)}%
-                </div>
-              </div>
-              <div class="signature">
-                <div class="signatory">
-                  Student's Signature
-                </div>
-                <div class="signatory">
-                  CEO's Signature
-                </div>
-              </div>
+            </div>
+            <div class="address-container">
+              <div class="address-text">Page Innovations</div>
+              <div class="address-text">Technologies</div>
+              <div class="address-text">+234 802 942 5815</div>
             </div>
           </div>
-        </body>
+        </div>
+      </body>
       </html>
+      
     `;
 
 
@@ -171,12 +193,11 @@ const CertificateScreen = ({ navigation, route }) => {
           <View style={styles.content}>
           <Image source={require('./../assets/images/PAGE.png')} style={styles.logo} />
           <View style={styles.address}>
-            <Text style={styles.addressText}>Office</Text>
-            <Text style={styles.addressText}>Line 2</Text>
-            <Text style={styles.infoText}>Office</Text>
+            <Text style={styles.addressText}>Page Innovations</Text>
+            <Text style={styles.addressText}>Technologies</Text>
+            <Text style={styles.infoText}>+234 802 942 5815</Text>
           </View>
             <Text style={styles.heading}>Page Innovations</Text>
-            {/* <Text style={styles.courseName}>{courseName}</Text> */}
             <Text style={styles.info}>This is to certify that</Text>
             <Text style={[styles.name, styles.underline]}>{username}</Text>
             <Text style={styles.info}>has successfully completed the</Text>

@@ -1,19 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 import { getAuth, updateDoc, doc, getDoc, setDoc } from 'firebase/firestore';
-import { auth, firestore } from './../firebase'; // Replace with your own Firebase initialization code
+import { auth, firestore } from './../firebase';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileScreen = () => {
   const [activeTab, setActiveTab] = useState('view');
   const [profileData, setProfileData] = useState(null);
   const [editedProfileData, setEditedProfileData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    fetchProfileData();
+    // Load state from AsyncStorage when the component mounts
+    loadStateFromAsyncStorage();
   }, []);
+
+  const loadStateFromAsyncStorage = async () => {
+    try {
+      const storedState = await AsyncStorage.getItem('profileScreenState');
+      if (storedState) {
+        const parsedState = JSON.parse(storedState);
+        setActiveTab(parsedState.activeTab);
+        setProfileData(parsedState.profileData);
+        setEditedProfileData(parsedState.editedProfileData);
+      }
+      // Fetch the data when the component mounts
+      fetchProfileData();
+    } catch (error) {
+      console.error('Error loading state from AsyncStorage:', error);
+    }
+  };
+
+  const saveStateToAsyncStorage = async () => {
+    try {
+      const stateToSave = JSON.stringify({
+        activeTab,
+        profileData,
+        editedProfileData,
+      });
+      await AsyncStorage.setItem('profileScreenState', stateToSave);
+    } catch (error) {
+      console.error('Error saving state to AsyncStorage:', error);
+    }
+  };
 
   const fetchProfileData = async () => {
     setIsLoading(true);
@@ -22,16 +53,19 @@ const ProfileScreen = () => {
       const docRef = doc(firestore, 'users', user.uid);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        setProfileData(docSnap.data());
-        setEditedProfileData(docSnap.data()); // Set editedProfileData to initialize with the existing profile data
+        const data = docSnap.data();
+        setProfileData(data);
+        setEditedProfileData(data);
+        saveStateToAsyncStorage(); // Save the state to AsyncStorage when profile data is fetched
       } else {
         await createProfileData(user.uid);
       }
     } catch (error) {
       console.error('Error fetching profile data:', error);
+      setErrorMessage('Failed to fetch profile data.');
     }
     setIsLoading(false);
-  };
+  }
 
   const createProfileData = async (userId) => {
     try {
@@ -43,9 +77,11 @@ const ProfileScreen = () => {
       const docRef = doc(firestore, 'users', userId);
       await setDoc(docRef, userData);
       setProfileData(userData);
-      setEditedProfileData(userData); // Set editedProfileData to initialize with the created profile data
+      setEditedProfileData(userData);
+      saveStateToAsyncStorage(); // Save the state to AsyncStorage when profile data is created
     } catch (error) {
       console.error('Error creating profile data:', error);
+      setErrorMessage('Failed to create profile data.');
     }
   };
 
@@ -57,6 +93,7 @@ const ProfileScreen = () => {
       await updateDoc(docRef, editedProfileData);
       setProfileData(editedProfileData);
       setEditedProfileData({});
+      saveStateToAsyncStorage(); // Save the state to AsyncStorage after updating profile data
     } catch (error) {
       console.error('Error updating profile data:', error);
       setErrorMessage('Failed to update profile data.');
@@ -70,6 +107,9 @@ const ProfileScreen = () => {
       await updateProfileData();
     }
     setActiveTab(tabName);
+
+    // Load the data when switching modes
+    fetchProfileData();
   };
 
   const renderViewTab = () => (
