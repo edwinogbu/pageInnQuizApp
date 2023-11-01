@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Page Inn Quiz",
-    "slug": "PageInnQuiz",
-    "version": "2.0.0",
+    "name": "Page Quiz",
+    "slug": "PageQuiz",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -16,24 +16,19 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.blessedcoder40.PageInnQuiz",
-      "versionCode":1
+      "bundleIdentifier": "com.blessedcoder40.PageQuiz",
+      "versionCode":3
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.blessedcoder40.PageInnQuizApp",
-      "versionCode": 1
+      "package": "com.blessedcoder40.PageQuiz",
+      "versionCode":3
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "c28ba39e-0789-4693-8f45-de5964852843"
-      }
     }
   }
 }

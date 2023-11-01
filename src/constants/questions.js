@@ -1,935 +1,323 @@
 const questions = [
+ 
   {
-    courseName: 'CSS Course',
-  questions: [
-    {
-      id: 1,
-      question: 'What does CSS stand for?',
-      options: ['Cascading Style Sheets', 'Creative Style Syntax', 'Computer Style Sheets', 'Cascading Simple Syntax'],
-      correctAnswer: 'Cascading Style Sheets',
-    },
-    {
-      id: 2,
-      question: 'Which CSS property is used to change the text color of an element?',
-      options: ['color', 'font-color', 'text-color', 'text'],
-      correctAnswer: 'color',
-    },
-    {
-      id: 3,
-      question: 'What is the purpose of the CSS "z-index" property?',
-      options: ['It sets the element\'s font size', 'It determines the stacking order of elements', 'It changes the element\'s background color', 'It controls the element\'s text alignment'],
-      correctAnswer: 'It determines the stacking order of elements',
-    },
-    {
-      id: 4,
-      question: 'How can you center an element horizontally in CSS?',
-      options: ['text-align: center;', 'margin: 0 auto;', 'float: center;', 'display: inline;'],
-      correctAnswer: 'margin: 0 auto;',
-    },
-    {
-      id: 5,
-      question: 'What does the CSS property "display: none;" do?',
-      options: ['Hides the element', 'Makes the element visible', 'Changes the background color', 'Increases the font size'],
-      correctAnswer: 'Hides the element',
-    },
-    {
-      id: 6,
-      question: 'What is the CSS pseudo-class used to select elements when a user hovers over them?',
-      options: [':hover', ':active', ':focus', ':visited'],
-      correctAnswer: ':hover',
-    },
-    {
-      id: 7,
-      question: 'What CSS property is used to set the background color of an element?',
-      options: ['background-color', 'color', 'text-color', 'bgcolor'],
-      correctAnswer: 'background-color',
-    },
-    {
-      id: 8,
-      question: 'How do you add a comment in a CSS file?',
-      options: ['// This is a comment', '/* This is a comment */', '<!-- This is a comment -->', '# This is a comment'],
-      correctAnswer: '/* This is a comment */',
-    },
-    {
-      id: 9,
-      question: 'Which CSS property is used to add shadows to text?',
-      options: ['text-shadow', 'box-shadow', 'shadow', 'font-shadow'],
-      correctAnswer: 'text-shadow',
-    },
-    {
-      id: 10,
-      question: 'What is the purpose of the CSS "box-sizing" property?',
-      options: ['It defines the size of the box', 'It controls the box\'s position', 'It specifies how the total width and height of an element is calculated', 'It sets the box\'s color'],
-      correctAnswer: 'It specifies how the total width and height of an element is calculated',
-    },
-    {
-      id: 11,
-      question: 'Which CSS property is used to make text italic?',
-      options: ['font-style', 'italic', 'text-style', 'text-transform'],
-      correctAnswer: 'font-style',
-    },
-    {
-      id: 12,
-      question: 'What is the purpose of the CSS property "float"?',
-      options: ['It makes the element float in the air', 'It controls the vertical alignment of an element', 'It specifies whether an element should be on the left or right side of its container', 'It changes the element\'s font'],
-      correctAnswer: 'It specifies whether an element should be on the left or right side of its container',
-    },
-    {
-      id: 13,
-      question: 'What does the CSS property "text-decoration: underline;" do?',
-      options: ['Underlines the text', 'Overlines the text', 'Strikes through the text', 'Makes the text bold'],
-      correctAnswer: 'Underlines the text',
-    },
-    {
-      id: 14,
-      question: 'How do you select all links within a specific div using CSS?',
-      options: ['.div a', 'div + a', 'div ~ a', 'div a'],
-      correctAnswer: 'div a',
-    },
-    {
-      id: 15,
-      question: 'What is the CSS property used to control the spacing between letters?',
-      options: ['letter-spacing', 'word-spacing', 'line-spacing', 'character-spacing'],
-      correctAnswer: 'letter-spacing',
-    },
-    {
-      id: 16,
-      question: 'Which CSS property is used to change the font of an element?',
-      options: ['font-family', 'text-font', 'font-type', 'change-font'],
-      correctAnswer: 'font-family',
-    },
-    {
-      id: 17,
-      question: 'What is the CSS property for setting the background image of an element?',
-      options: ['background-image', 'image-background', 'bg-image', 'element-bg'],
-      correctAnswer: 'background-image',
-    },
-    {
-      id: 18,
-      question: 'What is the purpose of the CSS "position" property?',
-      options: ['It sets the element\'s width', 'It defines the element\'s position in the layout', 'It changes the text alignment', 'It specifies the element\'s color'],
-      correctAnswer: 'It defines the element\'s position in the layout',
-    },
-    {
-      id: 19,
-      question: 'How do you create a CSS class that applies to elements with a class attribute of "example"?',
-      options: ['.example', '#example', '*example', ':example'],
-      correctAnswer: '.example',
-    },
-    {
-      id: 20,
-      question: 'Which CSS property is used to add rounded corners to an element?',
-      options: ['border-radius', 'rounded-corners', 'corner-radius', 'border-style'],
-      correctAnswer: 'border-radius',
-    },
-    {
-      id: 21,
-      question: 'What is the purpose of the CSS "opacity" property?',
-      options: ['It sets the element\'s transparency', 'It defines the font size', 'It changes the element\'s background color', 'It controls the element\'s width'],
-      correctAnswer: 'It sets the element\'s transparency',
-    },
-    {
-      id: 22,
-      question: 'How do you change the text color of a link when a user hovers over it?',
-      options: ['a:hover { color: red; }', 'link:hover { text-color: red; }', 'a:hover { text-color: red; }', 'a:hover { background-color: red; }'],
-      correctAnswer: 'a:hover { color: red; }',
-    },
-    {
-      id: 23,
-      question: 'What is the CSS property for controlling the space between elements in a flex container?',
-      options: ['flex-gap', 'space-between', 'margin-gap', 'justify-content'],
-      correctAnswer: 'space-between',
-    },
-    {
-      id: 24,
-      question: 'How do you center an element vertically in CSS?',
-      options: ['align-items: center;', 'vertical-align: middle;', 'justify-content: center;', 'margin: 0 auto;'],
-      correctAnswer: 'align-items: center;',
-    },
-    {
-      id: 25,
-      question: 'What is the CSS pseudo-element used to select the first letter of a paragraph?',
-      options: ['::first-letter', ':first-line', '::first', ':paragraph-first'],
-      correctAnswer: '::first-letter',
-    },
-    {
-      id: 26,
-      question: 'Which CSS property is used to control the size of an element?',
-      options: ['width', 'element-size', 'size-control', 'resize'],
-      correctAnswer: 'width',
-    },
-    {
-      id: 27,
-      question: 'What does the CSS property "overflow: hidden;" do?',
-      options: ['Hides the element', 'Displays the element', 'Enlarges the element', 'Changes the element\'s font size'],
-      correctAnswer: 'Hides the element',
-    },
-    {
-      id: 28,
-      question: 'Which CSS property is used to specify the font size of an element?',
-      options: ['font-size', 'text-size', 'size-font', 'font-style'],
-      correctAnswer: 'font-size',
-    },
-    {
-      id: 29,
-      question: 'What is the purpose of the CSS property "text-align"?',
-      options: ['It changes the element\'s text color', 'It determines the stacking order of elements', 'It defines the layout of an element', 'It specifies the horizontal alignment of text'],
-      correctAnswer: 'It specifies the horizontal alignment of text',
-    },
-    {
-      id: 30,
-      question: 'What is the CSS property for controlling the space between lines of text?',
-      options: ['line-height', 'text-spacing', 'font-line', 'line-control'],
-      correctAnswer: 'line-height',
-    },
-    {
-      id: 31,
-      question: 'What does the CSS property "clear" do?',
-      options: ['It makes text bold', 'It clears floats', 'It changes the font size', 'It controls the text color'],
-      correctAnswer: 'It clears floats',
-  },
-  {
-      id: 32,
-      question: 'Which CSS property is used to add a shadow to an element\'s border?',
-      options: ['box-shadow', 'border-shadow', 'shadow-border', 'element-shadow'],
-      correctAnswer: 'box-shadow',
-  },
-  {
-      id: 33,
-      question: 'How do you change the font weight of an element to bold in CSS?',
-      options: ['font-bold: true;', 'font-weight: bold;', 'font-style: bold;', 'bold: true;'],
-      correctAnswer: 'font-weight: bold;',
-  },
-  {
-      id: 34,
-      question: 'What is the CSS property used to control the order of elements in a grid container?',
-      options: ['grid-order', 'grid-position', 'grid-row', 'grid-template-areas'],
-      correctAnswer: 'grid-order',
-  },
-  {
-      id: 35,
-      question: 'How do you create a CSS rule that applies to an element with the class name "highlighted"?',
-      options: ['.highlighted', '#highlighted', ':highlighted', '*highlighted'],
-      correctAnswer: '.highlighted',
-  },
-  {
-      id: 36,
-      question: 'What is the purpose of the CSS property "text-transform"?',
-      options: ['It changes the text color', 'It makes text uppercase', 'It sets the text font', 'It controls text alignment'],
-      correctAnswer: 'It makes text uppercase',
-  },
-  {
-      id: 37,
-      question: 'What does the CSS property "position: relative;" do?',
-      options: ['It changes the text color', 'It specifies the element\'s position relative to its normal position', 'It makes the element italic', 'It defines the layout of an element'],
-      correctAnswer: 'It specifies the element\'s position relative to its normal position',
-  },
-  {
-      id: 38,
-      question: 'Which CSS property is used to add a transition effect to an element?',
-      options: ['transition-effect', 'transition', 'element-transition', 'animate'],
-      correctAnswer: 'transition',
-  },
-  {
-      id: 39,
-      question: 'What is the CSS pseudo-element used to select the first line of a paragraph?',
-      options: ['::first-line', ':first-letter', ':paragraph-line', '::first'],
-      correctAnswer: '::first-line',
-  },
-  {
-      id: 40,
-      question: 'Which CSS property is used to set the height of an element?',
-      options: ['height', 'element-height', 'set-height', 'size-height'],
-      correctAnswer: 'height',
-  },
-  {
-            id: 41,
-            question: 'Which CSS property is used to create rounded corners on an element?',
-            options: ['border-radius', 'element-corner', 'round-corner', 'border-style'],
-            correctAnswer: 'border-radius',
-        },
-        {
-            id: 42,
-            question: 'What does the CSS property "visibility: hidden;" do?',
-            options: ['It makes the element invisible but takes up space', 'It displays the element', 'It changes the element\'s font size', 'It increases the element\'s width'],
-            correctAnswer: 'It makes the element invisible but takes up space',
-        },
-        {
-            id: 43,
-            question: 'How do you select all even-numbered table rows in CSS?',
-            options: ['tr:nth-child(even)', 'tr:nth-child(odd)', 'tr:even', 'tr:nth-of-type(even)'],
-            correctAnswer: 'tr:nth-child(even)',
-        },
-        {
-            id: 44,
-            question: 'What is the purpose of the CSS property "transform"?',
-            options: ['It controls the element\'s position', 'It defines the layout of an element', 'It specifies the transform of an element', 'It sets the element\'s background color'],
-            correctAnswer: 'It specifies the transform of an element',
-        },
-        {
-            id: 45,
-            question: 'What is the CSS property for changing the size of an element based on its content?',
-            options: ['auto-size', 'fit-content', 'content-size', 'resize'],
-            correctAnswer: 'fit-content',
-        },
-        {
-            id: 46,
-            question: 'What is the purpose of the CSS property "text-overflow"?',
-            options: ['It sets the text font', 'It changes the text color', 'It specifies the horizontal alignment of text', 'It controls text overflow in an element'],
-            correctAnswer: 'It controls text overflow in an element',
-        },
-        {
-            id: 47,
-            question: 'How do you make an element take up the full height of its parent container in CSS?',
-            options: ['height: 100%;', 'full-height: auto;', 'height: max;', 'element-height: 100%;'],
-            correctAnswer: 'height: 100%;',
-        },
-        {
-            id: 48,
-            question: 'What is the CSS property for changing the order of flex items within a flex container?',
-            options: ['order', 'flex-order', 'item-order', 'order-flex'],
-            correctAnswer: 'order',
-        },
-        {
-            id: 49,
-            question: 'How do you create a CSS rule that applies to all links?',
-            options: ['a { ... }', 'links { ... }', 'a:all { ... }', 'link { ... }'],
-            correctAnswer: 'a { ... }',
-        },
-        {
-            id: 50,
-            question: 'What is the purpose of the CSS property "mix-blend-mode"?',
-            options: ['It changes the element\'s background color', 'It specifies the blending mode for an element', 'It defines the element\'s position in the layout', 'It sets the element\'s font size'],
-            correctAnswer: 'It specifies the blending mode for an element',
-        },
-  
-  ],
-},
-{
-  courseName: 'HTML Course',
-  questions: [
-    {
-      id: 1,
-      question: 'What does HTML stand for?',
-      options: ['Hyper Text Markup Language', 'Home Tool Markup Language', 'Hyperlinks and Text Markup Language', 'Home Text Markup Language'],
-      correctAnswer: 'Hyper Text Markup Language',
-    },
-    {
-      id: 2,
-      question: 'Which HTML tag is used to define a hyperlink?',
-      options: ['<a>', '<link>', '<href>', '<url>'],
-      correctAnswer: '<a>',
-    },
-    {
-      id: 3,
-      question: 'What is the purpose of the HTML "doctype" declaration?',
-      options: ['It defines the document type and version', 'It creates a new HTML page', 'It specifies the document title', 'It adds a background color'],
-      correctAnswer: 'It defines the document type and version',
-    },
-    {
-      id: 4,
-      question: 'Which HTML tag is used to create an ordered list?',
-      options: ['<ol>', '<ul>', '<li>', '<list>'],
-      correctAnswer: '<ol>',
-    },
-    {
-      id: 5,
-      question: 'What is the HTML tag used for creating a line break?',
-      options: ['<lb>', '<break>', '<newline>', '<br>'],
-      correctAnswer: '<br>',
-    },
-    {
-      id: 6,
-      question: 'What is the HTML element for defining the structure of an HTML document?',
-      options: ['<head>', '<structure>', '<html>', '<body>'],
-      correctAnswer: '<html>',
-    },
-    {
-      id: 7,
-      question: 'What does the HTML element <em> represent?',
-      options: ['A strong emphasis', 'An emphasized text', 'An external link', 'An image'],
-      correctAnswer: 'An emphasized text',
-    },
-    {
-      id: 8,
-      question: 'What is the HTML tag used to create an image?',
-      options: ['<img>', '<picture>', '<image>', '<photo>'],
-      correctAnswer: '<img>',
-    },
-    {
-      id: 9,
-      question: 'Which HTML tag is used for creating a table?',
-      options: ['<table>', '<tabular>', '<grid>', '<spreadsheet>'],
-      correctAnswer: '<table>',
-    },
-    {
-      id: 10,
-      question: 'What is the HTML attribute used to specify an image\'s alternative text for screen readers?',
-      options: ['alt', 'title', 'description', 'text'],
-      correctAnswer: 'alt',
-    },
-    {
-      id: 11,
-      question: 'What is the purpose of the HTML <meta> tag?',
-      options: ['It defines a new metatag', 'It specifies the document title', 'It sets the document background color', 'It provides metadata about the document'],
-      correctAnswer: 'It provides metadata about the document',
-    },
-    {
-      id: 12,
-      question: 'Which HTML element is used to create a hyperlink to another webpage?',
-      options: ['<link>', '<a>', '<href>', '<url>'],
-      correctAnswer: '<a>',
-    },
-    {
-      id: 13,
-      question: 'What is the HTML element for defining a paragraph?',
-      options: ['<p>', '<para>', '<text>', '<pg>'],
-      correctAnswer: '<p>',
-    },
-    {
-      id: 14,
-      question: 'What is the HTML tag used for defining a navigation menu?',
-      options: ['<menu>', '<nav>', '<navigation>', '<navbar>'],
-      correctAnswer: '<nav>',
-    },
-    {
-      id: 15,
-      question: 'What is the purpose of the HTML <form> element?',
-      options: ['It creates a table', 'It specifies a document title', 'It defines a form for user input', 'It adds a background color'],
-      correctAnswer: 'It defines a form for user input',
-    },
-    {
-      id: 16,
-      question: 'What is the HTML element used for creating an unordered list?',
-      options: ['<ul>', '<ol>', '<li>', '<list>'],
-      correctAnswer: '<ul>',
-    },
-    {
-      id: 17,
-      question: 'What is the HTML tag used for defining the document title?',
-      options: ['<title>', '<head>', '<meta>', '<doc-title>'],
-      correctAnswer: '<title>',
-    },
-    {
-      id: 18,
-      question: 'Which HTML attribute is used to provide additional information about an element?',
-      options: ['info', 'data', 'extra', 'title'],
-      correctAnswer: 'title',
-    },
-    {
-      id: 19,
-      question: 'What is the HTML tag for creating a line through text?',
-      options: ['<strikethrough>', '<strike>', '<line>', '<s>'],
-      correctAnswer: '<strike>',
-    },
-    {
-      id: 20,
-      question: 'What is the HTML element for defining a header for a section or article?',
-      options: ['<header>', '<heading>', '<h1>', '<section-header>'],
-      correctAnswer: '<header>',
-    },
-    {
-      id: 21,
-      question: 'What does the HTML <iframe> element do?',
-      options: ['Defines a new frame', 'Embeds another webpage within the current page', 'Creates a text frame', 'Adds an image'],
-      correctAnswer: 'Embeds another webpage within the current page',
-    },
-    {
-      id: 22,
-      question: 'What is the HTML tag used for creating a horizontal rule (line) on a webpage?',
-      options: ['<line>', '<hr>', '<rule>', '<horizontal-rule>'],
-      correctAnswer: '<hr>',
-    },
-    {
-      id: 23,
-      question: 'Which HTML element is used to create a subscript text?',
-      options: ['<sub>', '<sup>', '<subtext>', '<lower>'],
-      correctAnswer: '<sub>',
-    },
-    {
-      id: 24,
-      question: 'What is the HTML element used for creating superscript text?',
-      options: ['<super>', '<sub>', '<sup>', '<upper>'],
-      correctAnswer: '<sup>',
-    },
-    {
-      id: 25,
-      question: 'Which HTML attribute is used for defining the source of an image?',
-      options: ['src', 'source', 'image-source', 'link'],
-      correctAnswer: 'src',
-    },
-    {
-      id: 26,
-      question: 'Which HTML element is used for defining a list item within an ordered or unordered list?',
-      options: ['<item>', '<list>', '<li>', '<list-item>'],
-      correctAnswer: '<li>',
-    },
-    {
-      id: 27,
-      question: 'What is the HTML element used for creating a link within a webpage?',
-      options: ['<link>', '<a>', '<href>', '<anchor>'],
-      correctAnswer: '<a>',
-    },
-    {
-      id: 28,
-      question: 'What does the HTML <div> element represent?',
-      options: ['A division or a section within an HTML document', 'A new webpage', 'A container for text', 'A text formatting element'],
-      correctAnswer: 'A division or a section within an HTML document',
-    },
-    {
-      id: 29,
-      question: 'Which HTML tag is used for creating an inline quotation?',
-      options: ['<quote>', '<citation>', '<blockquote>', '<quotation>'],
-      correctAnswer: '<blockquote>',
-    },
-    {
-      id: 30,
-      question: 'What is the purpose of the HTML <b> element?',
-      options: ['Defines a block of text', 'Indicates bold text', 'Italizes text', 'Underlines text'],
-      correctAnswer: 'Indicates bold text',
-    },
-    {
-      id: 31,
-      question: 'Which HTML element is used for creating an embedded audio or video player?',
-      options: ['<media>', '<video>', '<audio>', '<player>'],
-      correctAnswer: '<audio>',
-  },
-  {
-      id: 32,
-      question: `What is the HTML tag used for defining the document's character encoding?`,
-      options: ['<charset>', '<encoding>', '<meta>', '<character-encoding>'],
-      correctAnswer: '<meta>',
-  },
-  {
-      id: 33,
-      question: 'Which HTML element is used for creating a description list?',
-      options: ['<description>', '<desc-list>', '<dl>', '<list>'],
-      correctAnswer: '<dl>',
-  },
-  {
-      id: 34,
-      question: 'What is the HTML element for defining the main content area of a document?',
-      options: ['<content>', '<main>', '<body>', '<page-content>'],
-      correctAnswer: '<main>',
-  },
-  {
-      id: 35,
-      question: 'What is the HTML attribute used to specify the language of a web page?',
-      options: ['language', 'lang', 'locale', 'html-lang'],
-      correctAnswer: 'lang',
-  },
-  {
-      id: 36,
-      question: 'What does the HTML element <figcaption> represent?',
-      options: ['A code caption', 'A code figure', 'A code image', 'A code list'],
-      correctAnswer: 'A code caption',
-  },
-  {
-      id: 37,
-      question: 'What is the HTML tag for creating a subscript text?',
-      options: ['<sub>', '<sup>', '<subtext>', '<lower>'],
-      correctAnswer: '<sub>',
-  },
-  {
-      id: 38,
-      question: 'What is the HTML tag for creating superscript text?',
-      options: ['<super>', '<sub>', '<sup>', '<upper>'],
-      correctAnswer: '<sup>',
-  },
-  {
-      id: 39,
-      question: 'What is the HTML attribute for setting the width of a table cell?',
-      options: ['cell-width', 'width', 'cell-size', 'table-cell-width'],
-      correctAnswer: 'width',
-  },
-  {
-      id: 40,
-      question: 'Which HTML tag is used for creating a button in a form?',
-      options: ['<button>', '<form-button>', '<input-button>', '<submit>'],
-      correctAnswer: '<button>',
-  },
-  {
-      id: 41,
-      question: 'What does the HTML <pre> element do?',
-      options: ['Specifies the preformatted text', 'Indents text', 'Changes font size', 'Creates a paragraph'],
-      correctAnswer: 'Specifies the preformatted text',
-  },
-  {
-      id: 42,
-      question: 'What is the purpose of the HTML <footer> element?',
-      options: ['It sets the background color of the page', 'It defines the main content area', 'It specifies the document title', 'It represents the footer of a section or page'],
-      correctAnswer: 'It represents the footer of a section or page',
-  },
-  {
-      id: 43,
-      question: 'Which HTML tag is used to create a horizontal rule (line) on a webpage?',
-      options: ['<line>', '<hr>', '<rule>', '<horizontal-rule>'],
-      correctAnswer: '<hr>',
-  },
-  {
-      id: 44,
-      question: 'What does the HTML <iframe> element do?',
-      options: ['Defines a new frame', 'Embeds another webpage within the current page', 'Creates a text frame', 'Adds an image'],
-      correctAnswer: 'Embeds another webpage within the current page',
-  },
-  {
-      id: 45,
-      question: 'What is the HTML tag used for creating a block of code?',
-      options: ['<code>', '<block>', '<program>', '<html-code>'],
-      correctAnswer: '<code>',
-  },
-  {
-      id: 46,
-      question: 'Which HTML element is used to create a block of text with a quote?',
-      options: ['<quote>', '<citation>', '<blockquote>', '<quotation>'],
-      correctAnswer: '<blockquote>',
-  },
-  {
-      id: 47,
-      question: 'What is the HTML tag used for defining a navigation menu?',
-      options: ['<menu>', '<nav>', '<navigation>', '<navbar>'],
-      correctAnswer: '<nav>',
-  },
-  {
-      id: 48,
-      question: 'What is the HTML tag for defining a header for a section or article?',
-      options: ['<header>', '<heading>', '<h1>', '<section-header>'],
-      correctAnswer: '<header>',
-  },
-  {
-      id: 49,
-      question: 'What is the purpose of the HTML <b> element?',
-      options: ['Defines a block of text', 'Indicates bold text', 'Italizes text', 'Underlines text'],
-      correctAnswer: 'Indicates bold text',
-  },
-  {
-      id: 50,
-      question: 'What is the HTML element used for creating an unordered list?',
-      options: ['<ul>', '<ol>', '<li>', '<list>'],
-      correctAnswer: '<ul>',
-  },
-  ],
-},
-{
-  courseName: 'JavaScript Course',
-  questions: [
+    courseName: 'HTML Course',
+    questions: [
       {
-          id: 1,
-          question: 'What does JavaScript stand for?',
-          options: ['Java Source Code', 'JScript', 'JavaScript', 'Java Scripting'],
-          correctAnswer: 'JavaScript',
+        id: 1,
+        question: 'What does HTML stand for?',
+        options: ['Hyper Text Markup Language', 'Home Tool Markup Language', 'Hyperlinks and Text Markup Language', 'Home Text Markup Language'],
+        correctAnswer: 'Hyper Text Markup Language',
       },
       {
-          id: 2,
-          question: 'What is the primary purpose of JavaScript in web development?',
-          options: ['Styling web pages', 'Enhancing web page interactivity', 'Creating web page structure', 'Optimizing web page performance'],
-          correctAnswer: 'Enhancing web page interactivity',
+        id: 2,
+        question: 'Which HTML tag is used to define a hyperlink?',
+        options: ['<a>', '<link>', '<href>', '<url>'],
+        correctAnswer: '<a>',
       },
       {
-          id: 3,
-          question: 'Which keyword is used to declare a variable in JavaScript?',
-          options: ['var', 'variable', 'v', 'let'],
-          correctAnswer: 'var',
+        id: 3,
+        question: 'What is the purpose of the HTML "doctype" declaration?',
+        options: ['It defines the document type and version', 'It creates a new HTML page', 'It specifies the document title', 'It adds a background color'],
+        correctAnswer: 'It defines the document type and version',
       },
       {
-          id: 4,
-          question: 'What is the result of 5 + "5" in JavaScript?',
-          options: ['10', '55', '5 + 5', 'Error'],
-          correctAnswer: '55',
+        id: 4,
+        question: 'Which HTML tag is used to create an ordered list?',
+        options: ['<ol>', '<ul>', '<li>', '<list>'],
+        correctAnswer: '<ol>',
       },
       {
-          id: 5,
-          question: 'What is the purpose of the JavaScript function `parseInt()`?',
-          options: ['Parsing JSON data', 'Parsing integers from strings', 'Formatting dates', 'Adding two numbers'],
-          correctAnswer: 'Parsing integers from strings',
+        id: 5,
+        question: 'What is the HTML tag used for creating a line break?',
+        options: ['<lb>', '<break>', '<newline>', '<br>'],
+        correctAnswer: '<br>',
       },
       {
-          id: 6,
-          question: 'Which JavaScript operator is used for strict equality (both value and data type)?',
-          options: ['==', '===', '=', '!='],
-          correctAnswer: '===',
+        id: 6,
+        question: 'What is the HTML element for defining the structure of an HTML document?',
+        options: ['<head>', '<structure>', '<html>', '<body>'],
+        correctAnswer: '<html>',
       },
       {
-          id: 7,
-          question: 'What is the "DOM" in JavaScript?',
-          options: ['Document Object Model', 'Data Object Model', 'Design Object Model', 'Dynamic Object Model'],
-          correctAnswer: 'Document Object Model',
+        id: 7,
+        question: 'What does the HTML element <em> represent?',
+        options: ['A strong emphasis', 'An emphasized text', 'An external link', 'An image'],
+        correctAnswer: 'An emphasized text',
       },
       {
-          id: 8,
-          question: 'What is the purpose of a JavaScript "for" loop?',
-          options: ['Defining functions', 'Iterating over arrays or lists', 'Styling web pages', 'Creating HTML documents'],
-          correctAnswer: 'Iterating over arrays or lists',
+        id: 8,
+        question: 'What is the HTML tag used to create an image?',
+        options: ['<img>', '<picture>', '<image>', '<photo>'],
+        correctAnswer: '<img>',
       },
       {
-          id: 9,
-          question: 'How do you add a comment in JavaScript?',
-          options: ['// This is a comment', '/* This is a comment */', '<!-- This is a comment -->', '# This is a comment'],
-          correctAnswer: '// This is a comment',
+        id: 9,
+        question: 'Which HTML tag is used for creating a table?',
+        options: ['<table>', '<tabular>', '<grid>', '<spreadsheet>'],
+        correctAnswer: '<table>',
       },
       {
-          id: 10,
-          question: 'Which keyword is used to declare a constant variable in JavaScript?',
-          options: ['const', 'var', 'let', 'const variable'],
-          correctAnswer: 'const',
+        id: 10,
+        question: 'What is the HTML attribute used to specify an image\'s alternative text for screen readers?',
+        options: ['alt', 'title', 'description', 'text'],
+        correctAnswer: 'alt',
       },
       {
-          id: 11,
-          question: 'What is the purpose of the JavaScript `alert()` function?',
-          options: ['Calculating mathematical operations', 'Displaying pop-up messages', 'Creating web pages', 'Styling web pages'],
-          correctAnswer: 'Displaying pop-up messages',
+        id: 11,
+        question: 'What is the purpose of the HTML <meta> tag?',
+        options: ['It defines a new metatag', 'It specifies the document title', 'It sets the document background color', 'It provides metadata about the document'],
+        correctAnswer: 'It provides metadata about the document',
       },
       {
-          id: 12,
-          question: 'Which JavaScript function is used to log messages to the console?',
-          options: ['log()', 'print()', 'console()', 'write()'],
-          correctAnswer: 'console.log()',
+        id: 12,
+        question: 'Which HTML element is used to create a hyperlink to another webpage?',
+        options: ['<link>', '<a>', '<href>', '<url>'],
+        correctAnswer: '<a>',
       },
       {
-          id: 13,
-          question: 'What does "JSON" stand for in JavaScript?',
-          options: ['JavaScript Object Notation', 'JavaScript Oriented Notation', 'JavaScript Object Naming', 'Java Serialized Object Notation'],
-          correctAnswer: 'JavaScript Object Notation',
+        id: 13,
+        question: 'What is the HTML element for defining a paragraph?',
+        options: ['<p>', '<para>', '<text>', '<pg>'],
+        correctAnswer: '<p>',
       },
       {
-          id: 14,
-          question: 'What is the purpose of the JavaScript "return" statement?',
-          options: ['Defining a function', 'Declaring a variable', 'Exiting a loop', 'Returning a value from a function'],
-          correctAnswer: 'Returning a value from a function',
+        id: 14,
+        question: 'What is the HTML tag used for defining a navigation menu?',
+        options: ['<menu>', '<nav>', '<navigation>', '<navbar>'],
+        correctAnswer: '<nav>',
       },
       {
-          id: 15,
-          question: 'What is the JavaScript event that occurs when an HTML element is clicked?',
-          options: ['onhover', 'onmove', 'onload', 'onclick'],
-          correctAnswer: 'onclick',
+        id: 15,
+        question: 'What is the purpose of the HTML <form> element?',
+        options: ['It creates a table', 'It specifies a document title', 'It defines a form for user input', 'It adds a background color'],
+        correctAnswer: 'It defines a form for user input',
       },
       {
-          id: 16,
-          question: 'Which JavaScript function is used to add an element to the end of an array?',
-          options: ['push()', 'add()', 'append()', 'insert()'],
-          correctAnswer: 'push()',
+        id: 16,
+        question: 'What is the HTML element used for creating an unordered list?',
+        options: ['<ul>', '<ol>', '<li>', '<list>'],
+        correctAnswer: '<ul>',
       },
       {
-          id: 17,
-          question: 'What is the result of "5" - 3 in JavaScript?',
-          options: ['2', '8', '53', 'Error'],
-          correctAnswer: '2',
+        id: 17,
+        question: 'What is the HTML tag used for defining the document title?',
+        options: ['<title>', '<head>', '<meta>', '<doc-title>'],
+        correctAnswer: '<title>',
       },
       {
-          id: 18,
-          question: 'What is the purpose of the JavaScript "if" statement?',
-          options: ['Declaring functions', 'Defining variables', 'Conditional execution of code', 'Creating loops'],
-          correctAnswer: 'Conditional execution of code',
+        id: 18,
+        question: 'Which HTML attribute is used to provide additional information about an element?',
+        options: ['info', 'data', 'extra', 'title'],
+        correctAnswer: 'title',
       },
       {
-          id: 19,
-          question: 'What is the JavaScript data type for storing true or false values?',
-          options: ['boolean', 'string', 'number', 'condition'],
-          correctAnswer: 'boolean',
+        id: 19,
+        question: 'What is the HTML tag for creating a line through text?',
+        options: ['<strikethrough>', '<strike>', '<line>', '<s>'],
+        correctAnswer: '<strike>',
       },
       {
-          id: 20,
-          question: 'Which JavaScript method is used to remove the last element from an array?',
-          options: ['pop()', 'remove()', 'delete()', 'splice()'],
-          correctAnswer: 'pop()',
+        id: 20,
+        question: 'What is the HTML element for defining a header for a section or article?',
+        options: ['<header>', '<heading>', '<h1>', '<section-header>'],
+        correctAnswer: '<header>',
       },
       {
         id: 21,
-        question: 'What is the JavaScript operator for combining two strings?',
-        options: ['+', '&', '&&', '||'],
-        correctAnswer: '+',
-    },
-    {
+        question: 'What does the HTML <iframe> element do?',
+        options: ['Defines a new frame', 'Embeds another webpage within the current page', 'Creates a text frame', 'Adds an image'],
+        correctAnswer: 'Embeds another webpage within the current page',
+      },
+      {
         id: 22,
-        question: 'What is the purpose of the JavaScript "else" statement?',
-        options: ['Creating loops', 'Defining variables', 'Handling conditional cases', 'Declaring functions'],
-        correctAnswer: 'Handling conditional cases',
-    },
-    {
+        question: 'What is the HTML tag used for creating a horizontal rule (line) on a webpage?',
+        options: ['<line>', '<hr>', '<rule>', '<horizontal-rule>'],
+        correctAnswer: '<hr>',
+      },
+      {
         id: 23,
-        question: 'Which JavaScript method is used to remove an element at a specific index from an array?',
-        options: ['remove()', 'splice()', 'delete()', 'cut()'],
-        correctAnswer: 'splice()',
-    },
-    {
+        question: 'Which HTML element is used to create a subscript text?',
+        options: ['<sub>', '<sup>', '<subtext>', '<lower>'],
+        correctAnswer: '<sub>',
+      },
+      {
         id: 24,
-        question: 'What is the JavaScript event that occurs when an HTML form is submitted?',
-        options: ['onsubmit', 'onload', 'onchange', 'onclick'],
-        correctAnswer: 'onsubmit',
-    },
-    {
+        question: 'What is the HTML element used for creating superscript text?',
+        options: ['<super>', '<sub>', '<sup>', '<upper>'],
+        correctAnswer: '<sup>',
+      },
+      {
         id: 25,
-        question: 'What is the purpose of the JavaScript "while" loop?',
-        options: ['Defining variables', 'Declaring functions', 'Creating infinite loops', 'Repeating code while a condition is true'],
-        correctAnswer: 'Repeating code while a condition is true',
-    },
-    {
+        question: 'Which HTML attribute is used for defining the source of an image?',
+        options: ['src', 'source', 'image-source', 'link'],
+        correctAnswer: 'src',
+      },
+      {
         id: 26,
-        question: 'What does the JavaScript "typeof" operator return for an array?',
-        options: ['"array"', '"object"', '"array"', '"null"'],
-        correctAnswer: '"object"',
-    },
-    {
+        question: 'Which HTML element is used for defining a list item within an ordered or unordered list?',
+        options: ['<item>', '<list>', '<li>', '<list-item>'],
+        correctAnswer: '<li>',
+      },
+      {
         id: 27,
-        question: 'Which JavaScript function is used to round a number to the nearest integer?',
-        options: ['floor()', 'round()', 'ceil()', 'truncate()'],
-        correctAnswer: 'round()',
-    },
-    {
+        question: 'What is the HTML element used for creating a link within a webpage?',
+        options: ['<link>', '<a>', '<href>', '<anchor>'],
+        correctAnswer: '<a>',
+      },
+      {
         id: 28,
-        question: 'What is the JavaScript method used to get the length of an array?',
-        options: ['length()', 'count()', 'size()', 'getLength()'],
-        correctAnswer: 'length',
-    },
-    {
+        question: 'What does the HTML <div> element represent?',
+        options: ['A division or a section within an HTML document', 'A new webpage', 'A container for text', 'A text formatting element'],
+        correctAnswer: 'A division or a section within an HTML document',
+      },
+      {
         id: 29,
-        question: 'What is the JavaScript object used to store key-value pairs?',
-        options: ['Array', 'List', 'Dictionary', 'Object'],
-        correctAnswer: 'Object',
-    },
-    {
+        question: 'Which HTML tag is used for creating an inline quotation?',
+        options: ['<quote>', '<citation>', '<blockquote>', '<quotation>'],
+        correctAnswer: '<blockquote>',
+      },
+      {
         id: 30,
-        question: 'What is the JavaScript function used to parse a JSON string?',
-        options: ['parseJSON()', 'stringify()', 'JSON.parse()', 'evalJSON()'],
-        correctAnswer: 'JSON.parse()',
+        question: 'What is the purpose of the HTML <b> element?',
+        options: ['Defines a block of text', 'Indicates bold text', 'Italizes text', 'Underlines text'],
+        correctAnswer: 'Indicates bold text',
+      },
+      {
+        id: 31,
+        question: 'Which HTML element is used for creating an embedded audio or video player?',
+        options: ['<media>', '<video>', '<audio>', '<player>'],
+        correctAnswer: '<audio>',
     },
     {
-      id: 31,
-      question: 'What is the JavaScript event that occurs when an element is dragged?',
-      options: ['ondrag', 'ondrop', 'ondragstart', 'ondragged'],
-      correctAnswer: 'ondrag',
-  },
-  {
-      id: 32,
-      question: 'Which JavaScript function is used to remove whitespace from the beginning and end of a string?',
-      options: ['trim()', 'strip()', 'clear()', 'removeWhitespace()'],
-      correctAnswer: 'trim()',
-  },
-  {
-      id: 33,
-      question: 'What is the purpose of the JavaScript "switch" statement?',
-      options: ['Defining functions', 'Conditional execution of code', 'Iterating over arrays', 'Declaring variables'],
-      correctAnswer: 'Conditional execution of code',
-  },
-  {
-      id: 34,
-      question: 'What is the JavaScript method used to add new elements to the beginning of an array?',
-      options: ['prepend()', 'insertAt()', 'shift()', 'unshift()'],
-      correctAnswer: 'unshift()',
-  },
-  {
-      id: 35,
-      question: 'Which JavaScript method is used to join the elements of an array into a string?',
-      options: ['join()', 'concat()', 'merge()', 'combine()'],
-      correctAnswer: 'join()',
-  },
-  {
-      id: 36,
-      question: 'What does the JavaScript "isNaN()" function check for?',
-      options: ['If a value is a number', 'If a value is not a number', 'If a value is negative', 'If a value is odd'],
-      correctAnswer: 'If a value is not a number',
-  },
-  {
-      id: 37,
-      question: 'Which JavaScript method is used to create a new array from a portion of an existing array?',
-      options: ['split()', 'splice()', 'slice()', 'cut()'],
-      correctAnswer: 'slice()',
-  },
-  {
-      id: 38,
-      question: 'What is the JavaScript function used to add a key-value pair to an object?',
-      options: ['addProperty()', 'insert()', 'set()', 'appendProperty()'],
-      correctAnswer: 'set()',
-  },
-  {
-      id: 39,
-      question: 'What is the JavaScript method used to sort the elements of an array in ascending order?',
-      options: ['sort()', 'order()', 'ascend()', 'ascendingSort()'],
-      correctAnswer: 'sort()',
-  },
-  {
-      id: 40,
-      question: 'What is the JavaScript event that occurs when an element is double-clicked?',
-      options: ['ondblclick', 'onclick', 'onhover', 'onload'],
-      correctAnswer: 'ondblclick',
-  },
+        id: 32,
+        question: `What is the HTML tag used for defining the document's character encoding?`,
+        options: ['<charset>', '<encoding>', '<meta>', '<character-encoding>'],
+        correctAnswer: '<meta>',
+    },
     {
-      id: 41,
-      question: 'What is the JavaScript operator used to assign a value to a variable?',
-      options: ['=', '==', '===', '=>'],
-      correctAnswer: '=',
+        id: 33,
+        question: 'Which HTML element is used for creating a description list?',
+        options: ['<description>', '<desc-list>', '<dl>', '<list>'],
+        correctAnswer: '<dl>',
+    },
+    {
+        id: 34,
+        question: 'What is the HTML element for defining the main content area of a document?',
+        options: ['<content>', '<main>', '<body>', '<page-content>'],
+        correctAnswer: '<main>',
+    },
+    {
+        id: 35,
+        question: 'What is the HTML attribute used to specify the language of a web page?',
+        options: ['language', 'lang', 'locale', 'html-lang'],
+        correctAnswer: 'lang',
+    },
+    {
+        id: 36,
+        question: 'What does the HTML element <figcaption> represent?',
+        options: ['A code caption', 'A code figure', 'A code image', 'A code list'],
+        correctAnswer: 'A code caption',
+    },
+    {
+        id: 37,
+        question: 'What is the HTML tag for creating a subscript text?',
+        options: ['<sub>', '<sup>', '<subtext>', '<lower>'],
+        correctAnswer: '<sub>',
+    },
+    {
+        id: 38,
+        question: 'What is the HTML tag for creating superscript text?',
+        options: ['<super>', '<sub>', '<sup>', '<upper>'],
+        correctAnswer: '<sup>',
+    },
+    {
+        id: 39,
+        question: 'What is the HTML attribute for setting the width of a table cell?',
+        options: ['cell-width', 'width', 'cell-size', 'table-cell-width'],
+        correctAnswer: 'width',
+    },
+    {
+        id: 40,
+        question: 'Which HTML tag is used for creating a button in a form?',
+        options: ['<button>', '<form-button>', '<input-button>', '<submit>'],
+        correctAnswer: '<button>',
+    },
+    {
+        id: 41,
+        question: 'What does the HTML <pre> element do?',
+        options: ['Specifies the preformatted text', 'Indents text', 'Changes font size', 'Creates a paragraph'],
+        correctAnswer: 'Specifies the preformatted text',
+    },
+    {
+        id: 42,
+        question: 'What is the purpose of the HTML <footer> element?',
+        options: ['It sets the background color of the page', 'It defines the main content area', 'It specifies the document title', 'It represents the footer of a section or page'],
+        correctAnswer: 'It represents the footer of a section or page',
+    },
+    {
+        id: 43,
+        question: 'Which HTML tag is used to create a horizontal rule (line) on a webpage?',
+        options: ['<line>', '<hr>', '<rule>', '<horizontal-rule>'],
+        correctAnswer: '<hr>',
+    },
+    {
+        id: 44,
+        question: 'What does the HTML <iframe> element do?',
+        options: ['Defines a new frame', 'Embeds another webpage within the current page', 'Creates a text frame', 'Adds an image'],
+        correctAnswer: 'Embeds another webpage within the current page',
+    },
+    {
+        id: 45,
+        question: 'What is the HTML tag used for creating a block of code?',
+        options: ['<code>', '<block>', '<program>', '<html-code>'],
+        correctAnswer: '<code>',
+    },
+    {
+        id: 46,
+        question: 'Which HTML element is used to create a block of text with a quote?',
+        options: ['<quote>', '<citation>', '<blockquote>', '<quotation>'],
+        correctAnswer: '<blockquote>',
+    },
+    {
+        id: 47,
+        question: 'What is the HTML tag used for defining a navigation menu?',
+        options: ['<menu>', '<nav>', '<navigation>', '<navbar>'],
+        correctAnswer: '<nav>',
+    },
+    {
+        id: 48,
+        question: 'What is the HTML tag for defining a header for a section or article?',
+        options: ['<header>', '<heading>', '<h1>', '<section-header>'],
+        correctAnswer: '<header>',
+    },
+    {
+        id: 49,
+        question: 'What is the purpose of the HTML <b> element?',
+        options: ['Defines a block of text', 'Indicates bold text', 'Italizes text', 'Underlines text'],
+        correctAnswer: 'Indicates bold text',
+    },
+    {
+        id: 50,
+        question: 'What is the HTML element used for creating an unordered list?',
+        options: ['<ul>', '<ol>', '<li>', '<list>'],
+        correctAnswer: '<ul>',
+    },
+    ],
   },
-  {
-      id: 42,
-      question: 'Which JavaScript method is used to add elements to the end of an array and returns the new length?',
-      options: ['push()', 'pop()', 'add()', 'append()'],
-      correctAnswer: 'push()',
-  },
-  {
-      id: 43,
-      question: 'What is the purpose of the JavaScript "try...catch" statement?',
-      options: ['Declaring functions', 'Handling exceptions', 'Conditional execution of code', 'Defining variables'],
-      correctAnswer: 'Handling exceptions',
-  },
-  {
-      id: 44,
-      question: 'What is the JavaScript event that occurs when an element loses focus?',
-      options: ['onblur', 'onfocus', 'onhover', 'onchange'],
-      correctAnswer: 'onblur',
-  },
-  {
-      id: 45,
-      question: 'Which JavaScript method is used to remove the first element from an array and returns that removed element?',
-      options: ['remove()', 'shift()', 'delete()', 'unshift()'],
-      correctAnswer: 'shift()',
-  },
-  {
-      id: 46,
-      question: 'What is the purpose of the JavaScript "continue" statement in a loop?',
-      options: ['Exits the loop', 'Jumps to the next iteration of the loop', 'Stops the loop', 'Resets the loop'],
-      correctAnswer: 'Jumps to the next iteration of the loop',
-  },
-  {
-      id: 47,
-      question: 'What is the JavaScript event that occurs when an image fails to load?',
-      options: ['onimageerror', 'onerror', 'onloaderror', 'onloadfail'],
-      correctAnswer: 'onerror',
-  },
-  {
-      id: 48,
-      question: 'Which JavaScript method is used to concatenate two or more arrays and returns a new array?',
-      options: ['concat()', 'join()', 'merge()', 'combine()'],
-      correctAnswer: 'concat()',
-  },
-  {
-      id: 49,
-      question: 'What is the JavaScript function used to convert a string to lowercase?',
-      options: ['toLowerCase()', 'toLower()', 'convertToLower()', 'lowercase()'],
-      correctAnswer: 'toLowerCase()',
-  },
-  {
-      id: 50,
-      question: 'What is the JavaScript method used to reverse the order of elements in an array?',
-      options: ['reverse()', 'flip()', 'backward()', 'revert()'],
-      correctAnswer: 'reverse()',
-  },
-  ],
-}
-
-,
   {
     courseName: 'WEB DEVELOPMENT',
     questions :[
       {
             id: 1,
             question: 'What does CSS stand for?',
-            options: ['Cascading Style Sheets', 'Creative Style Syntax', 'Computer Style Sheets', 'Cascading Simple Syntax'],
+            options: [ 'Creative Style Syntax','Cascading Style Sheets', 'Computer Style Sheets', 'Cascading Simple Syntax'],
             correctAnswer: 'Cascading Style Sheets',
           },
           {
             id: 2,
             question: 'Which CSS property is used to change the text color of an element?',
-            options: ['color', 'font-color', 'text-color', 'text'],
+            options: [ 'font-color', 'text-color', 'color','text'],
             correctAnswer: 'color',
           },
 
@@ -943,13 +331,13 @@ const questions = [
           {
             id: 4,
             question: 'What does HTML stand for?',
-            options: ['Hyper Text Markup Language', 'Home Tool Markup Language', 'Hyperlinks and Text Markup Language', 'Home Text Markup Language'],
+            options: [ 'Home Tool Markup Language', 'Hyper Text Markup Language', 'Hyperlinks and Text Markup Language', 'Home Text Markup Language'],
             correctAnswer: 'Hyper Text Markup Language',
           },
           {
             id: 5,
             question: 'Which HTML tag is used to define an unordered list?',
-            options: ['<ul>', '<ol>', '<li>', '<list>'],
+            options: [ '<ol>', '<li>', '<list>', '<ul>'],
             correctAnswer: '<ul>',
           },
           {
@@ -981,7 +369,7 @@ const questions = [
           {
             id: 10,
             question: 'What does the CSS property "display: none;" do?',
-            options: ['Hides an element', 'Changes the font color', 'Adds a border to an element', 'Enables block-level display'],
+            options: [ 'Changes the font color', 'Adds a border to an element', 'Hides an element', 'Enables block-level display'],
             correctAnswer: 'Hides an element',
           },
           // Add more CSS questions...
@@ -995,7 +383,7 @@ const questions = [
           {
             id: 12,
             question: 'Which built-in method combines the text of two strings and returns a new string?',
-            options: ['concat()', 'join()', 'append()', 'merge()'],
+            options: [ 'join()', 'concat()', 'append()', 'merge()'],
             correctAnswer: 'concat()',
           },
           // Add more JavaScript questions...
@@ -1015,41 +403,41 @@ const questions = [
           {
             id: 15,
             question: 'What does the JavaScript function "parseInt()" do?',
-            options: ['Parses a string and returns an integer', 'Adds two numbers together', 'Converts a number to a string', 'Rounds a number to the nearest integer'],
+            options: [ 'Adds two numbers together', 'Parses a string and returns an integer', 'Converts a number to a string', 'Rounds a number to the nearest integer'],
             correctAnswer: 'Parses a string and returns an integer',
           },
           // Add more JavaScript questions...
           {
             id: 16,
             question: 'What does the CSS property "margin" define?',
-            options: ['The spacing between elements', 'The size of a font', 'The alignment of text', 'The background color of an element'],
+            options: [ 'The size of a font', 'The alignment of text', 'The spacing between elements', 'The background color of an element'],
             correctAnswer: 'The spacing between elements',
           },
           // Add more CSS questions...
           {
             id: 17,
             question: 'What does the HTML element <p> represent?',
-            options: ['A paragraph', 'A heading', 'An image', 'A link'],
+            options: [ 'A heading','A paragraph', 'An image', 'A link'],
             correctAnswer: 'A paragraph',
           },
           {
             id: 18,
             question: 'Which CSS property is used to change the background color of an element?',
-            options: ['background-color', 'color', 'background', 'text-color'],
+            options: [ 'color', 'background', 'text-color', 'background-color'],
             correctAnswer: 'background-color',
           },
-          // Add more CSS questions...
+
           {
             id: 19,
             question: 'What does the JavaScript function "setTimeout()" do?',
             options: ['Executes a function after a specified delay', 'Adds two numbers together', 'Converts a number to a string', 'Rounds a number to the nearest integer'],
             correctAnswer: 'Executes a function after a specified delay',
           },
-          // Add more JavaScript questions...
+
           {
             id: 20,
             question: 'Which CSS property is used to specify the font family for an element?',
-            options: ['font-family', 'text-family', 'font-style', 'text-style'],
+            options: [ 'text-family', 'font-style','font-family', 'text-style'],
             correctAnswer: 'font-family',
           },
           // Add more CSS questions...
@@ -1062,26 +450,26 @@ const questions = [
           {
             id: 22,
             question: 'Which CSS property is used to add shadows to an element?',
-            options: ['box-shadow', 'text-shadow', 'shadow-color', 'element-shadow'],
+            options: ['text-shadow', 'shadow-color', 'box-shadow', 'element-shadow'],
             correctAnswer: 'box-shadow',
           },
           {
             id: 23,
             question: 'What is the role of the JavaScript "for" loop?',
-            options: ['To execute a block of code repeatedly', 'To define a function', 'To add event listeners', 'To manipulate the DOM'],
+            options: ['To define a function', 'To add event listeners', 'To manipulate the DOM', 'To execute a block of code repeatedly'],
             correctAnswer: 'To execute a block of code repeatedly',
           },
           // Add more questions...
           {
             id: 24,
             question: 'What is the purpose of the HTML element <table>?',
-            options: ['Defines a section or division in a document', 'Defines a hyperlink', 'Defines a tabular data structure', 'Defines a form'],
+            options: ['Defines a hyperlink', 'Defines a section or division in a document', 'Defines a tabular data structure', 'Defines a form'],
             correctAnswer: 'Defines a tabular data structure',
           },
           {
             id: 25,
             question: 'Which CSS property is used to control the spacing between letters?',
-            options: ['letter-spacing', 'word-spacing', 'text-spacing', 'spacing'],
+            options: [ 'word-spacing', 'text-spacing','letter-spacing', 'spacing'],
             correctAnswer: 'letter-spacing',
           },
           {
@@ -1106,10 +494,10 @@ const questions = [
           {
             id: 29,
             question: 'What does the JavaScript method "pop()" do?',
-            options: ['Removes the last element from an array', 'Adds an element to the beginning of an array', 'Reverses the order of the elements in an array', 'Joins two arrays together'],
+            options: [ 'Adds an element to the beginning of an array', 'Removes the last element from an array', 'Reverses the order of the elements in an array', 'Joins two arrays together'],
             correctAnswer: 'Removes the last element from an array',
           },
-          // Add more questions...
+
           {
             id: 30,
             question: 'What is the purpose of the HTML element <input>?',
@@ -1125,7 +513,7 @@ const questions = [
           {
             id: 32,
             question: 'What does the JavaScript method "shift()" do?',
-            options: ['Removes the first element from an array', 'Adds an element to the end of an array', 'Sorts the elements of an array', 'Reverses the order of the elements in an array'],
+            options: [ 'Adds an element to the end of an array', 'Sorts the elements of an array', 'Reverses the order of the elements in an array', 'Removes the first element from an array'],
             correctAnswer: 'Removes the first element from an array',
           },
           {
@@ -1137,7 +525,7 @@ const questions = [
           {
             id: 34,
             question: 'Which CSS property is used to control the positioning of an element?',
-            options: ['position', 'place', 'layout', 'coordinate'],
+            options: ['place', 'layout', 'position', 'coordinate'],
             correctAnswer: 'position',
           },
           {
@@ -1194,10 +582,10 @@ const questions = [
           {
             id: 43,
             question: 'Which CSS property is used to control the font size of an element?',
-            options: ['font-size', 'size', 'text-size', 'font'],
+            options: [ 'size', 'text-size', 'font', 'font-size'],
             correctAnswer: 'font-size',
           },
-          // Add more questions...
+         
           {
             id: 44,
             question: 'What is the purpose of the HTML element <header>?',
@@ -1216,7 +604,7 @@ const questions = [
             options: ['Executes a provided function once for each array element', 'Combines all elements of an array into a single value', 'Finds the first element that satisfies a condition', 'Removes an element from an array'],
             correctAnswer: 'Combines all elements of an array into a single value',
           },
-          // Add more questions...
+         
           {
             id: 47,
             question: 'What is the purpose of the HTML element <nav>?',
@@ -1245,13 +633,13 @@ const questions = [
           {
             id: 51,
             question: 'What does the CSS property "float" do?',
-            options: ['Moves an element to the right or left of its container', 'Applies a shadow effect to an element', 'Increases the font weight of an element', 'Displays an element as inline-block'],
+            options: [ 'Applies a shadow effect to an element', 'Moves an element to the right or left of its container', 'Increases the font weight of an element', 'Displays an element as inline-block'],
             correctAnswer: 'Moves an element to the right or left of its container',
           },
           {
             id: 52,
             question: 'What is the role of the JavaScript method "splice()"?',
-            options: ['Changes the content of an array by removing or replacing existing elements', 'Adds an element to the beginning of an array', 'Reverses the order of the elements in an array', 'Joins two arrays together'],
+            options: [ 'Adds an element to the beginning of an array', 'Reverses the order of the elements in an array', 'Joins two arrays together', 'Changes the content of an array by removing or replacing existing elements'],
             correctAnswer: 'Changes the content of an array by removing or replacing existing elements',
           },
           // Add more questions...
@@ -1264,7 +652,7 @@ const questions = [
           {
             id: 54,
             question: 'Which CSS property is used to control the text alignment within an element?',
-            options: ['text-align', 'align', 'text-position', 'alignment'],
+            options: [ 'align', 'text-position', 'text-align', 'alignment'],
             correctAnswer: 'text-align',
           },
           {
@@ -1277,19 +665,19 @@ const questions = [
           {
             id: 56,
             question: 'What is the purpose of the HTML element <section>?',
-            options: ['Defines a section or division in a document', 'Defines a hyperlink', 'Defines an image', 'Defines a form'],
+            options: [ 'Defines a hyperlink', 'Defines a section or division in a document', 'Defines an image', 'Defines a form'],
             correctAnswer: 'Defines a section or division in a document',
           },
           {
             id: 57,
             question: 'Which CSS property is used to control the size of an element relative to its parent?',
-            options: ['width', 'size', 'length', 'scale'],
+            options: ['size', 'length', 'width', 'scale'],
             correctAnswer: 'width',
           },
           {
             id: 58,
             question: 'What is the role of the JavaScript method "push()"?',
-            options: ['Adds one or more elements to the end of an array', 'Removes the last element from an array', 'Reverses the order of the elements in an array', 'Joins two arrays together'],
+            options: [ 'Removes the last element from an array', 'Reverses the order of the elements in an array', 'Adds one or more elements to the end of an array', 'Joins two arrays together'],
             correctAnswer: 'Adds one or more elements to the end of an array',
           },
           // Add more questions...
@@ -1302,7 +690,7 @@ const questions = [
           {
             id: 60,
             question: 'Which CSS property is used to control the height of an element?',
-            options: ['height', 'size', 'length', 'scale'],
+            options: [ 'size', 'length', 'scale', 'height'],
             correctAnswer: 'height',
           },
           {
@@ -1326,14 +714,14 @@ const questions = [
           {
             id: 64,
             question: 'What is the role of the JavaScript method "map()"?',
-            options: ['Creates a new array populated with the results of calling a provided function on every element in the original array', 'Finds the index of the first occurrence of a specified value in an array', 'Removes an element from an array', 'Sorts the elements of an array'],
+            options: ['Finds the index of the first occurrence of a specified value in an array', 'Creates a new array populated with the results of calling a provided function on every element in the original array', 'Removes an element from an array', 'Sorts the elements of an array'],
             correctAnswer: 'Creates a new array populated with the results of calling a provided function on every element in the original array',
           },
           // Add more questions...
           {
             id: 65,
             question: 'What is the purpose of the HTML <nav> element?',
-            options: ['Defines a navigation menu', 'Defines a container for video content', 'Defines an image', 'Defines a form'],
+            options: ['Defines a container for video content', 'Defines an image', 'Defines a navigation menu', 'Defines a form'],
             correctAnswer: 'Defines a navigation menu',
           },
           {
@@ -1345,10 +733,10 @@ const questions = [
           {
             id: 67,
             question: 'What does the JavaScript method "filter()" do?',
-            options: ['Creates a new array with all elements that pass a test', 'Joins all elements of an array into a string', 'Reverses the order of the elements in an array', 'Adds an element to the end of an array'],
+            options: [ 'Joins all elements of an array into a string', 'Reverses the order of the elements in an array', 'Adds an element to the end of an array', 'Creates a new array with all elements that pass a test'],
             correctAnswer: 'Creates a new array with all elements that pass a test',
           },
-          // Add more questions...
+         
           {
             id: 68,
             question: 'What is the purpose of the HTML <figure> element?',
@@ -1364,14 +752,14 @@ const questions = [
           {
             id: 70,
             question: 'What is the role of the JavaScript method "reduce()"?',
-            options: ['Executes a reducer function on each element of the array, resulting in a single output value', 'Finds the maximum value in an array', 'Removes the first element from an array', 'Joins two arrays together'],
+            options: ['Finds the maximum value in an array', 'Removes the first element from an array', 'Joins two arrays together', 'Executes a reducer function on each element of the array, resulting in a single output value'],
             correctAnswer: 'Executes a reducer function on each element of the array, resulting in a single output value',
           },
-          // Add more questions...
+          
           {
             id: 71,
             question: 'What is the purpose of the HTML <figcaption> element?',
-            options: ['Defines a caption for a <figure> element', 'Defines a hyperlink', 'Defines a table caption', 'Defines a form'],
+            options: [ 'Defines a hyperlink', 'Defines a table caption', 'Defines a form', 'Defines a caption for a <figure> element'],
             correctAnswer: 'Defines a caption for a <figure> element',
           },
           {
@@ -1386,7 +774,7 @@ const questions = [
             options: ['Returns the value of the first element in an array that satisfies a provided testing function', 'Finds the last element in an array', 'Reverses the order of the elements in an array', 'Adds an element to the beginning of an array'],
             correctAnswer: 'Returns the value of the first element in an array that satisfies a provided testing function',
           },
-          // Add more questions...
+         
           {
             id: 74,
             question: 'What is the purpose of the HTML <bdi> element?',
@@ -1396,16 +784,16 @@ const questions = [
           {
             id: 75,
             question: 'Which CSS property is used to control the size of a font?',
-            options: ['font-size', 'text-size', 'size', 'font'],
+            options: [ 'text-size', 'font-size', 'size', 'font'],
             correctAnswer: 'font-size',
           },
           {
             id: 76,
             question: 'What is the role of the JavaScript method "some()"?',
-            options: ['Tests whether at least one element in the array passes the provided function', 'Finds the index of the last occurrence of a specified value in an array', 'Removes the last element from an array', 'Sorts the elements of an array in descending order'],
+            options: [ 'Finds the index of the last occurrence of a specified value in an array', 'Tests whether at least one element in the array passes the provided function', 'Removes the last element from an array', 'Sorts the elements of an array in descending order'],
             correctAnswer: 'Tests whether at least one element in the array passes the provided function',
           },
-          // Add more questions...
+          
           {
             id: 77,
             question: 'What is the purpose of the HTML <time> element?',
@@ -1424,23 +812,23 @@ const questions = [
             options: ['Determines whether an array includes a certain value', 'Concatenates two or more arrays', 'Reverses the order of the elements in an array', 'Adds an element to the beginning of an array'],
             correctAnswer: 'Determines whether an array includes a certain value',
           },
-          // Add more questions...
+          
           {
             id: 80,
             question: 'What is the purpose of the HTML <mark> element?',
-            options: ['Defines marked or highlighted text', 'Defines a hyperlink', 'Defines an image', 'Defines a form'],
+            options: [ 'Defines a hyperlink', 'Defines an image', 'Defines a form', 'Defines marked or highlighted text'],
             correctAnswer: 'Defines marked or highlighted text',
           },
           {
             id: 81,
             question: 'Which CSS property is used to control the alignment of text within its container?',
-            options: ['text-align', 'alignment', 'text-position', 'text-container'],
+            options: [ 'alignment', 'text-align', 'text-position', 'text-container'],
             correctAnswer: 'text-align',
           },
           {
             id: 82,
             question: 'What is the purpose of the HTML <template> element?',
-            options: ['Defines a template for reusable HTML content', 'Defines a container for video content', 'Defines an image', 'Defines a form'],
+            options: [ 'Defines a container for video content', 'Defines an image', 'Defines a template for reusable HTML content', 'Defines a form'],
             correctAnswer: 'Defines a template for reusable HTML content',
           },
           {
@@ -1455,11 +843,11 @@ const questions = [
             options: ['Applies a function against an accumulator and each element in the array to reduce it to a single value', 'Finds the index of the first occurrence of a specified value in an array', 'Reverses the order of the elements in an array', 'Adds an element to the end of an array'],
             correctAnswer: 'Applies a function against an accumulator and each element in the array to reduce it to a single value',
           },
-          // Add more questions...
+          
           {
             id: 85,
             question: 'What is the purpose of the HTML <s> element?',
-            options: ['Represents text that is no longer accurate or relevant', 'Defines a hyperlink', 'Defines an image', 'Defines a form'],
+            options: [ 'Defines a hyperlink', 'Defines an image', 'Defines a form', 'Represents text that is no longer accurate or relevant'],
             correctAnswer: 'Represents text that is no longer accurate or relevant',
           },
           {
@@ -1474,7 +862,7 @@ const questions = [
             options: ['Creates a new array with all elements that pass the provided function', 'Finds the index of the first occurrence of a specified value in an array', 'Removes the first element from an array', 'Sorts the elements of an array in ascending order'],
             correctAnswer: 'Creates a new array with all elements that pass the provided function',
           },
-          // Add more questions...
+          
           {
             id: 88,
             question: 'What is the purpose of the HTML <small> element?',
@@ -1496,32 +884,32 @@ const questions = [
           {
             id: 91,
             question: 'What is the purpose of the HTML <meta> tag?',
-            options: ['Provides metadata about the HTML document', 'Defines a section in a document', 'Defines an image', 'Defines a form'],
+            options: [ 'Defines a section in a document', 'Provides metadata about the HTML document', 'Defines an image', 'Defines a form'],
             correctAnswer: 'Provides metadata about the HTML document',
           },
           {
             id: 92,
             question: 'Which CSS property is used to control the visibility of an element?',
-            options: ['visibility', 'display', 'opacity', 'hidden'],
+            options: [ 'display', 'opacity', 'visibility', 'hidden'],
             correctAnswer: 'visibility',
           },
           {
             id: 93,
             question: 'What does the JavaScript method "concat()" do?',
-            options: ['Joins two or more arrays and returns a new array', 'Finds the index of the first occurrence of a specified value in an array', 'Reverses the order of the elements in an array', 'Adds an element to the end of an array'],
+            options: ['Finds the index of the first occurrence of a specified value in an array', 'Reverses the order of the elements in an array', 'Adds an element to the end of an array', 'Joins two or more arrays and returns a new array'],
             correctAnswer: 'Joins two or more arrays and returns a new array',
           },
-          // Add more questions...
+          
           {
             id: 94,
             question: 'What is the purpose of the HTML <pre> element?',
-            options: ['Defines preformatted text', 'Defines a paragraph', 'Defines an image', 'Defines a form'],
+            options: [ 'Defines a paragraph', 'Defines preformatted text', 'Defines an image', 'Defines a form'],
             correctAnswer: 'Defines preformatted text',
           },
           {
             id: 95,
             question: 'Which CSS property is used to control the alignment of text within an element?',
-            options: ['text-align', 'align', 'alignment', 'text-justify'],
+            options: [ 'align', 'alignment', 'text-align', 'text-justify'],
             correctAnswer: 'text-align',
           },
           {
@@ -1530,35 +918,33 @@ const questions = [
             options: ['Extracts a section of an array and returns a new array', 'Finds the index of the first occurrence of a specified value in an array', 'Removes the last element from an array', 'Sorts the elements of an array in ascending order'],
             correctAnswer: 'Extracts a section of an array and returns a new array',
           },
-          // Add more questions...
+          
           {
             id: 97,
             question: 'What is the purpose of the HTML <sup> element?',
-            options: ['Represents superscript text', 'Defines subscript text', 'Defines an image', 'Defines a form'],
+            options: [ 'Defines subscript text', 'Defines an image', 'Defines a form', 'Represents superscript text'],
             correctAnswer: 'Represents superscript text',
           },
           {
             id: 98,
             question: 'Which CSS property is used to control the size of an element relative to its parent element?',
-            options: ['width', 'height', 'size', 'box-sizing'],
+            options: ['height', 'width', 'size', 'box-sizing'],
             correctAnswer: 'width',
           },
           {
             id: 99,
             question: 'What does the JavaScript method "splice()" do?',
-            options: ['Changes the contents of an array by removing or replacing existing elements', 'Finds the index of the first occurrence of a specified value in an array', 'Removes the first element from an array', 'Adds an element to the end of an array'],
+            options: [ 'Finds the index of the first occurrence of a specified value in an array', 'Removes the first element from an array', 'Adds an element to the end of an array', 'Changes the contents of an array by removing or replacing existing elements'],
             correctAnswer: 'Changes the contents of an array by removing or replacing existing elements',
           },
 
           {
             id: 100,
             question: 'What is the purpose of the HTML <video> element?',
-            options: ['To display a video', 'To create a hyperlink', 'To display an image', 'To define a form'],
+            options: [ 'To create a hyperlink', 'To display an image', 'To display a video', 'To define a form'],
             correctAnswer: 'To display a video',
           },
           
-
-      // Add more course categories...
     ],
 
   },
@@ -2372,476 +1758,220 @@ const questions = [
   },
   {
     courseName: "UI & UX",
-    questions: [
-      {
-        id: 1,
-        question: 'What is a Sankey diagram used for in UX?',
-        options: [
-          'Visualizing pathways that users take on a website',
-         'Prioritizing features to address in the next design iteration', 
-         'Understanding the demographics of a target user population', 
-         'Organizing related facts or ideas into distinct clusters',
-        ],
-        correctAnswer: 'Understanding User Pathways in Analytics',
-      },
-       {
-         id: 2,
-         question:'Which of the following describes Fitts’s law?',
-         options: [
-           'The movement time to a target depends on the distance to the target and on the size of the target.',
+      questions: [
+        {
+          id: 1,
+          question: 'What is a Sankey diagram used for in UX?',
+          options: [
+            'Visualizing pathways that users take on a website',
+           'Prioritizing features to address in the next design iteration', 
+           'Understanding the demographics of a target user population', 
+           'Organizing related facts or ideas into distinct clusters',
+          ],
+          correctAnswer: 'Visualizing pathways that users take on a website',
+        },
+        {
+          id: 2,
+          question: 'Which of the following describes Fitts’s law?',
+          options: [
+            'The movement time to a target depends on the distance to the target and on the size of the target.',
             'The time to select an item in a list of items depends on the number of items in that list.',
-           'The time to move a cursor on a path (such as a slider) depends on the length of the path and on the width of the path.',
-           'The time to perform a task depends on the number of practice trials that the user has had with that task.'
-    
-         ],
-    
-         correctAnswer: 'The movement time to a target depends on the distance to the target and on the size of the target.',
-       },
-       {
-         id: 3,
-         question:'An antipersona is a representation of:',
-         options: [
-           'An ideal user of a product.',
+            'The time to move a cursor on a path (such as a slider) depends on the length of the path and on the width of the path.',
+            'The time to perform a task depends on the number of practice trials that the user has had with that task.',
+          ],
+          correctAnswer: 'The movement time to a target depends on the distance to the target and on the size of the target',
+        },
+        {
+          id: 3,
+          question: 'An antipersona is a representation of:',
+          options: [
+            'An ideal user of a product.',
             'A typical or target user of a product.',
-           'A user that could misuse a product in ways that could impact target audiences and the business path.',
-           'A user that could use a product in new, innovative ways that were unplanned by the business.',
-    
-         ],
-    
-         correctAnswer: 'A user that could misuse a product in ways that could impact target audiences and the business.',
-       },
-       {
-         id: 4,
-         question:'What is the funnel technique in UX research?',
-         options: [
-           'Distributing a survey to a large number of participants and then invited a selected few for individual interviews.',
-           'Starting with broad questions before getting to more specific ones in user interviews and moderated user tests.',
-           'Visualizing the number of users who drop off at each step in a process.',
-           'Visualizing the process that the user goes through to accomplish a goal.',
-            
-         ],
-    
-         correctAnswer: 'Starting with broad questions before getting to more specific ones in user interviews and moderated user tests.',
-       } ,
-       {
-         id: 5,
-         question:'A cognitive walkthrough is a:',
-         options: [
-           'A user-research method in which a participant uses a prototype to walk through the different steps of a task.',
-           'A usability-evaluation method in which a usability expert assigns one or more quantitative ratings to each step of a design.',
-           'A usability-inspection method in which a usability specialist evaluates each step of an interaction using established usability principles.',
-           'A usability-inspection method in which a team of evaluators goes through the different steps of the task, taking a user’s perspective.',
-         ],
-    
-         correctAnswer: 'A usability-inspection method in which a team of evaluators goes through the different steps of the task, taking a user’s perspective.',
-       } ,
-       {
-         id: 6,
-         question:'Lo-Fi Wireframe means?',
-         options: [
-           'A. Lower Final Fidelity Wireframe',
-           'B. Lonely Fidelity Wireframe',
-           'C. Low Fidelity Wireframe',
-           'D. All of the above',
+            'A user that could misuse a product in ways that could impact target audiences and the business path.',
+            'A user that could use a product in new, innovative ways that were unplanned by the business.',
           ],
-    
-           correctAnswer: 'Low Fidelity Wireframe.',
-       }, 
-       {
-         id: 7,
-         question:'Iconify is a plugin in Figma?',
-         options: [
-           'A. True',
-           'B. False',
-    
+          correctAnswer: 'A user that could misuse a product in ways that could impact target audiences and the business path.',
+        },
+        {
+          id: 4,
+          question: 'What is the funnel technique in UX research?',
+          options: [
+            'Distributing a survey to a large number of participants and then inviting a selected few for individual interviews.',
+            'Starting with broad questions before getting to more specific ones in user interviews and moderated user tests.',
+            'Visualizing the number of users who drop off at each step in a process.',
+            'Visualizing the process that the user goes through to accomplish a goal.',
           ],
-    
-           correctAnswer: 'True.',
-       }, 
-       {
-         id: 8,
-         question:'The first process in UI/UX Design is?',
-         options: [
-           'A. Research',
-           'B. Design',
-           'C. Sketch',
-           'D. Testing',
+          correctAnswer: 'Starting with broad questions before getting to more specific ones in user interviews and moderated user tests.',
+        },
+        {
+          id: 5,
+          question: 'A cognitive walkthrough is a:',
+          options: [
+            'A user-research method in which a participant uses a prototype to walk through the different steps of a task.',
+            'A usability-evaluation method in which a usability expert assigns one or more quantitative ratings to each step of a design.',
+            'A usability-inspection method in which a usability specialist evaluates each step of an interaction using established usability principles.',
+            'A usability-inspection method in which a team of evaluators goes through the different steps of the task, taking a user’s perspective.',
           ],
-    
-           correctAnswer: 'Research.',
-       },  
-       {
-         id: 9,
-         question:'Case Study in UI/UX refers to the study of?',
-         options: [
-           'A. Case',
-           'B. Design Process',
-           'C. User problems',
-           'D. The entire project',
-          ],
-    
-           correctAnswer:'The entire project.',
-       } , 
-       {
-         id: 10,
-         question:'A very small button placement on a mobile view website is ideal?',
-         options: [
-           'A. Yes',
-           'B. No',
-          ],
-    
-           correctAnswer:'No.',
-       },  
-       {
-         id: 11,
-         question:'Which one of these are all ui/ux design tools',
-         options: [
-           'A. Adobe XD, Figma and Photoshop',
-           'B. Adobe XD, Illustrator and Figma',
-           'C. Adobe XD, Figma and Sketch',
-           'D. Figma, Corel Draw and Behance',
-          ],
-    
-           correctAnswer:'Adobe XD, Figma and Sketch.',
-       },  
-       {
-         id: 12,
-         question:'Does Figma accomodate teams in a project?',
-         options: [
-           'A. Yes',
-           'B. No',
-          ],
-    
-           correctAnswer:'Yes.',
-       } , 
-       {
-         id: 13,
-         question:'Your first digital design is?',
-         options: [
-           'A. Lo-fi Wireframe',
-           'B. Hi-fi Wireframe',
-           'C. Mockup',
-           'D. Protoype',
-          ],
-    
-           correctAnswer:' Hi-fi Wireframe.',
-       },  
-       {
-         id: 14,
-         question:'Mockups are the actual designs',
-         options: [
-           'A. True',
-           'B. False',
-          ],
-    
-           correctAnswer:'True.',
-       } , 
-       {
-         id: 15,
-         question:'Prototyping does not allow clicking or scrolling',
-         options: [
-           'A. True',
-           'B. False',
-          ],
-    
-           correctAnswer:'False.',
-       } , 
-       {
-         id: 16,
-         question:'In UI/UX harsh colours are the most preferred.',
-         options: [
-           'A. Yes',
-           'B. No',
-          ],
-    
-           correctAnswer:'No.',
-       }  ,    
-       {
-         id: 17,
-         question:' Ideation is the brainstorming stage of a ui/ux design.',
-         options: [
-           'A. True',
-           'B. False',
-          ],
-    
-           correctAnswer:'True.',
-       },      
-       {
-         id: 18,
-         question:' What does the 8 rule state?.',
-         options: [
-           'A. Each time an 8 appears delete it',
-           'B. Your font sizes must retain the 8 spacing',
-           'C. Each text shouls not exceed a font size 8',
-           'D. All of the above',
-          ],
-    
-           correctAnswer:'Your font sizes must retain the 8 spacing.',
-       },      
-       {
-         id: 19,
-         question:"Your ruler doesn't tell you the actual spacings or white spaces needed.",
-         options: [
-            'A. True',
-            'B. False',
-          ],
-    
-           correctAnswer:'False.',
-       } ,     
-       {
-         id: 20,
-         question:'Can someone become just a ui designer?',
-         options: [
-            'A. Yes',
-           'B. No',
-          ],
-    
-           correctAnswer:'Yes.',
-       } ,     
-       {
-         id: 21,
-         question:'The UI Designer designs while the UX Designer sketches.',
-         options: [
-            'A. True',
-            'B. False',
-          ],
-    
-           correctAnswer:'False.',
-       } ,     
-       {
-         id: 22,
-         question:`A school has issues with paperwork due to the fact that we're in a 21st century, and they need a mobile app but they consulted you for the ui/ux designs. 
-        What would be your first question as a Professional UI/UX Designer?`,
-         options: [
-            'A. How much are you going to pay',
-            'B. What is the duration of the work',
-            'C. Tell me more about the project and its challenges',
-            'D. How did you get my contact',
-          ],
-    
-           correctAnswer:'Tell me more about the project and its challenges.',
-       } ,     
-       {
-         id: 23,
-         question:'Prototyping is a crucial part of the UX design process.It allows designers to create a preliminary model of a product that can be tested and refined before the final product is developed.',
-         options: [
-            'A. True',
-            'B. False',
-          ],
-    
-           correctAnswer:'True.',
-       } ,     
-      
-       {
-         id: 24,
-         question:'User interacts with visual representation of data objects.',
-         options: [
-            'A. True',
-            'B. False',
-          ],
-    
-           correctAnswer:'True.',
-       } ,   
-       {
-         id: 25,
-         question:'What does UX stand for in the context of design?',
-         options: [
-           'A. User Experience',
-           'B. User Exploration',
-           'C. User Experiment',
-           'D. User Expression',
-          ],
-    
-           correctAnswer:'User Experience.',
-       },
-       {
-         id: 26,
-         question:'What does UX design focus on?',
-         options: [
-           'A. Creating visually appealing interfaces',
-           'B. Designing for the brand’s identity',
-           'C. Understanding and enhancing the overall user experience',
-           'D. Writing code for software applications',
-          ],
-    
-           correctAnswer:'Understanding and enhancing the overall user experience.',
-       },      
-       {
-         id: 27,
-         question:'What is the primary goal of UX design?',
-         options: [
-           'A. Increasing revenues',
-           'B. Creating visually stunning designs',
-           'C. Enhancing the user interface',
-           'D. Meeting the needs and expectations of users',  
-          ],
-    
-           correctAnswer:'Meeting the needs and expectations of users.',
-       },      
-       {
-         id: 28,
-         question:'What is the importance of conducting user research in UX design?',
-         options: [
-           'A. To showcase the product’s features',
-           'B. To understand the needs and behaviors of users',
-           'C. To gather data for marketing purposes',
-           'D. To determine the cost of the product development',   
-          ],
-    
-           correctAnswer:'To understand the needs and behaviors of users.',
-       },     
-       {
-         id: 29,
-         question:'What is the purpose of creating user personas in UX design?',
-         options: [
-           'A. To test the usability of the product',
-           'B. To represent the target audience and their characteristics',
-           'C. To decide on the color scheme of the product',
-           'D. To conduct A/B testing',
-          ],
-    
-           correctAnswer:'To understand the needs and behaviors of users.',
-       },      
-       {
-         id: 30,
-         question:'What is the term for the process of organizing and structuring content to make it easily accessible to users?',
-         options: [
-           'A. Information architecture',
-           'B.  User interface design',
-           'C. Interaction design',
-           'D. Interaction design',
-          ],
-    
-           correctAnswer:'Information architecture.',
-       },   
-      {
-        id: 31,
-        question: 'What is the purpose of user personas in UI/UX design?',
-        options: ['To represent fictional users with specific characteristics', 'To create visually appealing designs', 'To conduct usability testing', 'To define user flows and interactions'],
-        correctAnswer: 'To represent fictional users with specific characteristics',
-      },
-      // Question 32
-      {
-        id: 32,
-        question: 'What is the purpose of visual consistency in UI/UX design?',
-        options: ['To create a unified and cohesive experience', 'To create interactive prototypes', 'To conduct user interviews', 'To define the brand identity'],
-        correctAnswer: 'To create a unified and cohesive experience',
-      },
+          correctAnswer: 'A usability-inspection method in which a team of evaluators goes through the different steps of the task, taking a user’s perspective.',
+        },
+        {
+          id: 6,
+          question: 'Lo-Fi Wireframe means?',
+          options: ['A. Lower Final Fidelity Wireframe', 'B. Lonely Fidelity Wireframe', 'C. Low Fidelity Wireframe', 'D. All of the above'],
+          correctAnswer: 'C. Low Fidelity Wireframe',
+        },
+        {
+          id: 7,
+          question: 'Iconify is a plugin in Figma?',
+          options: ['A. True', 'B. False'],
+          correctAnswer: 'A. True',
+        },
+        {
+          id: 8,
+          question: 'The first process in UI/UX Design is?',
+          options: ['A. Research', 'B. Design', 'C. Sketch', 'D. Testing'],
+          correctAnswer: 'A. Research',
+        },
+        {
+          id: 9,
+          question: 'Case Study in UI/UX refers to the study of?',
+          options: ['A. Case', 'B. Design Process', 'C. User problems', 'D. The entire project'],
+          correctAnswer: 'D. The entire project',
+        },
+        {
+          id: 10,
+          question: 'A very small button placement on a mobile view website is ideal?',
+          options: ['A. Yes', 'B. No'],
+          correctAnswer: 'B. No',
+        },
+        {
+          id: 11,
+          question: 'Which one of these are all ui/ux design tools',
+          options: ['A. Adobe XD, Figma and Photoshop', 'B. Adobe XD, Illustrator and Figma', 'C. Adobe XD, Figma and Sketch', 'D. Figma, Corel Draw and Behance'],
+          correctAnswer: 'C. Adobe XD, Figma and Sketch',
+        },
+        {
+          id: 12,
+          question: 'Does Figma accommodate teams in a project?',
+          options: ['A. Yes', 'B. No'],
+          correctAnswer: 'A. Yes',
+        },
+        {
+          id: 13,
+          question: 'Your first digital design is?',
+          options: ['A. Lo-fi Wireframe', 'B. Hi-fi Wireframe', 'C. Mockup', 'D. Prototype'],
+          correctAnswer: 'B. Hi-fi Wireframe',
+        },
+        {
+          id: 14,
+          question: 'Mockups are the actual designs',
+          options: ['A. True', 'B. False'],
+          correctAnswer: 'B. False',
+        },
+        {
+          id: 15,
+          question: 'Prototyping does not allow clicking or scrolling',
+          options: ['A. True', 'B. False'],
+          correctAnswer: 'B. False',
+        },
+        {
+          id: 16,
+          question: 'In UI/UX harsh colors are the most preferred.',
+          options: ['A. Yes', 'B. No'],
+          correctAnswer: 'B. No',
+        },
+        {
+          id: 17,
+          question: 'Ideation is the brainstorming stage of a UI/UX design.',
+          options: ['A. True', 'B. False'],
+          correctAnswer: 'A. True',
+        },
+        {
+          id: 18,
+          question: 'What does the 8 rule state?',
+          options: ['A. Each time an 8 appears delete it', 'B. Your font sizes should retain the 8 spacing', 'C. Each text should not exceed a font size 8', 'D. All of the above'],
+          correctAnswer: 'B. Your font sizes should retain the 8 spacing',
+        },
+        {
+          id: 19,
+          question: "Your ruler doesn't tell you the actual spacings or white spaces needed.",
+          options: ['A. True', 'B. False'],
+          correctAnswer: 'B. False',
+        },
+        {
+          id: 20,
+          question: 'Can someone become just a UI designer?',
+          options: ['A. Yes', 'B. No'],
+          correctAnswer: 'A. Yes',
+        },
+        {
+          id: 21,
+          question: 'The UI Designer designs while the UX Designer sketches.',
+          options: ['A. True', 'B. False'],
+          correctAnswer: 'B. False',
+        },
+        {
+          id: 22,
+          question: `A school has issues with paperwork due to the fact that we're in a 21st century, and they need a mobile app but they consulted you for the UI/UX designs. What would be your first question as a Professional UI/UX Designer?`,
+          options: ['A. How much are you going to pay', 'B. What is the duration of the work', 'C. Tell me more about the project and its challenges', 'D. How did you get my contact'],
+          correctAnswer: 'C. Tell me more about the project and its challenges',
+        },
+        {
+          id: 23,
+          question: 'Prototyping is a crucial part of the UX design process. It allows designers to create a preliminary model of a product that can be tested and refined before the final product is developed.',
+          options: ['A. True', 'B. False'],
+          correctAnswer: 'A. True',
+        },
+        {
+          id: 24,
+          question: 'User interacts with visual representation of data objects.',
+          options: ['A. True', 'B. False'],
+          correctAnswer: 'A. True',
+        },
+        {
+          id: 25,
+          question: 'What does UX stand for in the context of design?',
+          options: ['A. User Experience', 'B. User Exploration', 'C. User Experiment', 'D. User Expression'],
+          correctAnswer: 'A. User Experience',
+        },
+        {
+          id: 26,
+          question: 'What does UX design focus on?',
+          options: ['A. Creating visually appealing interfaces', 'B. Designing for the brand’s identity', 'C. Understanding and enhancing the overall user experience', 'D. Writing code for software applications'],
+          correctAnswer: 'C. Understanding and enhancing the overall user experience',
+        },
+        {
+          id: 27,
+          question: 'What is the primary goal of UX design?',
+          options: ['A. Increasing revenues', 'B. Creating visually stunning designs', 'C. Enhancing the user interface', 'D. Meeting the needs and expectations of users'],
+          correctAnswer: 'D. Meeting the needs and expectations of users',
+        },
+        {
+          id: 28,
+          question: 'What is the importance of conducting user research in UX design?',
+          options: ['A. To showcase the product’s features', 'B. To understand the needs and behaviors of users', 'C. To gather data for marketing purposes', 'D. To determine the cost of the product development'],
+          correctAnswer: 'B. To understand the needs and behaviors of users',
+        },
+        {
+          id: 29,
+          question:'What is the purpose of creating user personas in UX design?',
+          options: [
+            'A. To test the usability of the product',
+            'B. To represent the target audience and their characteristics',
+            'C. To decide on the color scheme of the product',
+            'D. To conduct A/B testing',
+           ],
+     
+            correctAnswer:'B. To represent the target audience and their characteristics',
+        },           
+        {
+          id: 30,
+          question: 'What is the term for the process of organizing and structuring content to make it easily accessible to users?',
+          options: ['A. Information architecture', 'B. User interface design', 'C. Interaction design', 'D. Interaction design'],
+          correctAnswer: 'A. Information architecture',
+        }
+      ]
 
-      {
-        id: 33,
-        question: 'What is the goal of error prevention in UI/UX design?',
-        options: ['To minimize user mistakes and improve usability', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
-        correctAnswer: 'To minimize user mistakes and improve usability',
-      },
-      {
-        id: 34,
-        question: 'What is the purpose of hierarchy in UI/UX design?',
-        options: ['To prioritize content and guide user attention', 'To choose color schemes and typography', 'To conduct usability testing', 'To define the brand identity'],
-        correctAnswer: 'To prioritize content and guide user attention',
-      },
-      {
-        id: 35,
-        question: 'What is the role of affordance in UI/UX design?',
-        options: ['To communicate how an element should be used or interacted with', 'To organize and structure content', 'To conduct user interviews', 'To choose appropriate typography'],
-        correctAnswer: 'To communicate how an element should be used or interacted with',
-      },
-      {
-        id: 36,
-        question: 'What is the purpose of visual storytelling in UI/UX design?',
-        options: ['To convey information and engage users through visuals', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
-        correctAnswer: 'To convey information and engage users through visuals',
-      },
-
-      {
-        id: 37,
-        question: 'What is the purpose of usability heuristics in UI/UX design?',
-        options: ['To evaluate and identify usability issues in a design', 'To create visually appealing designs', 'To conduct user interviews', 'To define user flows and interactions'],
-        correctAnswer: 'To evaluate and identify usability issues in a design',
-      },
-      {
-        id: 38,
-        question: 'What is the goal of visual weight in UI/UX design?',
-        options: ['To create visual hierarchy and balance', 'To create interactive prototypes', 'To conduct usability testing', 'To define the brand identity'],
-        correctAnswer: 'To create visual hierarchy and balance',
-      },
-      {
-        id: 39,
-        question: 'What is the purpose of user flows in UI/UX design?',
-        options: ['To define the path users take through a website or application', 'To optimize website performance', 'To choose appropriate typography', 'To conduct user research'],
-        correctAnswer: 'To define the path users take through a website or application',
-      },
-      {
-        id: 40,
-        question: 'What is the role of feedback in UI/UX design?',
-        options: ['To provide users with information and confirm actions', 'To design logos and visual identities', 'To define user personas', 'To conduct user research'],
-        correctAnswer: 'To provide users with information and confirm actions',
-      },
-      {
-        id: 41,
-        question: 'What is the purpose of style guides in UI/UX design?',
-        options: ['To ensure consistency and maintain a unified visual language', 'To conduct usability testing', 'To optimize website performance', 'To define the brand identity'],
-        correctAnswer: 'To ensure consistency and maintain a unified visual language',
-      },
-      {
-        id: 42,
-        question: 'What is the goal of user-centered design in UI/UX?',
-        options: ['To create designs that meet user needs and preferences', 'To create visually appealing designs', 'To conduct user interviews', 'To define user flows and interactions'],
-        correctAnswer: 'To create designs that meet user needs and preferences',
-      },
-      {
-        id: 43,
-        question: 'What is the purpose of affordance in UI/UX design?',
-        options: ['To communicate how an element should be used or interacted with', 'To choose color schemes and typography', 'To conduct usability testing', 'To define the brand identity'],
-        correctAnswer: 'To communicate how an element should be used or interacted with',
-      },
-      // Question 44
-      {
-        id: 44,
-        question: 'What is the role of empathy in UI/UX design?',
-        options: ['To understand and connect with users on an emotional level', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
-        correctAnswer: 'To understand and connect with users on an emotional level',
-      },
-      {
-        id: 45,
-        question: 'What is the purpose of visual hierarchy in UI/UX design?',
-        options: ['To guide users through the content and prioritize information', 'To create interactive prototypes', 'To conduct user interviews', 'To define user flows and interactions'],
-        correctAnswer: 'To guide users through the content and prioritize information',
-      },
-      {
-        id: 46,
-        question: 'What is the goal of user testing in UI/UX design?',
-        options: ['To gather feedback and evaluate the usability of a design', 'To create visually appealing designs', 'To define user personas', 'To conduct user research'],
-        correctAnswer: 'To gather feedback and evaluate the usability of a design',
-      },
-      {
-        id: 47,
-        question: 'What is the purpose of storytelling in UI/UX design?',
-        options: ['To engage users and create meaningful experiences', 'To organize and structure content', 'To conduct user interviews', 'To choose appropriate typography'],
-        correctAnswer: 'To engage users and create meaningful experiences',
-      },
-      {
-        id: 48,
-        question: 'What is the role of prototyping in UI/UX design?',
-        options: ['To create interactive and testable representations of a design', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
-        correctAnswer: 'To create interactive and testable representations of a design',
-      },
-      {
-        id: 49,
-        question: 'What is the purpose of user research in UI/UX design?',
-        options: ['To understand user needs, behaviors, and preferences', 'To choose color schemes and typography', 'To conduct usability testing', 'To define the brand identity'],
-        correctAnswer: 'To understand user needs, behaviors, and preferences',
-      },
-      {
-        id: 50,
-        question: 'What is the goal of user feedback in UI/UX design?',
-        options: ['To gather insights and improve the design', 'To optimize website performance', 'To design logos and visual identities', 'To conduct user research'],
-        correctAnswer: 'To gather insights and improve the design',
-      },
-      // Add more questions...
-    ],
-
-  
   },
   {
     courseName: 'DIGITAL MARKET',
@@ -3249,577 +2379,409 @@ const questions = [
   {
     courseName: 'GRAPHICS',
     questions:[
-           // Question 1
-           {
-            id: 1,
-            question: 'To fill in a layer as a background, which of the following tools would be useful?',
-            options: [
-              'Lasso',
-              'Gradient',
-              'Marquee',
-              'None of These',
-            ],
-        
-            correctAnswer: 'Marquee.',
-          },
-        
-              
-           {
-             id: 2,
-             question:'The _______ tool allows you to select a rectangular or circular area of a layer to change or delete.',
-             options: [
-          'Crop',
-                'Marquee',
-                'Clone Stamp',
-             ],
-        
-             correctAnswer: 'Crop.',
-           },
-        
-        
-           
-           {
-             id: 3,
-             question:'To cut down the size of the entire graphic design, including all layers, you should select the ______ tool.',
-             options: [
-          'Crop',
-                'Marquee',
-                'Clone Stamp',	
-             ],
-        
-             correctAnswer: 'Crop.',
-           },
-           
-        
-           
-           {
-             id: 4,
-             question:'By changing the % of __________ you can blend multiple layers with one another.',
-             options: [
-                 'Opacity',
-                 'Navigation',
-                 'Layers',
-                 'History',
-             ],
-        
-             correctAnswer: 'Opacity.',
-           }, 
-        
           
-        
-           {
-             id: 5,
-             question:'The typical size for a graphic design for electronic media is measured in __________.',
-             options: [
-               'Points',
-               'Pixels',
-               'Pica',
-               'Inches',
-             ],
-        
-             correctAnswer: 'Pixels.',
-           },
+      {
+        id: 1,
+        question: 'To fill in a layer as a background, which of the following tools would be useful?',
+        options: [
+          'Lasso',
+          'Gradient',
+          'Marquee',
+          'None of These',
+        ],
+    
+        correctAnswer: 'Marquee.',
+      },
+    
           
-          
-           
-           {
-             id: 6,
-             question:'To undo the last change made to your graphic design, the ___________ keys may be used.',
-             options: [
-              'Ctrl+Z',
-              'Ctrl+Y',
-              'Ctrl+Shift+Alt+Z',
-              'Ctrl+Shift+X',
-              ],
+       {
+         id: 2,
+         question:'The _______ tool allows you to select a rectangular or circular area of a layer to change or delete.',
+         options: [
+            'Crop',
+            'Marquee',
+            'Clone Stamp',
+         ],
+    
+         correctAnswer: 'Marquee',
+       },
+    
+    
+       
+       {
+         id: 3,
+         question:'To cut down the size of the entire graphic design, including all layers, you should select the ______ tool.',
+         options: [
+            'Crop',
+            'Marquee',
+            'Clone Stamp',	
+         ],
+    
+         correctAnswer: 'Crop',
+       },
+       
+    
+       
+       {
+         id: 4,
+         question:'By changing the % of __________ you can blend multiple layers with one another.',
+         options: [
+             'Opacity',
+             'Navigation',
+             'Layers',
+             'History',
+         ],
+    
+         correctAnswer: 'Opacity',
+       }, 
+    
+      
+    
+       {
+         id: 5,
+         question:'The typical size for a graphic design for electronic media is measured in __________.',
+         options: [
+           'Points',
+           'Pixels',
+           'Pica',
+           'Inches',
+         ],
+    
+         correctAnswer: 'Pixels',
+       },
+      
+      
+       
+       {
+         id: 6,
+         question:'To undo the last change made to your graphic design, the ___________ keys may be used.',
+         options: [
+          'Ctrl+Z',
+          'Ctrl+Y',
+          'Ctrl+Shift+Alt+Z',
+          'Ctrl+Shift+X',
+          ],
+    
+           correctAnswer: 'Ctrl+Z',
+       },
         
-               correctAnswer: 'Ctrl+Z.',
-           },
-            
-           
-           {
-             id: 7,
-             question:'Pixels represent tiny ________ of color, which are typically unseen by the naked eye.',
-             options: [
-               'Blocks',
-               'Cubes',
-               'Boxes',
-               'Dots',
-              ],
-        
-               correctAnswer: 'Dots.',
-           },
-             
-           {
-             id: 8,
-             question:'When using the SAVE AS: feature, the ________ file type saves my graphic design with all layers visible for changes upon opening the next time.',
-             options: [
-               '.psd',
-               '.jpg',
-               '.png',
-              ],
-        
-               correctAnswer: 'PSD.',
-           }, 
-        
-           
-           {
-             id: 9,
-             question:'What is the keyboard shortcut to the Free Transform tool?',
-             options: [
-               'T',
-               'Alt+Ctrl+T',
-               'Shift+T',
-               'Ctrl+T',
-              ],
-        
-               correctAnswer:'Ctrl+T',
-           }, 
-        
-           
-           {
-             id: 10,
-             question:'The “Inverse” command is located in what menu?',
-             options: [
-               'Select',
-               'Edit',
-               'Filter',
-               'Layer',
-              ],
-        
-               correctAnswer:'Select.',
-           },  
+       
+       {
+         id: 7,
+         question:'Pixels represent tiny ________ of color, which are typically unseen by the naked eye.',
+         options: [
+           'Blocks',
+           'Cubes',
+           'Boxes',
+           'Dots',
+          ],
+    
+           correctAnswer: 'Dots',
+       },
          
-           
-           
-           {
-             id: 11,
-             question:'What menu is the “Mode” command in, which will allow you to change to the RGB Color?',
-             options: [
-               'Select',
-               'Layer',
-               'Filter',
-               'Image',
-              ],
+       {
+         id: 8,
+         question:'When using the SAVE AS: feature, the ________ file type saves my graphic design with all layers visible for changes upon opening the next time.',
+         options: [
+           '.psd',
+           '.jpg',
+           '.png',
+          ],
+    
+           correctAnswer: '.psd',
+       }, 
+    
+       
+       {
+         id: 9,
+         question:'What is the keyboard shortcut to the Free Transform tool?',
+         options: [
+           'T',
+           'Alt+Ctrl+T',
+           'Shift+T',
+           'Ctrl+T',
+          ],
+    
+           correctAnswer:'Ctrl+T',
+       }, 
+    
+       
+       {
+         id: 10,
+         question:'The “Inverse” command is located in what menu?',
+         options: [
+           'Select',
+           'Edit',
+           'Filter',
+           'Layer',
+          ],
+    
+           correctAnswer:'Select',
+       },  
+     
+       
+       
+       {
+         id: 11,
+         question:'What menu is the “Mode” command in, which will allow you to change to the RGB Color?',
+         options: [
+           'Select',
+           'Layer',
+           'Filter',
+           'Image',
+          ],
+    
+           correctAnswer:'Image',
+       },  
+    
+       
+       {
+         id: 12,
+         question:'If you make an error with the Color Replacement Tool, what tool could you use to correct the problem and revert back to the original in that area?',
+         options: [
+           'Marquee Tool',
+           'History Correction Tool',
+           'Eraser Tool',
+           'History Brush Tool',
+          ],
+    
+           correctAnswer:'History Brush Tool',
+       },  
+       
+       {
+         id: 13,
+         question:'Color is an element of design.',
+         options: [
+           'True',
+           'False',
+          ],
+    
+           correctAnswer:'True',
+       }, 
         
-               correctAnswer:'Image',
-           },  
         
-           
-           {
-             id: 12,
-             question:'If you make an error with the Color Replacement Tool, what tool could you use to correct the problem and revert back to the original in that area?',
-             options: [
-               'Marquee Tool',
-               'History Correction Tool',
-               'Eraser Tool',
-               'History Brush Tool',
-              ],
-        
-               correctAnswer:'History Correction Tool.',
-           },  
-           
-           {
-             id: 13,
-             question:'Color is an element of design.',
-             options: [
-               'A. True',
-               'B. False',
-              ],
-        
-               correctAnswer:' True.',
-           }, 
-            
-            
-           {
-             id: 14,
-             question:'To change the work area in Photoshop, the user should go to image size and change the numbers. State true or false.',
-             options: [
-               'A. True',
-               'B. False',
-              ],
-        
-               correctAnswer:'False.',
-           },  
-         
+       {
+         id: 14,
+         question:'To change the work area in Photoshop, the user should go to image size and change the numbers. State true or false.',
+         options: [
+           'True',
+           'False',
+          ],
+    
+           correctAnswer:'False',
+       },  
+     
+      
+       {
+         id: 15,
+         question:'You can create a new document in Photoshop with the shortcut Ctrl+N',
+         options: [
+           'True',
+           'False',
+          ],
+    
+           correctAnswer:'True',
+       },  
+      
+    
+       {
+         id: 16,
+         question:'To blend an image into a background masking is required.',
+         options: [
+           'True',
+           'False',
+          ],
+    
+           correctAnswer:'True',
+       },      
+      
+       {
+         id: 17,
+         question:'What is the correct social banner size?',
+         options: [
+           '200x340',
+           '1700x1812',
+           '1500x340',
+           '2345X1000',
+          ],
+    
+           correctAnswer:'1700x1812',
+       },      
+    
+       
+       {
+         id: 18,
+         question:' What elements must be considered when creating a design.',
+         options: [
+           'Typography, Imagery, paint and stamp',
+           'Imagery, Typography, mouse and keyboard',
+           'Typography, Imagery, Colour and Shapes',
+          ],
+    
+           correctAnswer:'Typography, Imagery, Colour and Shapes',
+       },     
+       
+       {
+         id: 19,
+         question:'What is the T-tool used for?',
+         options: [
+            'For drawing elipse',
+            'For writing texts',
+            'For creating a new document',
+            'For saving a document',
+          ],
+    
+           correctAnswer:'For writing texts',
+       },      
           
-           {
-             id: 15,
-             question:'You can create a new document in Photoshop with the shortcut Ctrl+N',
-             options: [
-               'A. True',
-               'B. False',
-              ],
+       
+       {
+         id: 20,
+         question:'Where can you unlock the character panel?',
+         options: [
+           'Windows',
+           'File',
+           'Layer',
+           'Image',
+          ],
+    
+           correctAnswer:'Windows',
+       },      
+       
+       {
+         id: 21,
+         question:'What is the best image mode for social media flyers?',
+         options: [
+           'RGB',
+           'CMYK',
+           'LAB',
+           'All of the above',
+    
+          ],
+    
+           correctAnswer:'RGB',
+       },      
+       {
+         id: 22,
+         question:'An image will be blurry if the document dimension is large',
+         options: [
+              'True',
+              'False',
+          ],
+    
+           correctAnswer:'False',
+       },      
+    
+    
+       {
+         id: 23,
+         question:'What platforms can you get high resolution licensed images?',
+         options: [
+            'Freepik.com and Shutterstock',
+            'Freepik.com and convertio.co',
+            'Behance.net and Convertio.co',
+            'All of the above'
+          ],
+    
+           correctAnswer:'Freepik.com and Shutterstock',
+       },      
+       
+    
+       {
+         id: 24,
+         question:'Nike is branding in graphic design terms.',
+         options: [
+            'True',
+            'False',
+          ],
+    
+           correctAnswer:'False',
+       },      
+       
+    
+       {
+         id: 25,
+         question:'Graphic design is an art process that combines two elements to convey ideas of the following choices, which reflect the two elements?',
+         options: [
+           'Words and phrases',
+           'Words and pictures',
+           'Photography and drawing',
+           'Pictures and symbols',   
+          ],
+    
+           correctAnswer:'Words and pictures',
+       },  
         
-               correctAnswer:'True.',
-           },  
-          
-        
-           {
-             id: 16,
-             question:'To blend an image into a background masking is required.',
-             options: [
-               'A. True',
-               'B. False',
-              ],
-        
-               correctAnswer:'True.',
-           },      
-          
-           {
-             id: 17,
-             question:'What is the correct social banner size?',
-             options: [
-               'A. 200x340',
-               'B. 1700x1812',
-               'C. 1500x340',
-               'D. 2345X1000',
-              ],
-        
-               correctAnswer:'1700x1812',
-           },      
-        
-           
-           {
-             id: 18,
-             question:' What elements must be considered when creating a design.',
-             options: [
-               'A. Typography, Imagery, paint and stamp',
-               'B. Imagery, Typography, mouse and keyboard',
-               'C. Typography, Imagery, Colour and Shapes',
-              ],
-        
-               correctAnswer:'Typography, Imagery, Colour and Shapes',
-           },     
-           
-           {
-             id: 19,
-             question:'What is the T-tool used for?',
-             options: [
-                'A. For drawing elipse',
-                'B. For writing texts',
-                'C. For creating a new document',
-                'D. For saving a document',
-              ],
-        
-               correctAnswer:'For writing texts.',
-           },      
-              
-           
-           {
-             id: 20,
-             question:'Where is can you unlock the character panel?',
-             options: [
-               'A. Windows',
-               'B. File',
-               'C. Layer',
-               'D. Image',
-              ],
-        
-               correctAnswer:'Windows.',
-           },      
-           
-           {
-             id: 21,
-             question:'What is the best image mode for social media flyers?',
-             options: [
-               'A. RGB',
-               'B. CMYK',
-               'C. LAB',
-               'D. All of the above',
-        
-              ],
-        
-               correctAnswer:'RGB',
-           },      
-           
-          
-            // Question 22
-           {
-             id: 22,
-             question:'An image will be blurry if the document dimension is large',
-             options: [
-                  'A. True',
-                  'B. False',
-              ],
-        
-               correctAnswer:'False.',
-           },      
-        
-        
-           {
-             id: 23,
-             question:'What platforms can you get high resolution licensed images?',
-             options: [
-                'A. Freepik.com and Shutterstock',
-                'B. Freepik.com and convertio.co',
-                'C. Behance.net and Convertio.co',
-                'D. All of the above'
-              ],
-        
-               correctAnswer:'Freepik.com and Shutterstock.',
-           },      
-           
-        
-           {
-             id: 24,
-             question:'Nike is branding in graphic design terms.',
-             options: [
-                'A. True',
-                'B. False',
-              ],
-        
-               correctAnswer:'False',
-           },      
-           
-        
-           {
-             id: 25,
-             question:'Graphic design is an art process that combines two elements to convey ideas. Of the following choices, which reflect the two elements?',
-             options: [
-               'A. Words and phrases',
-               'B. Words and pictures',
-               'C. Photography and drawing',
-               'D. Pictures and symbols',   
-              ],
-        
-               correctAnswer:'Words and pictures.',
-           },  
-            
-        
-           {
-             id: 26,
-             question:'Points, lines, curves and shapes are used to create what type of illustrations?',
-             options: [
-               'A. Line art',
-               'B. Raster graphics',
-               'C. Digital illustrations',
-               'D. Vector graphics',   
-              ],
-        
-               correctAnswer:'Vector graphics.',
-           },      
-        
-        
-           {
-             id: 27,
-             question:'In regard to digital images and the photographic prints produced from them, the term _____ refers to the sharpness and clarity of the image.',
-             options: [
-               'A. Pixel',
-               'B. Megapixel',
-               'C. Bitmap',
-               'D. Resolution',   
-              ],
-        
-               correctAnswer:'Resolution.',
-           },      
-        
-          
-           
-           {
-             id: 28,
-             question:'Digital photography uses several file formats to store image information. Of the following, which compresses the image slightly, allowing for more storage space?',
-             options: [
-               'A. JPEG',
-               'B. ATM',
-               'C. TIFF',
-               'D. PSD', 
-              ],
-        
-               correctAnswer:'JPEG',
-           },      
-        
-          
-          
-        
-           {
-             id: 29,
-             question:'In graphic design, an icon is commonly defined as?',
-             options: [
-               'A. Basic graphic shapes',
-               'B. The abstract representation of a concept or idea',
-               'C. The visual representation of specific objects',
-               'D.  Detailed artistic reproductions of an object',
-              ],
-        
-               correctAnswer:'The visual representation of specific objects.',
-           },     
-        
-        
-           
-           {
-             id: 30,
-             question:'What, in addition to the repetition of design elements, determines the rhythm of a composition in graphic design?',
-             options: [
-               'A. Intervals',
-               'B. Colors',
-               'C. Shapes',
-               'D. Lines',
-              ],
-        
-               correctAnswer:'Intervals.',
-           },              
+    
+       {
+         id: 26,
+         question:'Points, lines, curves and shapes are used to create what type of illustrations?',
+         options: [
+           'Line art',
+           'Raster graphics',
+           'Digital illustrations',
+           'Vector graphics',   
+          ],
+    
+           correctAnswer:'Vector graphics',
+       },      
+    
+    
+       {
+         id: 27,
+         question:'In regard to digital images and the photographic prints produced from them, the term _____ refers to the sharpness and clarity of the image.',
+         options: [
+           'Pixel',
+           'Megapixel',
+           'Bitmap',
+           'Resolution',   
+          ],
+    
+           correctAnswer:'Resolution',
+       },      
+       
+       {
+         id: 28,
+         question:'Digital photography uses several file formats to store image information. Of the following, which compresses the image slightly, allowing for more storage space?',
+         options: [
+           'JPEG',
+           'ATM',
+           'TIFF',
+           'PSD', 
+          ],
+    
+           correctAnswer:'JPEG',
+       },      
 
-  // Question 31
-  {
-    id: 31,
-    question: 'What is the purpose of negative space in graphic design?',
-    options: ['To create balance and harmony', 'To crop and resize images', 'To adjust color and saturation', 'To select and move objects'],
-    correctAnswer: 'To create balance and harmony',
-  },
-  // Question 32
-  {
-    id: 32,
-    question: 'Which color mode is used for digital design?',
-    options: ['RGB', 'CMYK', 'HSV', 'Pantone'],
-    correctAnswer: 'RGB',
-  },
-  // Add more questions...
-
-  // Question 33
-  {
-    id: 33,
-    question: 'What is the purpose of the pen tool in graphic design?',
-    options: ['To create smooth and precise curves', 'To apply text formatting', 'To adjust color and saturation', 'To draw shapes and lines'],
-    correctAnswer: 'To create smooth and precise curves',
-  },
-  // Question 34
-  {
-    id: 34,
-    question: 'Which file format supports animation?',
-    options: ['GIF', 'JPEG', 'PNG', 'TIFF'],
-    correctAnswer: 'GIF',
-  },
-  // Add more questions...
-
-  // Question 35
-  {
-    id: 35,
-    question: 'What is the purpose of typography in graphic design?',
-    options: ['To communicate information through text', 'To adjust brightness and contrast', 'To apply filters and effects', 'To draw shapes and lines'],
-    correctAnswer: 'To communicate information through text',
-  },
-  // Question 36
-  {
-    id: 36,
-    question: 'Which tool is commonly used for photo editing?',
-    options: ['Adobe Photoshop', 'Adobe Illustrator', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Photoshop',
-  },
-  // Add more questions...
-
-  // Question 37
-  {
-    id: 37,
-    question: 'What is the purpose of grids in graphic design?',
-    options: ['To create structure and alignment', 'To adjust color and saturation', 'To apply text formatting', 'To select and move objects'],
-    correctAnswer: 'To create structure and alignment',
-  },
-  // Question 38
-  {
-    id: 38,
-    question: 'Which file format supports transparency?',
-    options: ['PNG', 'JPEG', 'GIF', 'TIFF'],
-    correctAnswer: 'PNG',
-  },
-  // Add more questions...
-
-  // Question 39
-  {
-    id: 39,
-    question: 'What is the purpose of color theory in graphic design?',
-    options: ['To create visually appealing designs', 'To adjust brightness and contrast', 'To apply filters and effects', 'To draw shapes and lines'],
-    correctAnswer: 'To create visually appealing designs',
-  },
-  // Question 40
-  {
-    id: 40,
-    question: 'Which tool is commonly used for creating digital illustrations?',
-    options: ['Adobe Illustrator', 'Adobe Photoshop', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Illustrator',
-  },
-  // Add more questions...
-
-  // Question 41
-  {
-    id: 41,
-    question: 'What is the purpose of gradients in graphic design?',
-    options: ['To create smooth transitions between colors', 'To apply text formatting', 'To crop and resize images', 'To select and move objects'],
-    correctAnswer: 'To create smooth transitions between colors',
-  },
-  // Question 42
-  {
-    id: 42,
-    question: 'Which file format supports lossy compression of images?',
-    options: ['JPEG', 'PNG', 'GIF', 'SVG'],
-    correctAnswer: 'JPEG',
-  },
-  // Add more questions...
-
-  // Question 43
-  {
-    id: 43,
-    question: 'What is the purpose of alignment in graphic design?',
-    options: ['To create visual order and balance', 'To adjust color and saturation', 'To apply filters and effects', 'To draw shapes and lines'],
-    correctAnswer: 'To create visual order and balance',
-  },
-  // Question 44
-  {
-    id: 44,
-    question: 'Which tool is commonly used for creating logos?',
-    options: ['Adobe Illustrator', 'Adobe Photoshop', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Illustrator',
-  },
-  // Add more questions...
-
-  // Question 45
-  {
-    id: 45,
-    question: 'What is the purpose of white space in graphic design?',
-    options: ['To create visual breathing room and focus', 'To crop and resize images', 'To adjust brightness and contrast', 'To select and move objects'],
-    correctAnswer: 'To create visual breathing room and focus',
-  },
-  // Question 46
-  {
-    id: 46,
-    question: 'Which color mode is used for print design?',
-    options: ['CMYK', 'RGB', 'HSV', 'Pantone'],
-    correctAnswer: 'CMYK',
-  },
-  // Add more questions...
-
-  // Question 47
-  {
-    id: 47,
-    question: 'What is the purpose of the brush tool in graphic design software?',
-    options: ['To paint or draw strokes', 'To apply text formatting', 'To adjust color and saturation', 'To draw shapes and lines'],
-    correctAnswer: 'To paint or draw strokes',
-  },
-  // Question 48
-  {
-    id: 48,
-    question: 'Which file format is commonly used for animated graphics?',
-    options: ['GIF', 'JPEG', 'PNG', 'TIFF'],
-    correctAnswer: 'GIF',
-  },
-  // Add more questions...
-
-  // Question 49
-  {
-    id: 49,
-    question: 'What is the purpose of visual hierarchy in graphic design?',
-    options: ['To guide the viewer\'s attention and communicate importance', 'To adjust brightness and contrast', 'To apply filters and effects', 'To draw shapes and lines'],
-    correctAnswer: 'To guide the viewer\'s attention and communicate importance',
-  },
-  // Question 50
-  {
-    id: 50,
-    question: 'Which tool is commonly used for image manipulation?',
-    options: ['Adobe Photoshop', 'Adobe Illustrator', 'CorelDRAW', 'GIMP'],
-    correctAnswer: 'Adobe Photoshop',
-  },
-  // Add more questions...
-],
-  
+       {
+         id: 29,
+         question:'In graphic design, an icon is commonly defined as?',
+         options: [
+           'Basic graphic shapes',
+           'The abstract representation of a concept or idea',
+           'The visual representation of specific objects',
+           'Detailed artistic reproductions of an object',
+          ],
+    
+           correctAnswer:'The visual representation of specific objects',
+       },     
+    
+    
+       
+       {
+         id: 30,
+         question:'What, in addition to the repetition of design elements, determines the rhythm of a composition in graphic design?',
+         options: [
+           'Intervals',
+           'Colors',
+           'Shapes',
+           'Lines',
+          ],
+    
+           correctAnswer:'Lines',
+       },      
+    ]
+    
   
   },
   {
@@ -6023,10 +4985,6 @@ const questions = [
         ],
         correctAnswer: 'A technique used to manipulate individuals into revealing sensitive information',
       }
-            
-
-      // Add more questions...
-
     ],
   },
 ];
